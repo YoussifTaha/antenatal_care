@@ -1,4 +1,4 @@
-package com.example.pos_system
+package com.example.antenatal_app
 
 import io.flutter.embedding.android.FlutterActivity
 

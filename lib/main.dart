@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:pos_system/features/home/ui/screens/home.dart';
+import 'package:antenatal_app/features/home/ui/screens/home.dart';
 
 void main() {
   runApp(const MyApp());
