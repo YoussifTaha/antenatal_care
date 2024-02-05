@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pos_system/cubit/cubit_cubit.dart';
-import 'package:pos_system/home.dart';
-import 'package:device_preview/device_preview.dart';
+
+import 'package:pos_system/features/home/ui/screens/home.dart';
 
 void main() {
-  runApp(DevicePreview(
-    builder: (context) => const MyApp(),
-  ));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,17 +11,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CubitCubit(),
-      child: BlocBuilder<CubitCubit, CubitState>(
-        builder: (context, state) {
-          return const MaterialApp(
-            builder: DevicePreview.appBuilder,
-            debugShowCheckedModeBanner: false,
-            home: HomeScreen(),
-          );
-        },
-      ),
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen(),
     );
   }
 }
