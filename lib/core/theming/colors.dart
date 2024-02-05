@@ -8,4 +8,5 @@ class ColorManger {
   static const lightBackgroundHover = Color(0xFFE0AAFF);
   static const lightBackground = Color(0xFFF3EAFF);
   static const veryLightBackground = Color(0xFFFFCCD5);
+  static const regularGrey = Color(0xFF757575);
 }

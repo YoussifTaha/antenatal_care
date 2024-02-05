@@ -36,6 +36,7 @@ dependencies:
   flutter_svg: ^2.0.9
   flutter_native_splash: ^2.3.10
   flutter_screenutil: ^5.9.0
+  cached_network_image: ^3.3.1
   
 
 dev_dependencies:
