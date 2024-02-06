@@ -1,6 +1,8 @@
+import 'package:antenatal_app/core/Helpers/extensions.dart';
+import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
-import 'package:antenatal_app/core/widgets/components.dart';
+import 'package:antenatal_app/core/widgets/widgets.dart';
 import 'package:antenatal_app/features/onBoarding/ui/widgets/background_image.dart';
 import 'package:antenatal_app/features/onBoarding/ui/widgets/female_doctor_image.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +56,9 @@ class OnBoardingScreen extends StatelessWidget {
                   button(
                       height: 50,
                       context: context,
-                      function: () {},
+                      function: () {
+                        context.pushNamed(Routes.loginScreen);
+                      },
                       text: 'Get Started',
                       color: ColorManger.primary)
                 ],
