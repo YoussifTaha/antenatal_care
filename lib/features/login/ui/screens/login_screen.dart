@@ -33,7 +33,9 @@ class LoginScreen extends StatelessWidget {
                 Text(
                   'We\'re excited to have you back, can\'t wait to see what you\'ve been up to since you last logged in.',
                   style: getRegularStyle(
-                      color: ColorManger.regularGrey, fontSize: 14),
+                      color: ColorManger.regularGrey,
+                      textHeight: 1.2,
+                      fontSize: 14),
                 ),
                 verticalSpace(36),
                 Form(
