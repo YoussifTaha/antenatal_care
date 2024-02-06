@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 ThemeData lightTheme = ThemeData(
-  primarySwatch: Colors.deepPurple,
   primaryColor: ColorManger.primary,
   useMaterial3: false,
   scaffoldBackgroundColor: Colors.white,

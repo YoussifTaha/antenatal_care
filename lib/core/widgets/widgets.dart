@@ -1,11 +1,12 @@
+import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:flutter/material.dart';
 
 Widget button({
   required BuildContext context,
-  Color color = Colors.pink,
+  Color color = ColorManger.primary,
   Color textColor = Colors.white,
   double width = double.infinity,
-  double? height,
+  double height = 50,
   required function,
   required String text,
   double fontSize = 14,
