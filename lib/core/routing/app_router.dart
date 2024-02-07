@@ -1,5 +1,6 @@
 import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/features/account_type/ui/screens/account_type_screen.dart';
+import 'package:antenatal_app/features/base_feature/ui/screens/home.dart';
 import 'package:antenatal_app/features/login/ui/screens/login_screen.dart';
 import 'package:antenatal_app/features/onBoarding/ui/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,10 @@ class AppRouter {
       case Routes.loginScreen:
         return MaterialPageRoute(
           builder: (_) => const LoginScreen(),
+        );
+      case Routes.homeScreen:
+        return MaterialPageRoute(
+          builder: (_) => const HomeScreen(),
         );
       default:
         return MaterialPageRoute(

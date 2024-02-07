@@ -35,10 +35,11 @@ Widget button({
     );
 
 Widget outlinedButton({
-  Color color = Colors.pink,
-  Color textColor = Colors.pink,
+  Color color = ColorManger.primary,
+  Color textColor = ColorManger.primary,
   double? height,
   double width = double.infinity,
+  double fontSize = 14,
   required function,
   required String text,
   MaterialStateProperty<OutlinedBorder?>? shape,
@@ -62,6 +63,7 @@ Widget outlinedButton({
         onPressed: function,
         child: Text(text,
             style: TextStyle(
+              fontSize: fontSize,
               color: textColor,
               fontWeight: FontWeight.bold,
             )),

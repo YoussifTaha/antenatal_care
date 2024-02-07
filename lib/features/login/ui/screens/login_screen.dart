@@ -1,4 +1,6 @@
+import 'package:antenatal_app/core/Helpers/extensions.dart';
 import 'package:antenatal_app/core/Helpers/spacing.dart';
+import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
 import 'package:antenatal_app/features/login/ui/widgets/already_have_account_text.dart';
@@ -62,7 +64,9 @@ class LoginScreen extends StatelessWidget {
                       button(
                           context: context,
                           function: () {
-                            if (formKey.currentState!.validate()) {}
+                            if (formKey.currentState!.validate()) {
+                              context.pushNamed(Routes.homeScreen);
+                            }
                           },
                           text: 'Login',
                           height: 50,
