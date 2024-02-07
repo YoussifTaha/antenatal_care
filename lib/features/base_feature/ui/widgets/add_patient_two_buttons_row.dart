@@ -1,3 +1,4 @@
+import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -20,12 +21,13 @@ class AddPatientsTwoButtonsRow extends StatelessWidget {
             context: context,
             function: () {},
             text: 'Add By Id'),
+        horizontalSpace(5),
         outlinedButton(
             fontSize: 12.sp,
             textColor: Colors.white,
             color: Colors.white,
             height: 39.h,
-            width: 115.w,
+            width: 110.w,
             function: () {},
             text: 'Add Manually'),
       ],
