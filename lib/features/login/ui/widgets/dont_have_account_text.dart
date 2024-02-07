@@ -1,3 +1,5 @@
+import 'package:antenatal_app/core/Helpers/extensions.dart';
+import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
 import 'package:flutter/gestures.dart';
@@ -18,7 +20,10 @@ class AlreadyHaveAccountText extends StatelessWidget {
                 getRegularStyle(color: ColorManger.darkPrimary, fontSize: 15),
           ),
           TextSpan(
-            recognizer: TapGestureRecognizer()..onTap = () {},
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                context.pushNamed(Routes.signupScreen);
+              },
             text: ' Sign Up',
             style: getSemiBoldStyle(color: ColorManger.primary, fontSize: 15),
           ),
