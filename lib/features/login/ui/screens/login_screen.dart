@@ -1,10 +1,9 @@
 import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
-import 'package:antenatal_app/features/login/ui/widgets/already_have_account_text.dart';
+import 'package:antenatal_app/features/login/ui/widgets/dont_have_account_text.dart';
 import 'package:antenatal_app/features/login/ui/widgets/email_field.dart';
 import 'package:antenatal_app/features/login/ui/widgets/password_field.dart';
-import 'package:antenatal_app/features/login/ui/widgets/terms_and_conitions_text.dart';
 import 'package:flutter/material.dart';
 import 'package:antenatal_app/core/widgets/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -58,7 +57,7 @@ class LoginScreen extends StatelessWidget {
                               color: ColorManger.primary, fontSize: 13),
                         ),
                       ),
-                      verticalSpace(40),
+                      verticalSpace(30),
                       button(
                           context: context,
                           function: () {
@@ -68,9 +67,7 @@ class LoginScreen extends StatelessWidget {
                           height: 50,
                           color: ColorManger.primary,
                           fontSize: 16.sp),
-                      verticalSpace(16),
-                      const TermsAndConditionsText(),
-                      verticalSpace(60),
+                      verticalSpace(30),
                       const AlreadyHaveAccountText(),
                     ],
                   ),

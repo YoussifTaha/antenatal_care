@@ -1,5 +1,6 @@
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class AlreadyHaveAccountText extends StatelessWidget {
@@ -12,13 +13,14 @@ class AlreadyHaveAccountText extends StatelessWidget {
       text: TextSpan(
         children: [
           TextSpan(
-            text: 'Already have an account?',
+            text: 'Don\'t have an account?',
             style:
-                getRegularStyle(color: ColorManger.darkPrimary, fontSize: 13),
+                getRegularStyle(color: ColorManger.darkPrimary, fontSize: 15),
           ),
           TextSpan(
+            recognizer: TapGestureRecognizer()..onTap = () {},
             text: ' Sign Up',
-            style: getSemiBoldStyle(color: ColorManger.primary, fontSize: 13),
+            style: getSemiBoldStyle(color: ColorManger.primary, fontSize: 15),
           ),
         ],
       ),
