@@ -1,5 +1,5 @@
 import 'package:antenatal_app/core/Helpers/spacing.dart';
-import 'package:antenatal_app/features/base_feature/ui/widgets/patient_card.dart';
+import 'package:antenatal_app/features/home/ui/widgets/patient_card.dart';
 import 'package:flutter/material.dart';
 
 class PatientsList extends StatelessWidget {
