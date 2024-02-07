@@ -25,7 +25,7 @@ class AddPatientsTwoButtonsRow extends StatelessWidget {
             textColor: Colors.white,
             color: Colors.white,
             height: 39.h,
-            width: 120.w,
+            width: 115.w,
             function: () {},
             text: 'Add Manually'),
       ],
