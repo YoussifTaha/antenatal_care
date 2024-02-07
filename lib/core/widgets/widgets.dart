@@ -1,5 +1,6 @@
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget button({
   required BuildContext context,
@@ -142,4 +143,10 @@ Widget defaultform({
         ),
         onTap: onTap,
       ),
+    );
+
+Widget Mydivider() => Container(
+      width: double.infinity,
+      height: 1.0.h,
+      color: ColorManger.lighterGray,
     );
