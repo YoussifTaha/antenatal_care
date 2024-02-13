@@ -85,7 +85,7 @@ class _AccountTypeState extends State<AccountType> {
               button(
                   context: context,
                   function: () {
-                    context.pushNamedAndRemoveUntill(Routes.homeScreen,
+                    context.pushNamedAndRemoveUntill(Routes.homeLayout,
                         predicate: (Route<dynamic> route) => false);
                   },
                   text: 'Next')

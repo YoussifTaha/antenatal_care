@@ -65,7 +65,7 @@ class LoginScreen extends StatelessWidget {
                           function: () {
                             if (formKey.currentState!.validate()) {
                               context.pushNamedAndRemoveUntill(
-                                  Routes.homeScreen,
+                                  Routes.homeLayout,
                                   predicate: (Route<dynamic> route) => false);
                             }
                           },
