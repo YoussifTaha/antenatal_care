@@ -6,13 +6,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PageTopBar extends StatefulWidget {
   final int selectedItemIndex;
+
   final PageController pageController;
   final ValueChanged<int> onItemSelected;
-  const PageTopBar(
-      {super.key,
-      required this.pageController,
-      required this.selectedItemIndex,
-      required this.onItemSelected});
+  const PageTopBar({
+    super.key,
+    required this.pageController,
+    required this.selectedItemIndex,
+    required this.onItemSelected,
+  });
 
   @override
   State<PageTopBar> createState() => _PageTopBarState();
@@ -42,7 +44,7 @@ class _PageTopBarState extends State<PageTopBar> {
                   Text(
                     'Antenatal',
                     style: getBoldStyle(
-                        color: selectedItemIndex == 0
+                        color: widget.selectedItemIndex == 0
                             ? ColorManger.primary
                             : ColorManger.regularGrey,
                         fontSize: 14.sp),
@@ -51,7 +53,7 @@ class _PageTopBarState extends State<PageTopBar> {
                   Container(
                     width: MediaQuery.sizeOf(context).width / 2,
                     height: 2.h,
-                    color: selectedItemIndex == 0
+                    color: widget.selectedItemIndex == 0
                         ? ColorManger.primary
                         : ColorManger.lightGray,
                   ),
@@ -75,7 +77,7 @@ class _PageTopBarState extends State<PageTopBar> {
                   Text(
                     'Postpartum',
                     style: getBoldStyle(
-                        color: selectedItemIndex == 0
+                        color: widget.selectedItemIndex == 0
                             ? ColorManger.regularGrey
                             : ColorManger.primary,
                         fontSize: 14.sp),
@@ -84,7 +86,7 @@ class _PageTopBarState extends State<PageTopBar> {
                   Container(
                     width: MediaQuery.sizeOf(context).width / 2,
                     height: 2.h,
-                    color: selectedItemIndex == 0
+                    color: widget.selectedItemIndex == 0
                         ? ColorManger.lightGray
                         : ColorManger.primary,
                   ),
