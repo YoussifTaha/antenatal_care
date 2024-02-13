@@ -2,8 +2,11 @@ import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/features/account_type/ui/screens/account_type_screen.dart';
 import 'package:antenatal_app/features/chat/ui/screens/chat_screen.dart';
 import 'package:antenatal_app/features/home/ui/screens/home.dart';
+import 'package:antenatal_app/features/home_layout/ui/screens/home_layout.dart';
 import 'package:antenatal_app/features/login/ui/screens/login_screen.dart';
 import 'package:antenatal_app/features/onBoarding/ui/screens/onboarding_screen.dart';
+import 'package:antenatal_app/features/patients/ui/screens/patients.dart';
+import 'package:antenatal_app/features/signup/ui/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -21,6 +24,10 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const LoginScreen(),
         );
+      case Routes.signupScreen:
+        return MaterialPageRoute(
+          builder: (_) => const SignupScreen(),
+        );
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
@@ -28,6 +35,14 @@ class AppRouter {
       case Routes.chatScreen:
         return MaterialPageRoute(
           builder: (_) => const ChatScreen(),
+        );
+      case Routes.patientsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const PatientsScreen(),
+        );
+      case Routes.homeLayout:
+        return MaterialPageRoute(
+          builder: (_) => const HomeLayout(),
         );
       default:
         return MaterialPageRoute(

@@ -3,15 +3,15 @@ import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
-import 'package:antenatal_app/features/login/ui/widgets/dont_have_account_text.dart';
-import 'package:antenatal_app/features/login/ui/widgets/email_field.dart';
-import 'package:antenatal_app/features/login/ui/widgets/password_field.dart';
+
+import 'package:antenatal_app/features/signup/ui/widgets/signup_form.dart';
+import 'package:antenatal_app/features/signup/ui/widgets/terms_and_conitions_text.dart';
 import 'package:flutter/material.dart';
 import 'package:antenatal_app/core/widgets/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SignupScreen extends StatelessWidget {
+  const SignupScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +26,14 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                verticalSpace(70),
+                verticalSpace(30),
                 Text(
-                  'Welcome Back',
+                  'Create Your Account',
                   style: getBoldStyle(color: ColorManger.primary, fontSize: 24),
                 ),
                 verticalSpace(8),
                 Text(
-                  'We\'re excited to have you back, can\'t wait to see what you\'ve been up to since you last logged in.',
+                  'Enter your personal information to startusing the app whether you are a patient or a doctor',
                   style: getRegularStyle(
                       color: ColorManger.regularGrey,
                       textHeight: 1.2,
@@ -44,37 +44,20 @@ class LoginScreen extends StatelessWidget {
                   key: formKey,
                   child: Column(
                     children: [
-                      const EmailField(),
-                      const SizedBox(
-                        height: 10.0,
-                      ),
-                      verticalSpace(10),
-                      const PasswordField(),
-                      verticalSpace(24),
-                      Align(
-                        alignment: AlignmentDirectional.centerEnd,
-                        child: Text(
-                          'Forgot Password?',
-                          style: getRegularStyle(
-                              color: ColorManger.primary, fontSize: 13),
-                        ),
-                      ),
-                      verticalSpace(30),
+                      SignupForm(),
                       button(
                           context: context,
                           function: () {
                             if (formKey.currentState!.validate()) {
-                              context.pushNamedAndRemoveUntill(
-                                  Routes.homeScreen,
-                                  predicate: (Route<dynamic> route) => false);
+                              context.pushNamed(Routes.accountTypeScreen);
                             }
                           },
-                          text: 'Login',
+                          text: 'Create Account',
                           height: 50,
                           color: ColorManger.primary,
                           fontSize: 16.sp),
-                      verticalSpace(30),
-                      const AlreadyHaveAccountText(),
+                      verticalSpace(16),
+                      const TermsAndConditionsText(),
                     ],
                   ),
                 ),
