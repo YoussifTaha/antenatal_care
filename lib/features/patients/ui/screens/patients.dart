@@ -36,8 +36,19 @@ class _PatientsScreenState extends State<PatientsScreen> {
           verticalSpace(15),
           Expanded(
             child: PageView.builder(
+              onPageChanged: (value) {
+                if (value == 0) {
+                  setState(() {
+                    selectedItemIndex = value;
+                  });
+                } else if (value == 1) {
+                  setState(() {
+                    selectedItemIndex = value;
+                  });
+                }
+              },
               controller: pageController,
-              physics: const NeverScrollableScrollPhysics(),
+              // physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
                 if (index == 0) {
                   selectedItemIndex == 0;
