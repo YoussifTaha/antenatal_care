@@ -41,7 +41,7 @@ class _ChatsPageTopBarState extends State<ChatsPageTopBar> {
                   Text(
                     'Antenatal',
                     style: getBoldStyle(
-                        color: selectedItemIndex == 0
+                        color: widget.selectedItemIndex == 0
                             ? ColorManger.primary
                             : ColorManger.regularGrey,
                         fontSize: 14.sp),
@@ -50,7 +50,7 @@ class _ChatsPageTopBarState extends State<ChatsPageTopBar> {
                   Container(
                     width: MediaQuery.sizeOf(context).width / 2,
                     height: 2.h,
-                    color: selectedItemIndex == 0
+                    color: widget.selectedItemIndex == 0
                         ? ColorManger.primary
                         : ColorManger.lightGray,
                   ),
@@ -73,7 +73,7 @@ class _ChatsPageTopBarState extends State<ChatsPageTopBar> {
                   Text(
                     'Postpartum',
                     style: getBoldStyle(
-                        color: selectedItemIndex == 0
+                        color: widget.selectedItemIndex == 0
                             ? ColorManger.regularGrey
                             : ColorManger.primary,
                         fontSize: 14.sp),
@@ -82,7 +82,7 @@ class _ChatsPageTopBarState extends State<ChatsPageTopBar> {
                   Container(
                     width: MediaQuery.sizeOf(context).width / 2,
                     height: 2.h,
-                    color: selectedItemIndex == 0
+                    color: widget.selectedItemIndex == 0
                         ? ColorManger.lightGray
                         : ColorManger.primary,
                   ),
