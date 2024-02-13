@@ -46,7 +46,17 @@ class _ChatScreenState extends State<ChatScreen> {
           Expanded(
             child: PageView.builder(
               controller: pageController,
-              physics: const NeverScrollableScrollPhysics(),
+              onPageChanged: (value) {
+                if (value == 0) {
+                  setState(() {
+                    selectedItemIndex = value;
+                  });
+                } else if (value == 1) {
+                  setState(() {
+                    selectedItemIndex = value;
+                  });
+                }
+              },
               itemCount: 2,
               itemBuilder: (context, index) {
                 return SingleChildScrollView(
