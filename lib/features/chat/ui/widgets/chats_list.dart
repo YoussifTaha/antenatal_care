@@ -11,6 +11,7 @@ class ChatsList extends StatelessWidget {
     return Column(
       children: [
         ListView.separated(
+          physics: BouncingScrollPhysics(),
           shrinkWrap: true,
           itemBuilder: (context, index) {
             return Column(
@@ -21,7 +22,7 @@ class ChatsList extends StatelessWidget {
               ],
             );
           },
-          itemCount: 5,
+          itemCount: 15,
           separatorBuilder: (context, index) => Mydivider(),
         ),
       ],
