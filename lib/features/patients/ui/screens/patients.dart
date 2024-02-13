@@ -48,7 +48,6 @@ class _PatientsScreenState extends State<PatientsScreen> {
                 }
               },
               controller: pageController,
-              // physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
                 if (index == 0) {
                   selectedItemIndex == 0;
