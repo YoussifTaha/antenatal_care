@@ -21,7 +21,7 @@ class _PasswordFieldState extends State<PasswordField> {
 
   @override
   Widget build(BuildContext context) {
-    return defaultform(
+    return defaultForm(
         fillColor: ColorManger.moreLightGray,
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16.0),

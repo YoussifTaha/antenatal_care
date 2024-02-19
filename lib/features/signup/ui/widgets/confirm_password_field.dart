@@ -25,7 +25,7 @@ class _ConfirmPasswordFieldState extends State<ConfirmPasswordField> {
 
   @override
   Widget build(BuildContext context) {
-    return defaultform(
+    return defaultForm(
         fillColor: ColorManger.moreLightGray,
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16.0),

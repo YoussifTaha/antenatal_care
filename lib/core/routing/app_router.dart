@@ -6,8 +6,11 @@ import 'package:antenatal_app/features/home_layout/ui/screens/home_layout.dart';
 import 'package:antenatal_app/features/login/ui/screens/login_screen.dart';
 import 'package:antenatal_app/features/onBoarding/ui/screens/onboarding_screen.dart';
 import 'package:antenatal_app/features/patients/ui/screens/patients.dart';
+import 'package:antenatal_app/features/patients_info/logic/cubit/patients_info_cubit.dart';
+import 'package:antenatal_app/features/patients_info/ui/screens/patients_info.dart';
 import 'package:antenatal_app/features/signup/ui/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -43,6 +46,13 @@ class AppRouter {
       case Routes.homeLayout:
         return MaterialPageRoute(
           builder: (_) => const HomeLayout(),
+        );
+      case Routes.patientsInfoScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => PatientsInfoCubit(),
+            child: PatientsInfoScreen(),
+          ),
         );
       default:
         return MaterialPageRoute(

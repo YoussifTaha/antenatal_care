@@ -1,4 +1,6 @@
+import 'package:antenatal_app/core/Helpers/extensions.dart';
 import 'package:antenatal_app/core/Helpers/spacing.dart';
+import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
 import 'package:antenatal_app/core/widgets/widgets.dart';
@@ -40,6 +42,7 @@ class AntenatalPatientCard extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            // TODO fix the font sized , make it sp
                             Text(
                               'Menna Ahmed',
                               style: getBoldStyle(
@@ -88,7 +91,9 @@ class AntenatalPatientCard extends StatelessWidget {
                             button(
                                 height: 45.h,
                                 context: context,
-                                function: () {},
+                                function: () {
+                                  context.pushNamed(Routes.patientsInfoScreen);
+                                },
                                 text: 'View Info'),
                           ],
                         ),
