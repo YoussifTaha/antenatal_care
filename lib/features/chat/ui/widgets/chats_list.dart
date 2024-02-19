@@ -23,7 +23,7 @@ class ChatsList extends StatelessWidget {
             );
           },
           itemCount: 15,
-          separatorBuilder: (context, index) => Mydivider(),
+          separatorBuilder: (context, index) => myVerticalDivider(),
         ),
       ],
     );

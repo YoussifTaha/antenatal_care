@@ -71,7 +71,7 @@ Widget outlinedButton({
       ),
     );
 
-Widget defaultform({
+Widget defaultForm({
   required TextEditingController controller,
   required TextInputType type,
   Function(String)? onSubmit,
@@ -145,8 +145,14 @@ Widget defaultform({
       ),
     );
 
-Widget Mydivider() => Container(
+Widget myVerticalDivider() => Container(
       width: double.infinity,
       height: 1.0.h,
+      color: ColorManger.lighterGray,
+    );
+
+Widget MyHorizontalDivider({required double height}) => Container(
+      width: 1.0.w,
+      height: height,
       color: ColorManger.lighterGray,
     );

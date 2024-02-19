@@ -7,4 +7,5 @@ class Routes {
   static const String chatScreen = '/chatScreen';
   static const String patientsScreen = '/patientsScreen';
   static const String homeLayout = '/homeLayout';
+  static const String patientsInfoScreen = '/patientsInfoScreen';
 }
