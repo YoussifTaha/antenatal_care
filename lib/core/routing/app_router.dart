@@ -1,5 +1,8 @@
 import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/features/account_type/ui/screens/account_type_screen.dart';
+import 'package:antenatal_app/features/add_patient/ui/screens/examination/add_examination.dart';
+import 'package:antenatal_app/features/add_patient/ui/screens/history/add_history.dart';
+import 'package:antenatal_app/features/add_patient/ui/screens/history_or_examination.dart';
 import 'package:antenatal_app/features/chat/ui/screens/chat_screen.dart';
 import 'package:antenatal_app/features/home/ui/screens/home.dart';
 import 'package:antenatal_app/features/home_layout/ui/screens/home_layout.dart';
@@ -11,6 +14,8 @@ import 'package:antenatal_app/features/patients_info/ui/screens/patients_info.da
 import 'package:antenatal_app/features/signup/ui/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../features/add_patient/ui/screens/add_basic_info.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -53,6 +58,22 @@ class AppRouter {
             create: (context) => PatientsInfoCubit(),
             child: PatientsInfoScreen(),
           ),
+        );
+      case Routes.addBasicInfoScreen:
+        return MaterialPageRoute(
+          builder: (_) => AddBasicInfoPage(),
+        );
+      case Routes.historyOrExaminationScreen:
+        return MaterialPageRoute(
+          builder: (_) => HistoryOrExamination(),
+        );
+      case Routes.addPatientHistoryScreen:
+        return MaterialPageRoute(
+          builder: (_) => AddPatientHistoryScreen(),
+        );
+      case Routes.addPatientExaminationScreen:
+        return MaterialPageRoute(
+          builder: (_) => AddPatientExaminationScreen(),
         );
       default:
         return MaterialPageRoute(

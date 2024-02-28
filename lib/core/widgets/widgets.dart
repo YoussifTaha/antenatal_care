@@ -98,11 +98,13 @@ Widget defaultForm({
   Color? focusColor,
   Color? fillColor,
   Icon? icon,
+  Function(String?)? onSaved,
 }) =>
     Container(
       padding: padding,
       decoration: const BoxDecoration(),
       child: TextFormField(
+        onSaved: onSaved,
         style: textStyle,
         controller: controller,
         validator: validate,
