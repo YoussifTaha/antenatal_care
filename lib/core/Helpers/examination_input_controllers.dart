@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class ExaminationInputControllers {
-  TextEditingController maritalStatusController = TextEditingController();
   TextEditingController eyeLidsController = TextEditingController();
   TextEditingController lipsController = TextEditingController();
   TextEditingController cheeksController = TextEditingController();
