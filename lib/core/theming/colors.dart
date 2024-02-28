@@ -7,7 +7,6 @@ class ColorManger {
   static const Color lightBackgroundSelect = Color(0xFFC77DFF);
   static const Color lightBackgroundHover = Color(0xFFE0AAFF);
   static const Color lightBackground = Color(0xFFF3EAFF);
-  static const Color veryLightBackground = Color(0xFFFFCCD5);
   static const Color regularGrey = Color(0xFF757575);
   static const Color lightGray = Color(0xFFC2C2C2);
   static const Color lighterGray = Color(0xFFEDEDED);

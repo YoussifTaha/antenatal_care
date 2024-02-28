@@ -1,5 +1,4 @@
 import 'package:antenatal_app/core/Helpers/spacing.dart';
-import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
 import 'package:antenatal_app/features/patients_info/ui/widgets/info_circles.dart';
 import 'package:flutter/material.dart';
@@ -20,24 +19,6 @@ class PersonalHistoryPage extends StatelessWidget {
             style: getBoldStyle(color: Colors.black, fontSize: 18.sp),
           ),
         ),
-        verticalSpace(15),
-        SizedBox(
-          width: double.infinity,
-          child: Text(
-            'Marital status : Married',
-            style: getRegularStyle(
-                color: ColorManger.regularGrey, fontSize: 14.sp),
-          ),
-        ),
-        verticalSpace(5),
-        SizedBox(
-          width: double.infinity,
-          child: Text(
-            'Duration of marriage : 10 Years',
-            style: getRegularStyle(
-                color: ColorManger.regularGrey, fontSize: 14.sp),
-          ),
-        ),
         verticalSpace(40),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -49,13 +30,13 @@ class PersonalHistoryPage extends StatelessWidget {
             ),
             horizontalSpace(0.1),
             InfoCircles(
-              title: 'Completed Sessions',
-              info: '5',
-              icon: Icons.numbers,
+              title: 'Marital Status',
+              info: 'Married',
+              icon: Icons.family_restroom_rounded,
             ),
             InfoCircles(
-              title: 'Current Month',
-              info: '4',
+              title: 'Marriage Duration',
+              info: '4 years',
               icon: Icons.calendar_month_rounded,
             ),
           ],

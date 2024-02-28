@@ -1,4 +1,6 @@
+import 'package:antenatal_app/core/Helpers/extensions.dart';
 import 'package:antenatal_app/core/Helpers/spacing.dart';
+import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +30,9 @@ class AddPatientsTwoButtonsRow extends StatelessWidget {
             color: Colors.white,
             height: 39.h,
             width: 110.w,
-            function: () {},
+            function: () {
+              context.pushNamed(Routes.addBasicInfoScreen);
+            },
             text: 'Add Manually'),
       ],
     );
