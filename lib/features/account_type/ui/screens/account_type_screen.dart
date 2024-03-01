@@ -6,7 +6,6 @@ import 'package:antenatal_app/core/theming/styles_manager.dart';
 import 'package:antenatal_app/core/widgets/widgets.dart';
 import 'package:antenatal_app/features/account_type/logic/cubit/account_type_cubit.dart';
 import 'package:antenatal_app/features/account_type/ui/widgets/account_type_card.dart';
-import 'package:antenatal_app/features/signup/logic/cubit/signup_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
