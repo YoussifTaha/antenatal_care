@@ -38,7 +38,7 @@ class AddPatientId extends StatelessWidget {
               verticalSpace(10),
               InfoInputField(
                   controller: iDController,
-                  type: TextInputType.name,
+                  type: TextInputType.number,
                   validationMessage: 'Patient Id Field Cannot Be Empty'),
               verticalSpace(30),
               button(

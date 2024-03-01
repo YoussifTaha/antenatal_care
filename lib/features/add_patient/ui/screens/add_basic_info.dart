@@ -55,6 +55,17 @@ class AddBasicInfoPage extends StatelessWidget {
                   controller: eDDController,
                   type: TextInputType.text,
                   validationMessage: 'EDD Field Cannot Be Empty'),
+              verticalSpace(20),
+              Text(
+                'Week Number',
+                style: getSemiBoldStyle(
+                    color: ColorManger.primary, fontSize: 14.sp),
+              ),
+              verticalSpace(10),
+              InfoInputField(
+                  controller: eDDController,
+                  type: TextInputType.number,
+                  validationMessage: 'Week Number Field Cannot Be Empty'),
               verticalSpace(30),
               button(
                 context: context,
