@@ -15,6 +15,7 @@ class LoginRepoImpl extends LoginRepo {
         email: loginModel.email,
         password: loginModel.password,
       );
+      print('${userCredential.user?.uid}');
       return right(userCredential);
     } on FirebaseAuthException catch (e) {
       FirebaseFailure failure = FirebaseFailure.fromFireBaseAuthError(e);

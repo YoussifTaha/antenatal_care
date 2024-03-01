@@ -1,3 +1,4 @@
+import 'package:antenatal_app/core/Helpers/cach_helper.dart';
 import 'package:antenatal_app/core/Helpers/extensions.dart';
 import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:antenatal_app/core/routing/routes.dart';
@@ -67,6 +68,7 @@ class LoginScreen extends StatelessWidget {
                           if (state is LoginSuccessState) {
                             context.pushNamedAndRemoveUntill(Routes.homeLayout,
                                 predicate: (Route<dynamic> route) => false);
+                            CashHelper.saveData(key: 'isLogedIn', value: true);
                           }
                           if (state is LoginErrorState) {
                             showToast(

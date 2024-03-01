@@ -1,4 +1,5 @@
 import 'package:antenatal_app/antenatal_app.dart';
+import 'package:antenatal_app/core/Helpers/cach_helper.dart';
 import 'package:antenatal_app/core/bloc_observer/bloc_observer.dart';
 import 'package:antenatal_app/core/di/dependency_injection.dart';
 import 'package:antenatal_app/core/routing/app_router.dart';
@@ -13,6 +14,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   setupLocator();
+  await CashHelper.init();
   Bloc.observer = MyBlocObserver();
   runApp(AntenatalApp(
     appRouter: AppRouter(),

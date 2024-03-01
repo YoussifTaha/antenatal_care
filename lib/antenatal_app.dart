@@ -1,3 +1,4 @@
+import 'package:antenatal_app/core/Helpers/cach_helper.dart';
 import 'package:antenatal_app/core/routing/app_router.dart';
 import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/core/theming/themes.dart';
@@ -10,6 +11,19 @@ class AntenatalApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool? isSignedUp = CashHelper.getData(key: 'isSignedUp');
+    bool? isLogedIn = CashHelper.getData(key: 'isLogedIn');
+    bool? isAccountCreated = CashHelper.getData(key: 'isAccountCreated');
+
+    String firstScreen = Routes.onBoardingScreen;
+
+    if ((isSignedUp != null && isAccountCreated != null) || isLogedIn != null) {
+      firstScreen = Routes.homeLayout;
+    } else if (isSignedUp != null && isAccountCreated == null) {
+      firstScreen = Routes.accountTypeScreen;
+    } else
+      firstScreen = Routes.onBoardingScreen;
+
     return ScreenUtilInit(
       designSize: const Size(390, 844),
       minTextAdapt: true,
@@ -17,7 +31,7 @@ class AntenatalApp extends StatelessWidget {
         theme: lightTheme,
         debugShowCheckedModeBanner: false,
         title: 'Antenatal App',
-        initialRoute: Routes.onBoardingScreen,
+        initialRoute: firstScreen,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );
