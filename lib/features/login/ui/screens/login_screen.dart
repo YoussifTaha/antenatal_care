@@ -3,11 +3,13 @@ import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
+import 'package:antenatal_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:antenatal_app/features/login/ui/widgets/dont_have_account_text.dart';
 import 'package:antenatal_app/features/login/ui/widgets/email_field.dart';
 import 'package:antenatal_app/features/login/ui/widgets/password_field.dart';
 import 'package:flutter/material.dart';
 import 'package:antenatal_app/core/widgets/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -60,19 +62,34 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                       verticalSpace(30),
-                      button(
-                          context: context,
-                          function: () {
-                            if (formKey.currentState!.validate()) {
-                              context.pushNamedAndRemoveUntill(
-                                  Routes.homeLayout,
-                                  predicate: (Route<dynamic> route) => false);
-                            }
-                          },
-                          text: 'Login',
-                          height: 50,
-                          color: ColorManger.primary,
-                          fontSize: 16.sp),
+                      BlocConsumer<LoginCubit, LoginState>(
+                        listener: (context, state) {
+                          if (state is LoginSuccessState) {
+                            context.pushNamedAndRemoveUntill(Routes.homeLayout,
+                                predicate: (Route<dynamic> route) => false);
+                          }
+                          if (state is LoginErrorState) {
+                            showToast(
+                                text: state.error, state: ToastStates.error);
+                          }
+                        },
+                        builder: (context, state) {
+                          if (state is LoginLoadingState) {
+                            return CircularProgressIndicator();
+                          } else
+                            return button(
+                                context: context,
+                                function: () {
+                                  if (formKey.currentState!.validate()) {
+                                    LoginCubit.get(context).login();
+                                  }
+                                },
+                                text: 'Login',
+                                height: 50,
+                                color: ColorManger.primary,
+                                fontSize: 16.sp);
+                        },
+                      ),
                       verticalSpace(30),
                       const AlreadyHaveAccountText(),
                     ],

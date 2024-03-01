@@ -9,6 +9,8 @@ import 'package:antenatal_app/features/add_patient/ui/screens/history_or_examina
 import 'package:antenatal_app/features/chat/ui/screens/chat_screen.dart';
 import 'package:antenatal_app/features/home/ui/screens/home.dart';
 import 'package:antenatal_app/features/home_layout/ui/screens/home_layout.dart';
+import 'package:antenatal_app/features/login/data/repos/login_repo_impl.dart';
+import 'package:antenatal_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:antenatal_app/features/login/ui/screens/login_screen.dart';
 import 'package:antenatal_app/features/onBoarding/ui/screens/onboarding_screen.dart';
 import 'package:antenatal_app/features/patients/ui/screens/patients.dart';
@@ -44,7 +46,10 @@ class AppRouter {
         );
       case Routes.loginScreen:
         return MaterialPageRoute(
-          builder: (_) => const LoginScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => LoginCubit(locator.get<LoginRepoImpl>()),
+            child: LoginScreen(),
+          ),
         );
       case Routes.signupScreen:
         return MaterialPageRoute(
