@@ -6,19 +6,19 @@ import 'package:antenatal_app/features/signup/ui/widgets/password_field.dart';
 import 'package:antenatal_app/features/signup/ui/widgets/phone_field.dart';
 import 'package:flutter/material.dart';
 
-class SignupForm extends StatefulWidget {
-  const SignupForm({super.key});
-
-  @override
-  State<SignupForm> createState() => _SignupFormState();
-}
-
-class _SignupFormState extends State<SignupForm> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
+class SignupForm extends StatelessWidget {
+  final TextEditingController nameController;
+  final TextEditingController phoneController;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  final TextEditingController confirmPasswordController;
+  const SignupForm(
+      {super.key,
+      required this.nameController,
+      required this.phoneController,
+      required this.emailController,
+      required this.passwordController,
+      required this.confirmPasswordController});
 
   @override
   Widget build(BuildContext context) {
