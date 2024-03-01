@@ -54,7 +54,7 @@ class _AccountTypeState extends State<AccountType> {
                     textHeight: 1.4.h),
               ),
               verticalSpace(50),
-              BlocBuilder<SignupCubit, SignupState>(
+              BlocBuilder<AccountTypeCubit, AccountTypeState>(
                 builder: (context, state) {
                   return InkWell(
                     onTap: () {
@@ -72,7 +72,7 @@ class _AccountTypeState extends State<AccountType> {
                 },
               ),
               verticalSpace(25),
-              BlocBuilder<SignupCubit, SignupState>(
+              BlocBuilder<AccountTypeCubit, AccountTypeState>(
                 builder: (context, state) {
                   return InkWell(
                     onTap: () {

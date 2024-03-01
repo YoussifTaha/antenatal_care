@@ -21,7 +21,7 @@ class AccountTypeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignupCubit, SignupState>(
+    return BlocBuilder<AccountTypeCubit, AccountTypeState>(
       builder: (context, state) {
         String userType = AccountTypeCubit.get(context).userType;
         return Container(
