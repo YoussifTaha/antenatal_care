@@ -23,18 +23,22 @@ class AccountTypeCubit extends Cubit<AccountTypeState> {
     String? uId = FirebaseAuth.instance.currentUser?.uid;
     try {
       await getPatientId();
-      print('iddddddddd $patientId');
-      await accountTypeRepo.createUser(
-          email: email,
-          fullName: fullName,
-          phone: phone,
-          uId: uId ?? 'nouId',
-          userType: userType,
-          patientId: patientId);
+      await addPatientToDataBase(email, fullName, phone, uId);
       emit(CreateUserSuccessState());
     } on Failure catch (e) {
       emit(CreateUserErrorState(error: e.message));
     }
+  }
+
+  Future<void> addPatientToDataBase(
+      String email, String fullName, String phone, String? uId) async {
+    await accountTypeRepo.createUser(
+        email: email,
+        fullName: fullName,
+        phone: phone,
+        uId: uId ?? 'noUID',
+        userType: userType,
+        patientId: patientId);
   }
 
   Future<void> getPatientId() async {
