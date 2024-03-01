@@ -6,6 +6,7 @@ class UserModel extends Equatable {
   final String phone;
   final String uId;
   final String userType;
+  final int patientId;
 
   const UserModel({
     required this.fullName,
@@ -13,6 +14,7 @@ class UserModel extends Equatable {
     required this.phone,
     required this.uId,
     required this.userType,
+    required this.patientId,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
@@ -21,6 +23,7 @@ class UserModel extends Equatable {
         phone: json['phone'],
         uId: json['uId'],
         userType: json['userType'],
+        patientId: json['patientId'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -29,6 +32,7 @@ class UserModel extends Equatable {
         'phone': phone,
         'uId': uId,
         'userType': userType,
+        'patientId': patientId,
       };
 
   @override
@@ -39,6 +43,7 @@ class UserModel extends Equatable {
       phone,
       uId,
       userType,
+      patientId,
     ];
   }
 }
