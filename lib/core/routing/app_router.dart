@@ -3,6 +3,7 @@ import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/features/account_type/data/repos/account_type_repo_impl.dart';
 import 'package:antenatal_app/features/account_type/logic/cubit/account_type_cubit.dart';
 import 'package:antenatal_app/features/account_type/ui/screens/account_type_screen.dart';
+import 'package:antenatal_app/features/add_patient/ui/screens/add_new_patient.dart';
 import 'package:antenatal_app/features/add_patient/ui/screens/examination/add_examination.dart';
 import 'package:antenatal_app/features/add_patient/ui/screens/history/add_history.dart';
 import 'package:antenatal_app/features/add_patient/ui/screens/history_or_examination.dart';
@@ -21,8 +22,6 @@ import 'package:antenatal_app/features/signup/logic/cubit/signup_cubit.dart';
 import 'package:antenatal_app/features/signup/ui/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../features/add_patient/ui/screens/add_basic_info.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -83,7 +82,7 @@ class AppRouter {
         );
       case Routes.addBasicInfoScreen:
         return MaterialPageRoute(
-          builder: (_) => AddBasicInfoPage(),
+          builder: (_) => AddNewPatient(),
         );
       case Routes.historyOrExaminationScreen:
         return MaterialPageRoute(
