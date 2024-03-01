@@ -1,3 +1,4 @@
+import 'package:antenatal_app/core/di/dependency_injection.dart';
 import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/features/account_type/ui/screens/account_type_screen.dart';
 import 'package:antenatal_app/features/add_patient/ui/screens/examination/add_examination.dart';
@@ -11,6 +12,8 @@ import 'package:antenatal_app/features/onBoarding/ui/screens/onboarding_screen.d
 import 'package:antenatal_app/features/patients/ui/screens/patients.dart';
 import 'package:antenatal_app/features/patients_info/logic/cubit/patients_info_cubit.dart';
 import 'package:antenatal_app/features/patients_info/ui/screens/patients_info.dart';
+import 'package:antenatal_app/features/signup/data/repos/signup_repo_impl.dart';
+import 'package:antenatal_app/features/signup/logic/cubit/signup_cubit.dart';
 import 'package:antenatal_app/features/signup/ui/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,7 +37,10 @@ class AppRouter {
         );
       case Routes.signupScreen:
         return MaterialPageRoute(
-          builder: (_) => const SignupScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => SignupCubit(locator.get<SignUpRepoImpl>()),
+            child: SignupScreen(),
+          ),
         );
       case Routes.homeScreen:
         return MaterialPageRoute(
