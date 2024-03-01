@@ -42,11 +42,10 @@ class AntenatalPatientCard extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // TODO fix the font sized , make it sp
                             Text(
                               'Menna Ahmed',
                               style: getBoldStyle(
-                                  color: Colors.black, fontSize: 16),
+                                  color: Colors.black, fontSize: 16.sp),
                             ),
                             verticalSpace(10),
                             Text(
@@ -59,7 +58,8 @@ class AntenatalPatientCard extends StatelessWidget {
                             Text(
                               'Week : 25 |  EDD :  12/3/2024',
                               style: getBoldStyle(
-                                  color: ColorManger.regularGrey, fontSize: 12),
+                                  color: ColorManger.regularGrey,
+                                  fontSize: 12.sp),
                             ),
                           ],
                         ),

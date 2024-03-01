@@ -1,5 +1,7 @@
 import 'package:antenatal_app/core/di/dependency_injection.dart';
 import 'package:antenatal_app/core/routing/routes.dart';
+import 'package:antenatal_app/features/account_type/data/repos/account_type_repo_impl.dart';
+import 'package:antenatal_app/features/account_type/logic/cubit/account_type_cubit.dart';
 import 'package:antenatal_app/features/account_type/ui/screens/account_type_screen.dart';
 import 'package:antenatal_app/features/add_patient/ui/screens/examination/add_examination.dart';
 import 'package:antenatal_app/features/add_patient/ui/screens/history/add_history.dart';
@@ -28,8 +30,17 @@ class AppRouter {
           builder: (_) => const OnBoardingScreen(),
         );
       case Routes.accountTypeScreen:
+        final Map<String, dynamic>? args =
+            settings.arguments as Map<String, dynamic>?;
         return MaterialPageRoute(
-          builder: (_) => const AccountType(),
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                AccountTypeCubit(locator.get<AccountTypeRepoImpl>()),
+            child: AccountType(
+                email: args?['email'] ?? '',
+                fullName: args?['fullName'] ?? '',
+                phone: args?['phone'] ?? ''),
+          ),
         );
       case Routes.loginScreen:
         return MaterialPageRoute(
