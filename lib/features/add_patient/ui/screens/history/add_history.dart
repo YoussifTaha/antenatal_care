@@ -11,7 +11,9 @@ import 'add_personal_history.dart';
 import 'add_psychological_history_page.dart';
 
 class AddPatientHistoryScreen extends StatefulWidget {
-  const AddPatientHistoryScreen({Key? key}) : super(key: key);
+  final int patientId;
+  const AddPatientHistoryScreen({Key? key, required this.patientId})
+      : super(key: key);
 
   @override
   State<AddPatientHistoryScreen> createState() =>
@@ -43,34 +45,42 @@ class _AddPatientHistoryScreenState extends State<AddPatientHistoryScreen> {
             switch (index) {
               case 1:
                 return AddFamilyHistoryPage(
+                  patientId: widget.patientId,
                   pageController: pageController,
                 );
               case 2:
                 return AddPresentHistoryPage(
+                  patientId: widget.patientId,
                   pageController: pageController,
                 );
               case 3:
                 return AddPastHistoryPage(
+                  patientId: widget.patientId,
                   pageController: pageController,
                 );
               case 4:
                 return AddObstetricHistoryPage(
+                  patientId: widget.patientId,
                   pageController: pageController,
                 );
               case 5:
                 return AddUrineSystemHistoryPage(
+                  patientId: widget.patientId,
                   pageController: pageController,
                 );
               case 6:
                 return AddDrugHistoryPage(
+                  patientId: widget.patientId,
                   pageController: pageController,
                 );
               case 7:
                 return AddPsychologicalHistoryPage(
+                  patientId: widget.patientId,
                   pageController: pageController,
                 );
               default:
                 return AddPersonalHistoryPage(
+                  patientId: widget.patientId,
                   pageController: pageController,
                 );
             }

@@ -1,4 +1,7 @@
+import 'package:antenatal_app/features/add_patient/logic/cubit/history_cubit/cubit/history_cubit.dart';
 import 'package:antenatal_app/features/add_patient/ui/widgets/back_icon_button.dart';
+import 'package:antenatal_app/features/add_patient/ui/widgets/history_bloc_consumer.dart';
+import 'package:antenatal_app/features/patients_info/data/models/history_models/present_history_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:antenatal_app/core/Helpers/spacing.dart';
@@ -8,10 +11,12 @@ import 'package:antenatal_app/core/widgets/widgets.dart';
 import 'package:antenatal_app/features/add_patient/ui/widgets/info_input_field.dart';
 
 class AddPresentHistoryPage extends StatefulWidget {
+  final int patientId;
   final PageController pageController;
   const AddPresentHistoryPage({
     super.key,
     required this.pageController,
+    required this.patientId,
   });
 
   @override
@@ -23,7 +28,7 @@ class _AddPresentHistoryPageState extends State<AddPresentHistoryPage> {
   TextEditingController onsetOfComplainStatusController =
       TextEditingController();
   TextEditingController courseController = TextEditingController();
-  TextEditingController DurationController = TextEditingController();
+  TextEditingController durationController = TextEditingController();
   TextEditingController dateOfAdmissionController = TextEditingController();
   TextEditingController alchoholController = TextEditingController();
 
@@ -85,7 +90,7 @@ class _AddPresentHistoryPageState extends State<AddPresentHistoryPage> {
               ),
               verticalSpace(10),
               InfoInputField(
-                  controller: DurationController,
+                  controller: durationController,
                   type: TextInputType.text,
                   validationMessage: 'Duration Field Cannot Be Empty'),
               verticalSpace(20),
@@ -100,17 +105,27 @@ class _AddPresentHistoryPageState extends State<AddPresentHistoryPage> {
                   type: TextInputType.text,
                   validationMessage: 'Date of Admission Field Cannot Be Empty'),
               verticalSpace(30),
-              button(
-                context: context,
-                function: () {
-                  if (formKey.currentState!.validate()) {
-                    widget.pageController.nextPage(
-                        duration: Duration(milliseconds: 800.toInt()),
-                        curve: Curves.fastLinearToSlowEaseIn);
-                  }
-                },
-                text: 'Next',
-              )
+              HistoryBlocConsumer(
+                  button: button(
+                    context: context,
+                    function: () {
+                      if (formKey.currentState!.validate()) {
+                        PresentHistoryModel presentHistoryModel =
+                            PresentHistoryModel(
+                                onsetOfComplain:
+                                    onsetOfComplainStatusController.text,
+                                course: courseController.text,
+                                duration: durationController.text,
+                                dateOfAdmission:
+                                    dateOfAdmissionController.text);
+                        HistoryCubit.get(context).addPresentHistory(
+                            patientId: widget.patientId,
+                            presentHistoryModel: presentHistoryModel);
+                      }
+                    },
+                    text: 'Next',
+                  ),
+                  pageController: widget.pageController),
             ],
           ),
         ),

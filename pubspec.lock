@@ -189,7 +189,7 @@ packages:
     dependency: "direct main"
     description:
       name: easy_date_timeline
-      sha256: ed4da259694032953d17fb356aa25b5bca3d398fd9a075a03d353da921facfaa
+      sha256: a64ba1f208581ab1cd4603642993722b1d62bbe23d96b2339c2d40f9858d1180
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.4"
