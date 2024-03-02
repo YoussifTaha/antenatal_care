@@ -1,11 +1,13 @@
 import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
+import 'package:antenatal_app/features/signup/data/model/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PatientCard extends StatelessWidget {
-  const PatientCard({super.key});
+  final UserModel patient;
+  const PatientCard({super.key, required this.patient});
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +28,13 @@ class PatientCard extends StatelessWidget {
           ),
           verticalSpace(10),
           Text(
-            'Menna Ahmed',
+            patient.fullName,
             style:
                 getBoldStyle(color: ColorManger.darkPrimary, fontSize: 14.sp),
           ),
           verticalSpace(15),
           Text(
-            'Week 25',
+            'Week: ${patient.weekNumber}',
             style: getRegularStyle(
                 color: ColorManger.darkPrimary, fontSize: 12.sp),
           ),
@@ -44,19 +46,19 @@ class PatientCard extends StatelessWidget {
           ),
           verticalSpace(10),
           Text(
-            'EDD: 12/3/2024',
+            'EDD: ${patient.eDD}',
             style:
                 getBoldStyle(color: ColorManger.darkPrimary, fontSize: 14.sp),
           ),
           verticalSpace(10),
           Text(
-            'Age : 27',
+            'Age : ${patient.age}',
             style: getRegularStyle(
                 color: ColorManger.darkPrimary, fontSize: 10.sp),
           ),
           verticalSpace(10),
           Text(
-            'Occupation : House Wife',
+            'Occupation : ${patient.occupation}',
             style: getRegularStyle(
                 color: ColorManger.darkPrimary, fontSize: 10.sp),
           ),

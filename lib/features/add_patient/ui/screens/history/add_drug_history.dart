@@ -1,4 +1,7 @@
+import 'package:antenatal_app/features/add_patient/logic/cubit/history_cubit/cubit/history_cubit.dart';
 import 'package:antenatal_app/features/add_patient/ui/widgets/back_icon_button.dart';
+import 'package:antenatal_app/features/add_patient/ui/widgets/history_bloc_consumer.dart';
+import 'package:antenatal_app/features/patients_info/data/models/history_models/drug_history_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:antenatal_app/core/Helpers/spacing.dart';
@@ -8,10 +11,12 @@ import 'package:antenatal_app/core/widgets/widgets.dart';
 import 'package:antenatal_app/features/add_patient/ui/widgets/info_input_field.dart';
 
 class AddDrugHistoryPage extends StatefulWidget {
+  final int patientId;
   final PageController pageController;
   const AddDrugHistoryPage({
     super.key,
     required this.pageController,
+    required this.patientId,
   });
 
   @override
@@ -24,7 +29,7 @@ class _AddDrugHistoryPageState extends State<AddDrugHistoryPage> {
   TextEditingController antacidsController = TextEditingController();
   TextEditingController antihistaminesController = TextEditingController();
   TextEditingController analgesicsController = TextEditingController();
-  TextEditingController AntimicrobialsController = TextEditingController();
+  TextEditingController antimicrobialsController = TextEditingController();
   TextEditingController diureticsController = TextEditingController();
   TextEditingController antidepressantsController = TextEditingController();
   TextEditingController tranquilizersController = TextEditingController();
@@ -109,7 +114,7 @@ class _AddDrugHistoryPageState extends State<AddDrugHistoryPage> {
               ),
               verticalSpace(10),
               InfoInputField(
-                  controller: AntimicrobialsController,
+                  controller: antimicrobialsController,
                   type: TextInputType.text,
                   validationMessage: 'This Field Cannot Be Empty'),
               verticalSpace(20),
@@ -146,17 +151,28 @@ class _AddDrugHistoryPageState extends State<AddDrugHistoryPage> {
                   type: TextInputType.text,
                   validationMessage: 'This Field Cannot Be Empty'),
               verticalSpace(30),
-              button(
-                context: context,
-                function: () {
-                  if (formKey.currentState!.validate()) {
-                    widget.pageController.nextPage(
-                        duration: Duration(milliseconds: 800.toInt()),
-                        curve: Curves.fastLinearToSlowEaseIn);
-                  }
-                },
-                text: 'Next',
-              )
+              HistoryBlocConsumer(
+                  button: button(
+                    context: context,
+                    function: () {
+                      if (formKey.currentState!.validate()) {
+                        DrugHistoryModel drugHistoryModel = DrugHistoryModel(
+                            antiemetics: antiemeticsController.text,
+                            antacids: antacidsController.text,
+                            antihistamines: antihistaminesController.text,
+                            analgesics: analgesicsController.text,
+                            antimicrobials: antimicrobialsController.text,
+                            diuretics: diureticsController.text,
+                            antidepressants: antidepressantsController.text,
+                            tranquilizers: tranquilizersController.text);
+                        HistoryCubit.get(context).addDrugHistory(
+                            patientId: widget.patientId,
+                            drugHistoryModel: drugHistoryModel);
+                      }
+                    },
+                    text: 'Next',
+                  ),
+                  pageController: widget.pageController),
             ],
           ),
         ),

@@ -1,4 +1,7 @@
+import 'package:antenatal_app/features/add_patient/logic/cubit/history_cubit/cubit/history_cubit.dart';
 import 'package:antenatal_app/features/add_patient/ui/widgets/back_icon_button.dart';
+import 'package:antenatal_app/features/add_patient/ui/widgets/history_bloc_consumer.dart';
+import 'package:antenatal_app/features/patients_info/data/models/history_models/past_history_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:antenatal_app/core/Helpers/spacing.dart';
@@ -8,10 +11,12 @@ import 'package:antenatal_app/core/widgets/widgets.dart';
 import 'package:antenatal_app/features/add_patient/ui/widgets/info_input_field.dart';
 
 class AddPastHistoryPage extends StatefulWidget {
+  final int patientId;
   final PageController pageController;
   const AddPastHistoryPage({
     super.key,
     required this.pageController,
+    required this.patientId,
   });
 
   @override
@@ -86,17 +91,23 @@ class _AddPastHistoryPageState extends State<AddPastHistoryPage> {
                   type: TextInputType.text,
                   validationMessage: 'This Field Cannot Be Empty'),
               verticalSpace(30),
-              button(
-                context: context,
-                function: () {
-                  if (formKey.currentState!.validate()) {
-                    widget.pageController.nextPage(
-                        duration: Duration(milliseconds: 800.toInt()),
-                        curve: Curves.fastLinearToSlowEaseIn);
-                  }
-                },
-                text: 'Next',
-              )
+              HistoryBlocConsumer(
+                  button: button(
+                    context: context,
+                    function: () {
+                      if (formKey.currentState!.validate()) {
+                        PastHistoryModel pastHistoryModel = PastHistoryModel(
+                            diseases: diseasesController.text,
+                            operations: operationsController.text,
+                            trauma: traumaController.text);
+                        HistoryCubit.get(context).addPastHistory(
+                            patientId: widget.patientId,
+                            pastHistoryModel: pastHistoryModel);
+                      }
+                    },
+                    text: 'Next',
+                  ),
+                  pageController: widget.pageController),
             ],
           ),
         ),

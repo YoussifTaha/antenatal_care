@@ -1,6 +1,6 @@
-import 'package:antenatal_app/core/Helpers/examination_input_controllers.dart';
 import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
+import 'package:antenatal_app/features/add_patient/logic/cubit/examination_cubit/cubit/examination_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,8 +14,8 @@ class EdemaExaminationQuestionRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ExaminationInputControllers examinationInputControllers =
-        ExaminationInputControllers();
+    var cubit = ExaminationCubit.get(context);
+
     return Column(
       children: [
         Row(
@@ -45,7 +45,7 @@ class EdemaExaminationQuestionRow extends StatelessWidget {
               child: Column(
                 children: [
                   InfoInputField(
-                      controller: examinationInputControllers.eyeLidsController,
+                      controller: cubit.eyeLidsController,
                       type: TextInputType.text,
                       validationMessage: 'This Field Cannot Be Empty'),
                 ],
@@ -56,7 +56,7 @@ class EdemaExaminationQuestionRow extends StatelessWidget {
               child: Column(
                 children: [
                   InfoInputField(
-                      controller: examinationInputControllers.lipsController,
+                      controller: cubit.lipsController,
                       type: TextInputType.text,
                       validationMessage: 'This Field Cannot Be Empty'),
                 ],
@@ -67,7 +67,7 @@ class EdemaExaminationQuestionRow extends StatelessWidget {
               child: Column(
                 children: [
                   InfoInputField(
-                      controller: examinationInputControllers.cheeksController,
+                      controller: cubit.cheeksController,
                       type: TextInputType.text,
                       validationMessage: 'This Field Cannot Be Empty'),
                 ],

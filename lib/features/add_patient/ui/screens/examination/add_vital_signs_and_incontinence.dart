@@ -1,15 +1,18 @@
-import 'package:antenatal_app/core/Helpers/examination_input_controllers.dart';
+import 'package:antenatal_app/features/add_patient/logic/cubit/examination_cubit/cubit/examination_cubit.dart';
 import 'package:antenatal_app/features/add_patient/ui/widgets/examination_widgets/add_incontinence_section.dart';
 import 'package:antenatal_app/features/add_patient/ui/widgets/examination_widgets/add_vital_signs_section.dart';
+import 'package:antenatal_app/features/add_patient/ui/widgets/examination_widgets/examination_bloc_consumer.dart';
 import 'package:flutter/material.dart';
 import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:antenatal_app/core/widgets/widgets.dart';
 
 class AddVitalSignsAssessment extends StatefulWidget {
+  final int patientId;
   final PageController pageController;
   const AddVitalSignsAssessment({
     super.key,
     required this.pageController,
+    required this.patientId,
   });
 
   @override
@@ -19,8 +22,6 @@ class AddVitalSignsAssessment extends StatefulWidget {
 
 class _AddVitalSignsAssessmentState extends State<AddVitalSignsAssessment> {
   final formKey = GlobalKey<FormState>();
-  ExaminationInputControllers examinationInputControllers =
-      ExaminationInputControllers();
 
   @override
   Widget build(BuildContext context) {
@@ -41,18 +42,23 @@ class _AddVitalSignsAssessmentState extends State<AddVitalSignsAssessment> {
               verticalSpace(20),
               AddIcontinenceSection(),
               verticalSpace(30),
-              button(
-                context: context,
-                function: () {
-                  if (formKey.currentState!.validate()) {
-                    widget.pageController.nextPage(
-                        duration: Duration(milliseconds: 800.toInt()),
-                        curve: Curves.fastLinearToSlowEaseIn);
-                    formKey.currentState!.save();
-                  }
-                },
-                text: 'Next',
-              ),
+              ExaminationBlocConsumer(
+                  button: button(
+                    context: context,
+                    function: () {
+                      if (formKey.currentState!.validate()) {
+                        ExaminationCubit.get(context).addVitalSignsExamination(
+                          patientId: widget.patientId,
+                        );
+                        ExaminationCubit.get(context)
+                            .addIncontinenceExamination(
+                          patientId: widget.patientId,
+                        );
+                      }
+                    },
+                    text: 'Next',
+                  ),
+                  pageController: widget.pageController),
             ],
           ),
         ),

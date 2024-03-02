@@ -7,7 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PatientsInfoScreen extends StatefulWidget {
-  const PatientsInfoScreen({Key? key}) : super(key: key);
+  final int patientId;
+  const PatientsInfoScreen({Key? key, required this.patientId})
+      : super(key: key);
 
   @override
   State<PatientsInfoScreen> createState() => _PatientsInfoScreenState();

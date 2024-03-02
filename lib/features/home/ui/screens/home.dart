@@ -1,6 +1,7 @@
 import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
+import 'package:antenatal_app/features/home/logic/cubit/home_cubit.dart';
 import 'package:antenatal_app/features/home/ui/widgets/add_patient_two_buttons_row.dart';
 import 'package:antenatal_app/features/home/ui/widgets/home_drawer.dart';
 import 'package:antenatal_app/features/home/ui/widgets/horizontal_calendar.dart';
@@ -9,8 +10,19 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    HomeCubit.get(context).fetchMyPatients(uId: 'RLIXEvSewOX33ikNzf8baaksvu62');
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

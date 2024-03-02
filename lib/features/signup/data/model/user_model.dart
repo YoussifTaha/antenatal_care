@@ -6,14 +6,25 @@ class UserModel extends Equatable {
   final String phone;
   final String uId;
   final String userType;
+  final String? chiefComplain;
+  final String? age;
+  final String? occupation;
+  final String? eDD;
+  final String? weekNumber;
+  final int? patientId;
 
-  const UserModel({
-    required this.fullName,
-    required this.email,
-    required this.phone,
-    required this.uId,
-    required this.userType,
-  });
+  const UserModel(
+      {required this.fullName,
+      required this.email,
+      required this.phone,
+      required this.uId,
+      required this.userType,
+      this.chiefComplain,
+      this.age,
+      this.occupation,
+      this.eDD,
+      this.weekNumber,
+      this.patientId});
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         fullName: json['fullName'],
@@ -21,6 +32,12 @@ class UserModel extends Equatable {
         phone: json['phone'],
         uId: json['uId'],
         userType: json['userType'],
+        patientId: json['patientId'],
+        chiefComplain: json['chiefComplain'] as String?,
+        age: json['age'] as String?,
+        occupation: json['occupation'] as String?,
+        eDD: json['eDD'] as String?,
+        weekNumber: json['weekNumber'] as String?,
       );
 
   Map<String, dynamic> toJson() => {
@@ -29,6 +46,12 @@ class UserModel extends Equatable {
         'phone': phone,
         'uId': uId,
         'userType': userType,
+        'patientId': patientId,
+        'chiefComplain': chiefComplain,
+        'age': age,
+        'occupation': occupation,
+        'eDD': eDD,
+        'weekNumber': weekNumber,
       };
 
   @override
@@ -39,6 +62,12 @@ class UserModel extends Equatable {
       phone,
       uId,
       userType,
+      patientId,
+      chiefComplain,
+      age,
+      occupation,
+      eDD,
+      weekNumber,
     ];
   }
 }

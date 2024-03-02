@@ -4,11 +4,13 @@ import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
 import 'package:antenatal_app/core/widgets/widgets.dart';
+import 'package:antenatal_app/features/signup/data/model/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AntenatalPatientCard extends StatelessWidget {
-  const AntenatalPatientCard({super.key});
+  final UserModel patient;
+  const AntenatalPatientCard({super.key, required this.patient});
 
   @override
   Widget build(BuildContext context) {
@@ -43,20 +45,20 @@ class AntenatalPatientCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Menna Ahmed',
+                              patient.fullName,
                               style: getBoldStyle(
                                   color: Colors.black, fontSize: 16.sp),
                             ),
                             verticalSpace(10),
                             Text(
-                              'Age : 27 |  Occupation : House wife',
+                              'Age : ${patient.age} |  Occupation : ${patient.occupation}',
                               style: getBoldStyle(
                                   color: ColorManger.regularGrey,
                                   fontSize: 12.sp),
                             ),
                             verticalSpace(7),
                             Text(
-                              'Week : 25 |  EDD :  12/3/2024',
+                              'Week : ${patient.weekNumber} |  EDD :  ${patient.eDD}',
                               style: getBoldStyle(
                                   color: ColorManger.regularGrey,
                                   fontSize: 12.sp),
@@ -92,7 +94,10 @@ class AntenatalPatientCard extends StatelessWidget {
                                 height: 45.h,
                                 context: context,
                                 function: () {
-                                  context.pushNamed(Routes.patientsInfoScreen);
+                                  context.pushNamed(Routes.patientsInfoScreen,
+                                      arguments: {
+                                        'patientId': patient.patientId!,
+                                      });
                                 },
                                 text: 'View Info'),
                           ],

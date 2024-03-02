@@ -1,5 +1,10 @@
+import 'package:antenatal_app/core/Helpers/extensions.dart';
+import 'package:antenatal_app/core/routing/routes.dart';
+import 'package:antenatal_app/features/add_patient/logic/cubit/history_cubit/cubit/history_cubit.dart';
 import 'package:antenatal_app/features/add_patient/ui/widgets/back_icon_button.dart';
+import 'package:antenatal_app/features/patients_info/data/models/history_models/psychological_history_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
@@ -8,10 +13,12 @@ import 'package:antenatal_app/core/widgets/widgets.dart';
 import 'package:antenatal_app/features/add_patient/ui/widgets/info_input_field.dart';
 
 class AddPsychologicalHistoryPage extends StatefulWidget {
+  final int patientId;
   final PageController pageController;
   const AddPsychologicalHistoryPage({
     super.key,
     required this.pageController,
+    required this.patientId,
   });
 
   @override
@@ -88,13 +95,41 @@ class _AddPsychologicalHistoryPageState
                   type: TextInputType.text,
                   validationMessage: 'This Field Cannot Be Empty'),
               verticalSpace(30),
-              button(
-                context: context,
-                function: () {
-                  if (formKey.currentState!.validate()) {}
+              BlocConsumer<HistoryCubit, HistoryState>(
+                listener: (context, state) {
+                  if (state is AddPatientHistorySuccsses) {
+                    context.pushNamed(Routes.historyOrExaminationScreen,
+                        arguments: {
+                          'patientId': widget.patientId,
+                        });
+                  }
+                  if (state is AddPatientHistoryError) {
+                    showToast(text: state.error, state: ToastStates.error);
+                  }
                 },
-                text: 'Next',
-              )
+                builder: (context, state) {
+                  if (state is AddPatientHistoryLoadingState) {
+                    return CircularProgressIndicator();
+                  } else
+                    return button(
+                      context: context,
+                      function: () {
+                        if (formKey.currentState!.validate()) {
+                          PsychologicalHistoryModel psychologicalHistoryModel =
+                              PsychologicalHistoryModel(
+                                  emotions: emotionalController.text,
+                                  anxiety: depressionController.text,
+                                  stress: stressController.text);
+                          HistoryCubit.get(context).addPsychologicalHistory(
+                              patientId: widget.patientId,
+                              psychologicalHistoryModel:
+                                  psychologicalHistoryModel);
+                        }
+                      },
+                      text: 'Continue',
+                    );
+                },
+              ),
             ],
           ),
         ),
