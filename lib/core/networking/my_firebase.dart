@@ -5,6 +5,12 @@ class MyFirebaseFireStoreService {
 
   CollectionReference patientCollection = _firestore.collection('userPatient');
   CollectionReference doctorCollection = _firestore.collection('userDoctor');
+  CollectionReference myPatientsCollection({required String uId}) {
+    return _firestore
+        .collection('userDoctor')
+        .doc(uId)
+        .collection('myPatients');
+  }
 
   Future<QuerySnapshot<Map<String, dynamic>>> getMyPatientsCollection(
       {required String uid}) async {
