@@ -75,7 +75,10 @@ class AppRouter {
         );
       case Routes.patientsScreen:
         return MaterialPageRoute(
-          builder: (_) => const PatientsScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => HomeCubit(locator.get<HomeRepoImpl>()),
+            child: PatientsScreen(),
+          ),
         );
       case Routes.homeLayout:
         return MaterialPageRoute(
@@ -85,10 +88,14 @@ class AppRouter {
           ),
         );
       case Routes.patientsInfoScreen:
+        final Map<String, dynamic>? args =
+            settings.arguments as Map<String, dynamic>?;
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (context) => PatientsInfoCubit(),
-            child: PatientsInfoScreen(),
+            child: PatientsInfoScreen(
+              patientId: args?['patientId'],
+            ),
           ),
         );
       case Routes.addBasicInfoScreen:

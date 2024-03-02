@@ -46,6 +46,7 @@ class AddPatientRepoImpl extends AddPatientRepo {
         patientQuery.docs.first.data() as Map<String, dynamic>;
 
     patient = UserModel(
+        patientId: patientData['patientId'],
         fullName: patientData['fullName'],
         email: patientData['email'],
         phone: patientData['phone'],
