@@ -8,12 +8,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddPatientId extends StatelessWidget {
   final PageController pageController;
-  const AddPatientId({super.key, required this.pageController});
+  final TextEditingController iDController;
+  const AddPatientId(
+      {super.key, required this.pageController, required this.iDController});
 
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
-    TextEditingController iDController = TextEditingController();
+
     return SingleChildScrollView(
       child: Form(
         key: formKey,
@@ -38,7 +40,7 @@ class AddPatientId extends StatelessWidget {
               verticalSpace(10),
               InfoInputField(
                   controller: iDController,
-                  type: TextInputType.name,
+                  type: TextInputType.number,
                   validationMessage: 'Patient Id Field Cannot Be Empty'),
               verticalSpace(30),
               button(

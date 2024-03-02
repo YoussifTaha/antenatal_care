@@ -1,7 +1,7 @@
-import 'package:antenatal_app/core/Helpers/examination_input_controllers.dart';
 import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
+import 'package:antenatal_app/features/add_patient/logic/cubit/examination_cubit/cubit/examination_cubit.dart';
 import 'package:antenatal_app/features/add_patient/ui/widgets/info_input_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,8 +11,8 @@ class AddIcontinenceSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ExaminationInputControllers examinationInputControllers =
-        ExaminationInputControllers();
+    var cubit = ExaminationCubit.get(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -77,8 +77,7 @@ class AddIcontinenceSection extends StatelessWidget {
             ),
             verticalSpace(10),
             InfoInputField(
-                controller:
-                    examinationInputControllers.incontinenceGradeController,
+                controller: cubit.incontinenceGradeController,
                 type: TextInputType.text,
                 validationMessage: 'This Field Cannot Be Empty'),
           ],

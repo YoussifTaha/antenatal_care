@@ -8,7 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HistoryOrExamination extends StatelessWidget {
-  const HistoryOrExamination({super.key});
+  final int patientId;
+  const HistoryOrExamination({super.key, required this.patientId});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,9 @@ class HistoryOrExamination extends StatelessWidget {
             verticalSpace(30),
             InkWell(
               onTap: () {
-                context.pushNamed(Routes.addPatientHistoryScreen);
+                context.pushNamed(Routes.addPatientHistoryScreen, arguments: {
+                  'patientId': patientId,
+                });
               },
               child: AssessmentTypeChoice(
                   choice: 'Add Patient History', icon: Icons.history),
@@ -44,7 +47,10 @@ class HistoryOrExamination extends StatelessWidget {
             verticalSpace(20),
             InkWell(
               onTap: () {
-                context.pushNamed(Routes.addPatientExaminationScreen);
+                context
+                    .pushNamed(Routes.addPatientExaminationScreen, arguments: {
+                  'patientId': patientId,
+                });
               },
               child: AssessmentTypeChoice(
                   choice: 'Add Patient Examination',

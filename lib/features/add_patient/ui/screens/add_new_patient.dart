@@ -13,6 +13,7 @@ class AddNewPatient extends StatefulWidget {
 
 class _AddNewPatientState extends State<AddNewPatient> {
   PageController pageController = PageController();
+  TextEditingController iDController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +30,14 @@ class _AddNewPatientState extends State<AddNewPatient> {
           itemBuilder: (context, index) {
             if (index == 0) {
               return AddPatientId(
+                iDController: iDController,
                 pageController: pageController,
               );
             } else
-              return AddBasicInfoPage(pageController: pageController);
+              return AddBasicInfoPage(
+                pageController: pageController,
+                iDController: iDController,
+              );
           },
           controller: pageController,
           itemCount: 2),

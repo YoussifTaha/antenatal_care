@@ -2,11 +2,11 @@ import 'package:equatable/equatable.dart';
 
 class IncontinenceModel extends Equatable {
   final String grade;
-  final String description;
+  final String? description;
 
   const IncontinenceModel({
     required this.grade,
-    required this.description,
+    this.description,
   });
 
   factory IncontinenceModel.fromJson(Map<String, dynamic> json) =>

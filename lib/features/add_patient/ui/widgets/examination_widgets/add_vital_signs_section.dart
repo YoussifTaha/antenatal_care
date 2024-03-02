@@ -1,6 +1,6 @@
-import 'package:antenatal_app/core/Helpers/examination_input_controllers.dart';
 import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
+import 'package:antenatal_app/features/add_patient/logic/cubit/examination_cubit/cubit/examination_cubit.dart';
 import 'package:antenatal_app/features/add_patient/ui/widgets/back_icon_button.dart';
 import 'package:antenatal_app/features/add_patient/ui/widgets/examination_widgets/vital_signs_question_item.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +12,8 @@ class AddVitalSignsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ExaminationInputControllers examinationInputControllers =
-        ExaminationInputControllers();
+    var cubit = ExaminationCubit.get(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -33,22 +33,22 @@ class AddVitalSignsSection extends StatelessWidget {
         ),
         verticalSpace(10),
         VitalSignsQuestionItem(
-            controller: examinationInputControllers.bloodPressureController,
+            controller: cubit.bloodPressureController,
             title: 'Blood Pressure:',
             icon: Icons.water_drop_rounded),
         verticalSpace(20),
         VitalSignsQuestionItem(
-            controller: examinationInputControllers.heartRateController,
+            controller: cubit.heartRateController,
             title: 'Heart Rate:',
             icon: Icons.favorite_border_rounded),
         verticalSpace(20),
         VitalSignsQuestionItem(
-            controller: examinationInputControllers.pulseRateController,
+            controller: cubit.pulseRateController,
             title: 'Pulse rate:',
             icon: Icons.area_chart_rounded),
         verticalSpace(20),
         VitalSignsQuestionItem(
-            controller: examinationInputControllers.respiratoryRateController,
+            controller: cubit.respiratoryRateController,
             title: 'Respiratory Rate:',
             icon: Icons.timeline),
       ],

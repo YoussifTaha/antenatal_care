@@ -1,4 +1,5 @@
 import 'package:antenatal_app/core/theming/styles_manager.dart';
+import 'package:antenatal_app/features/add_patient/ui/screens/examination/add_palpation_assessment.dart';
 import 'package:antenatal_app/features/add_patient/ui/screens/examination/add_vital_signs_and_incontinence.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,7 +7,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'add_inspection.dart';
 
 class AddPatientExaminationScreen extends StatefulWidget {
-  const AddPatientExaminationScreen({Key? key}) : super(key: key);
+  final int patientId;
+  const AddPatientExaminationScreen({Key? key, required this.patientId})
+      : super(key: key);
 
   @override
   State<AddPatientExaminationScreen> createState() =>
@@ -39,34 +42,18 @@ class _AddPatientExaminationScreenState
             switch (index) {
               case 1:
                 return AddVitalSignsAssessment(
+                  patientId: widget.patientId,
                   pageController: pageController,
                 );
-              // case 2:
-              //   return AddPresentHistoryPage(
-              //     pageController: pageController,
-              //   );
-              // case 3:
-              //   return AddPastHistoryPage(
-              //     pageController: pageController,
-              //   );
-              // case 4:
-              //   return AddObstetricHistoryPage(
-              //     pageController: pageController,
-              //   );
-              // case 5:
-              //   return AddUrineSystemHistoryPage(
-              //     pageController: pageController,
-              //   );
-              // case 6:
-              //   return AddDrugHistoryPage(
-              //     pageController: pageController,
-              //   );
-              // case 7:
-              //   return AddPsychologicalHistoryPage(
-              //     pageController: pageController,
-              //   );
+              case 2:
+                return AddPalpationAssessment(
+                  patientId: widget.patientId,
+                  pageController: pageController,
+                );
+
               default:
                 return AddInspectionAssessment(
+                  patientId: widget.patientId,
                   pageController: pageController,
                 );
             }

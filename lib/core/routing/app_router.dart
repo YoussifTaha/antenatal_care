@@ -3,6 +3,12 @@ import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/features/account_type/data/repos/account_type_repo_impl.dart';
 import 'package:antenatal_app/features/account_type/logic/cubit/account_type_cubit.dart';
 import 'package:antenatal_app/features/account_type/ui/screens/account_type_screen.dart';
+import 'package:antenatal_app/features/add_patient/data/repos/add_patient_repo_impl.dart';
+import 'package:antenatal_app/features/add_patient/data/repos/examination_repos/add_examination_repo_impl.dart';
+import 'package:antenatal_app/features/add_patient/data/repos/history_repos/add_history_repo_impl.dart';
+import 'package:antenatal_app/features/add_patient/logic/cubit/add_patient_cubit.dart';
+import 'package:antenatal_app/features/add_patient/logic/cubit/examination_cubit/cubit/examination_cubit.dart';
+import 'package:antenatal_app/features/add_patient/logic/cubit/history_cubit/cubit/history_cubit.dart';
 import 'package:antenatal_app/features/add_patient/ui/screens/add_new_patient.dart';
 import 'package:antenatal_app/features/add_patient/ui/screens/examination/add_examination.dart';
 import 'package:antenatal_app/features/add_patient/ui/screens/history/add_history.dart';
@@ -82,19 +88,43 @@ class AppRouter {
         );
       case Routes.addBasicInfoScreen:
         return MaterialPageRoute(
-          builder: (_) => AddNewPatient(),
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                AddPatientCubit(locator.get<AddPatientRepoImpl>()),
+            child: AddNewPatient(),
+          ),
         );
       case Routes.historyOrExaminationScreen:
+        final Map<String, dynamic>? args =
+            settings.arguments as Map<String, dynamic>?;
         return MaterialPageRoute(
-          builder: (_) => HistoryOrExamination(),
+          builder: (_) => HistoryOrExamination(
+            patientId: args?['patientId'],
+          ),
         );
       case Routes.addPatientHistoryScreen:
+        final Map<String, dynamic>? args =
+            settings.arguments as Map<String, dynamic>?;
         return MaterialPageRoute(
-          builder: (_) => AddPatientHistoryScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                HistoryCubit(locator.get<AddHistoryRepoImpl>()),
+            child: AddPatientHistoryScreen(
+              patientId: args?['patientId'],
+            ),
+          ),
         );
       case Routes.addPatientExaminationScreen:
+        final Map<String, dynamic>? args =
+            settings.arguments as Map<String, dynamic>?;
         return MaterialPageRoute(
-          builder: (_) => AddPatientExaminationScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                ExaminationCubit(locator.get<AddExaminationRepoImpl>()),
+            child: AddPatientExaminationScreen(
+              patientId: args?['patientId'],
+            ),
+          ),
         );
       default:
         return MaterialPageRoute(
