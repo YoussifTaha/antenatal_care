@@ -68,7 +68,7 @@ class LoginScreen extends StatelessWidget {
                           if (state is LoginSuccessState) {
                             context.pushNamedAndRemoveUntill(Routes.homeLayout,
                                 predicate: (Route<dynamic> route) => false);
-                            CachHelper.saveData(key: 'isLogedIn', value: true);
+                            CacheHelper.saveData(key: 'isLogedIn', value: true);
                           }
                           if (state is LoginErrorState) {
                             showToast(

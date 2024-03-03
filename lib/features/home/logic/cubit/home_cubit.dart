@@ -1,3 +1,4 @@
+import 'package:antenatal_app/core/Helpers/cach_helper.dart';
 import 'package:antenatal_app/features/home/data/repos/home_repo.dart';
 import 'package:antenatal_app/features/signup/data/model/user_model.dart';
 import 'package:equatable/equatable.dart';
@@ -20,5 +21,12 @@ class HomeCubit extends Cubit<HomeState> {
     }, (patients) {
       emit(GetMyPatientsSuccsses(patients: patients));
     });
+  }
+
+  void removeUserCache() {
+    CacheHelper.removeData(key: 'uId');
+    CacheHelper.removeData(key: 'isSignedUp');
+    CacheHelper.removeData(key: 'isLogedIn');
+    CacheHelper.removeData(key: 'isAccountCreated');
   }
 }

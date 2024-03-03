@@ -68,7 +68,8 @@ class _SignupScreenState extends State<SignupScreen> {
                                   'fullName': cubit.nameController.text,
                                   'phone': cubit.phoneController.text,
                                 });
-                            CachHelper.saveData(key: 'isSignedUp', value: true);
+                            CacheHelper.saveData(
+                                key: 'isSignedUp', value: true);
                           }
                           if (state is SignupErrorState) {
                             showToast(
