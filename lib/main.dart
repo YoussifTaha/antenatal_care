@@ -14,7 +14,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   setupLocator();
-  await CashHelper.init();
+  await CachHelper.init();
   Bloc.observer = MyBlocObserver();
   runApp(AntenatalApp(
     appRouter: AppRouter(),

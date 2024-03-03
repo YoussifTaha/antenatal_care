@@ -1,3 +1,4 @@
+import 'package:antenatal_app/core/Helpers/cach_helper.dart';
 import 'package:antenatal_app/core/errors/faliure.dart';
 import 'package:antenatal_app/core/networking/my_firebase.dart';
 import 'package:antenatal_app/features/add_patient/data/models/add_user_info_model.dart';
@@ -65,7 +66,7 @@ class AddPatientRepoImpl extends AddPatientRepo {
   }) {
     CollectionReference myPatientsCollection = myFirebaseService
         .doctorCollection
-        .doc('RLIXEvSewOX33ikNzf8baaksvu62')
+        .doc('${CachHelper.getData(key: 'uId')}')
         .collection('myPatients');
     myPatientsCollection.doc('$patientId').set(patient?.toJson());
   }

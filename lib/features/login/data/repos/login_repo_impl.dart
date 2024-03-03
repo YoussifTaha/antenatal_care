@@ -1,3 +1,4 @@
+import 'package:antenatal_app/core/Helpers/cach_helper.dart';
 import 'package:antenatal_app/core/errors/faliure.dart';
 import 'package:antenatal_app/features/login/data/models/login_model.dart';
 import 'package:antenatal_app/features/login/data/repos/login_repo.dart';
@@ -15,7 +16,7 @@ class LoginRepoImpl extends LoginRepo {
         email: loginModel.email,
         password: loginModel.password,
       );
-      print('${userCredential.user?.uid}');
+      CachHelper.saveData(key: 'uId', value: userCredential.user!.uid);
       return right(userCredential);
     } on FirebaseAuthException catch (e) {
       FirebaseFailure failure = FirebaseFailure.fromFireBaseAuthError(e);

@@ -1,3 +1,4 @@
+import 'package:antenatal_app/core/Helpers/cach_helper.dart';
 import 'package:antenatal_app/core/networking/my_firebase.dart';
 import 'package:antenatal_app/features/add_patient/data/repos/examination_repos/add_examination_repo.dart';
 import 'package:antenatal_app/features/patients_info/data/models/examination_models/incontinence_model.dart';
@@ -12,7 +13,7 @@ class AddExaminationRepoImpl extends AddExaminationRepo {
   CollectionReference<Object?> getExaminationCollection(int patientId) {
     CollectionReference examinationCollection = myFirebaseService
         .doctorCollection
-        .doc('RLIXEvSewOX33ikNzf8baaksvu62')
+        .doc('${CachHelper.getData(key: 'uId')}')
         .collection('myPatients')
         .doc('$patientId')
         .collection('Examination');

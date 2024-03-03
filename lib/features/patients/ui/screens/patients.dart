@@ -1,3 +1,4 @@
+import 'package:antenatal_app/core/Helpers/cach_helper.dart';
 import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/features/home/logic/cubit/home_cubit.dart';
@@ -20,7 +21,8 @@ class _PatientsScreenState extends State<PatientsScreen> {
   @override
   void initState() {
     super.initState();
-    HomeCubit.get(context).fetchMyPatients(uId: 'RLIXEvSewOX33ikNzf8baaksvu62');
+    HomeCubit.get(context)
+        .fetchMyPatients(uId: '${CachHelper.getData(key: 'uId')}');
   }
 
   Widget build(BuildContext context) {

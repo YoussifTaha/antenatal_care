@@ -1,3 +1,4 @@
+import 'package:antenatal_app/core/Helpers/cach_helper.dart';
 import 'package:antenatal_app/core/networking/my_firebase.dart';
 import 'package:antenatal_app/features/add_patient/data/repos/history_repos/add_history_repo.dart';
 import 'package:antenatal_app/features/patients_info/data/models/history_models/drug_history_model.dart';
@@ -16,7 +17,7 @@ class AddHistoryRepoImpl extends AddHistoryRepo {
 
   CollectionReference<Object?> getHistoryCollection(int patientId) {
     CollectionReference historyCollection = myFirebaseService.doctorCollection
-        .doc('RLIXEvSewOX33ikNzf8baaksvu62')
+        .doc('${CachHelper.getData(key: 'uId')}')
         .collection('myPatients')
         .doc('$patientId')
         .collection('History');
