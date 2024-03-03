@@ -22,7 +22,7 @@ class _PatientsScreenState extends State<PatientsScreen> {
   void initState() {
     super.initState();
     HomeCubit.get(context)
-        .fetchMyPatients(uId: '${CachHelper.getData(key: 'uId')}');
+        .fetchMyPatients(uId: '${CacheHelper.getData(key: 'uId')}');
   }
 
   Widget build(BuildContext context) {

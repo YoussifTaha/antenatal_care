@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     HomeCubit.get(context)
-        .fetchMyPatients(uId: '${CachHelper.getData(key: 'uId')}');
+        .fetchMyPatients(uId: '${CacheHelper.getData(key: 'uId')}');
     super.initState();
   }
 

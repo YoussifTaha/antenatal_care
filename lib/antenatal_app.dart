@@ -17,8 +17,10 @@ class AntenatalApp extends StatelessWidget {
 
     String firstScreen = Routes.onBoardingScreen;
 
-    if ((isAccountCreated != null) || isLogedIn != null) {
+    if ((isSignedUp != null && isAccountCreated != null) || isLogedIn != null) {
       firstScreen = Routes.homeLayout;
+    } else if (isSignedUp != null && isAccountCreated == null) {
+      firstScreen = Routes.accountTypeScreen;
     } else
       firstScreen = Routes.onBoardingScreen;
 

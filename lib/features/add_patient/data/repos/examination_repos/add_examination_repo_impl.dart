@@ -13,7 +13,7 @@ class AddExaminationRepoImpl extends AddExaminationRepo {
   CollectionReference<Object?> getExaminationCollection(int patientId) {
     CollectionReference examinationCollection = myFirebaseService
         .doctorCollection
-        .doc('${CachHelper.getData(key: 'uId')}')
+        .doc('${CacheHelper.getData(key: 'uId')}')
         .collection('myPatients')
         .doc('$patientId')
         .collection('Examination');

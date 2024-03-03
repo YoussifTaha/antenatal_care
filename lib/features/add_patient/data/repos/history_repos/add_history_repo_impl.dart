@@ -17,7 +17,7 @@ class AddHistoryRepoImpl extends AddHistoryRepo {
 
   CollectionReference<Object?> getHistoryCollection(int patientId) {
     CollectionReference historyCollection = myFirebaseService.doctorCollection
-        .doc('${CachHelper.getData(key: 'uId')}')
+        .doc('${CacheHelper.getData(key: 'uId')}')
         .collection('myPatients')
         .doc('$patientId')
         .collection('History');

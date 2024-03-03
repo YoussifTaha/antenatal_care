@@ -66,7 +66,7 @@ class AddPatientRepoImpl extends AddPatientRepo {
   }) {
     CollectionReference myPatientsCollection = myFirebaseService
         .doctorCollection
-        .doc('${CachHelper.getData(key: 'uId')}')
+        .doc('${CacheHelper.getData(key: 'uId')}')
         .collection('myPatients');
     myPatientsCollection.doc('$patientId').set(patient?.toJson());
   }

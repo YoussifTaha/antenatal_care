@@ -16,7 +16,7 @@ class LoginRepoImpl extends LoginRepo {
         email: loginModel.email,
         password: loginModel.password,
       );
-      CachHelper.saveData(key: 'uId', value: userCredential.user!.uid);
+      CacheHelper.saveData(key: 'uId', value: userCredential.user!.uid);
       return right(userCredential);
     } on FirebaseAuthException catch (e) {
       FirebaseFailure failure = FirebaseFailure.fromFireBaseAuthError(e);
