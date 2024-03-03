@@ -11,9 +11,9 @@ class AntenatalApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool? isSignedUp = CashHelper.getData(key: 'isSignedUp');
-    bool? isLogedIn = CashHelper.getData(key: 'isLogedIn');
-    bool? isAccountCreated = CashHelper.getData(key: 'isAccountCreated');
+    bool? isSignedUp = CacheHelper.getData(key: 'isSignedUp');
+    bool? isLogedIn = CacheHelper.getData(key: 'isLogedIn');
+    bool? isAccountCreated = CacheHelper.getData(key: 'isAccountCreated');
 
     String firstScreen = Routes.onBoardingScreen;
 
