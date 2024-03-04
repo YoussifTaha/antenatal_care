@@ -180,7 +180,7 @@ Color chooseToastColor(ToastStates state) {
 
   switch (state) {
     case ToastStates.success:
-      color = Colors.green;
+      color = ColorManger.darkPrimary;
       break;
     case ToastStates.error:
       color = Colors.red;

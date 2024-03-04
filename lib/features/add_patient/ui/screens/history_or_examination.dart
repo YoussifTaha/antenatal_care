@@ -16,7 +16,14 @@ class HistoryOrExamination extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorManger.lessLightGray,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         centerTitle: true,
+        leading: IconButton(
+            onPressed: () {
+              context.pushNamedAndRemoveUntill(Routes.homeLayout,
+                  predicate: (Route<dynamic> route) => false);
+            },
+            icon: Icon(Icons.arrow_back_sharp)),
         title: Text(
           'New Patient',
           style: getBoldStyle(color: Colors.black, fontSize: 20.sp),
@@ -55,6 +62,17 @@ class HistoryOrExamination extends StatelessWidget {
               child: AssessmentTypeChoice(
                   choice: 'Add Patient Examination',
                   icon: Icons.local_hospital_rounded),
+            ),
+            verticalSpace(20),
+            InkWell(
+              onTap: () {
+                context.pushNamed(Routes.addPatientExercisesScreen, arguments: {
+                  'patientId': patientId,
+                });
+              },
+              child: AssessmentTypeChoice(
+                  choice: 'Add Patient Exercises',
+                  icon: Icons.run_circle_sharp),
             ),
           ],
         ),
