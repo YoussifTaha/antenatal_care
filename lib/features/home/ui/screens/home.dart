@@ -23,6 +23,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     HomeCubit.get(context)
         .fetchMyPatients(uId: '${CacheHelper.getData(key: 'uId')}');
+    HomeCubit.get(context)
+        .fetchDoctorName(uId: '${CacheHelper.getData(key: 'uId')}');
     super.initState();
   }
 

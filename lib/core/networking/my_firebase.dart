@@ -14,4 +14,8 @@ class MyFirebaseFireStoreService {
       {required String uid}) async {
     return await doctorCollection.doc(uid).collection('myPatients').get();
   }
+
+  Future<DocumentSnapshot> getDoctorDoc({required String uid}) async {
+    return await doctorCollection.doc(uid).get();
+  }
 }
