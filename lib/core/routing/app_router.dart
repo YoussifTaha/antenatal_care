@@ -5,12 +5,17 @@ import 'package:antenatal_app/features/account_type/logic/cubit/account_type_cub
 import 'package:antenatal_app/features/account_type/ui/screens/account_type_screen.dart';
 import 'package:antenatal_app/features/add_patient/data/repos/add_patient_repo_impl.dart';
 import 'package:antenatal_app/features/add_patient/data/repos/examination_repos/add_examination_repo_impl.dart';
+import 'package:antenatal_app/features/add_patient/data/repos/exercise_repo/exercise_repo_impl.dart';
 import 'package:antenatal_app/features/add_patient/data/repos/history_repos/add_history_repo_impl.dart';
+import 'package:antenatal_app/features/add_patient/logic/cubit/add_exercises_cubit/add_exercises_cubit.dart';
 import 'package:antenatal_app/features/add_patient/logic/cubit/add_patient_cubit.dart';
 import 'package:antenatal_app/features/add_patient/logic/cubit/examination_cubit/cubit/examination_cubit.dart';
+import 'package:antenatal_app/features/add_patient/logic/cubit/fetch_exercises_cubit/fetch_exercises_cubit.dart';
 import 'package:antenatal_app/features/add_patient/logic/cubit/history_cubit/cubit/history_cubit.dart';
 import 'package:antenatal_app/features/add_patient/ui/screens/add_new_patient.dart';
 import 'package:antenatal_app/features/add_patient/ui/screens/examination/add_examination.dart';
+import 'package:antenatal_app/features/add_patient/ui/screens/exercises/exercise_details_screen.dart';
+import 'package:antenatal_app/features/add_patient/ui/screens/exercises/exercises_screen.dart';
 import 'package:antenatal_app/features/add_patient/ui/screens/history/add_history.dart';
 import 'package:antenatal_app/features/add_patient/ui/screens/history_or_examination.dart';
 import 'package:antenatal_app/features/chat/ui/screens/chat_screen.dart';
@@ -124,6 +129,34 @@ class AppRouter {
             child: AddPatientExaminationScreen(
               patientId: args?['patientId'],
             ),
+          ),
+        );
+      case Routes.addPatientExercisesScreen:
+        final Map<String, dynamic>? args =
+            settings.arguments as Map<String, dynamic>?;
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider<FetchExercisesCubit>(
+                create: (context) =>
+                    FetchExercisesCubit(locator.get<ExerciseRepoImpl>()),
+              ),
+              BlocProvider<AddExercisesCubit>(
+                create: (context) =>
+                    AddExercisesCubit(locator.get<ExerciseRepoImpl>()),
+              ),
+            ],
+            child: ExercisesScreen(
+              patientId: args?['patientId'],
+            ),
+          ),
+        );
+      case Routes.addPatientExercisesScreenDetails:
+        final Map<String, dynamic>? args =
+            settings.arguments as Map<String, dynamic>?;
+        return MaterialPageRoute(
+          builder: (_) => ExerciseDetails(
+            exerciseModel: args?['exerciseModel'],
           ),
         );
       default:

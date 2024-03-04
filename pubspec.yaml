@@ -48,6 +48,7 @@ dependencies:
   firebase_database: ^10.4.6
   fluttertoast: ^8.2.4
   shared_preferences: ^2.2.2
+  youtube_player_flutter: ^8.1.2
   
 
 dev_dependencies:
