@@ -1,5 +1,7 @@
 import 'package:antenatal_app/core/Helpers/cach_helper.dart';
+import 'package:antenatal_app/core/Helpers/extensions.dart';
 import 'package:antenatal_app/core/Helpers/spacing.dart';
+import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
 import 'package:antenatal_app/features/home/logic/cubit/home_cubit.dart';
@@ -109,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                verticalSpace(30),
+                verticalSpace(20),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -124,13 +126,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                 color: ColorManger.darkPrimary,
                                 fontSize: 18.sp),
                           ),
-                          Text(
-                            'View All',
-                            style: getRegularStyle(
-                                    color: ColorManger.primary,
-                                    fontSize: 12.sp,
-                                    textHeight: 1.2.h)
-                                .copyWith(decoration: TextDecoration.underline),
+                          TextButton(
+                            child: Text(
+                              'View All',
+                              style: getRegularStyle(
+                                      color: ColorManger.primary,
+                                      fontSize: 12.sp,
+                                      textHeight: 1.2.h)
+                                  .copyWith(
+                                      decoration: TextDecoration.underline),
+                            ),
+                            onPressed: () {
+                              context.pushNamed(Routes.patientsScreen);
+                            },
                           ),
                         ],
                       ),
