@@ -5,4 +5,6 @@ import 'package:dartz/dartz.dart';
 abstract class HomeRepo {
   Future<Either<Failure, List<UserModel>>> fetchMyPatients(
       {required String uId});
+
+  Future<Either<Failure, String>> fetchDoctorName({required String uId});
 }

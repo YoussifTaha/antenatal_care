@@ -29,4 +29,14 @@ class HomeCubit extends Cubit<HomeState> {
     CacheHelper.removeData(key: 'isLogedIn');
     CacheHelper.removeData(key: 'isAccountCreated');
   }
+
+  Future<void> fetchDoctorName({required String uId}) async {
+    emit(GetDoctorNameLoadingState());
+    var result = await homeRepo.fetchDoctorName(uId: uId);
+    result.fold((faliure) {
+      emit(GetDoctorNameError(error: faliure.message));
+    }, (doctorName) {
+      emit(GetDoctorNameSuccsses(doctorName: doctorName));
+    });
+  }
 }

@@ -22,3 +22,17 @@ final class GetMyPatientsError extends HomeState {
 
   GetMyPatientsError({required this.error});
 }
+
+final class GetDoctorNameLoadingState extends HomeState {}
+
+final class GetDoctorNameSuccsses extends HomeState {
+  final String doctorName;
+
+  GetDoctorNameSuccsses({required this.doctorName});
+}
+
+final class GetDoctorNameError extends HomeState {
+  final String error;
+
+  GetDoctorNameError({required this.error});
+}
