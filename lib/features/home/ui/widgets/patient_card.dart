@@ -15,7 +15,9 @@ class PatientCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.pushNamed(Routes.patientsInfoScreen);
+        context.pushNamed(Routes.patientsInfoScreen, arguments: {
+          'patientId': patient.patientId!,
+        });
       },
       child: Container(
         width: 144.w,
