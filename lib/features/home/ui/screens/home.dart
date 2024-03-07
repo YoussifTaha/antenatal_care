@@ -96,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Text(
-                                    'Add New Patients Either Manually Or By Their Id',
+                                    'Add New Patients And Start The Assessment Now',
                                     style: getBoldStyle(
                                         color: Colors.white,
                                         fontSize: 18.sp,
