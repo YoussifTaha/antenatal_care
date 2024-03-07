@@ -31,12 +31,6 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   Future<void> fetchDoctorName({required String uId}) async {
-    emit(GetDoctorNameLoadingState());
-    var result = await homeRepo.fetchDoctorName(uId: uId);
-    result.fold((faliure) {
-      emit(GetDoctorNameError(error: faliure.message));
-    }, (doctorName) {
-      emit(GetDoctorNameSuccsses(doctorName: doctorName));
-    });
+    await homeRepo.fetchDoctorName(uId: uId);
   }
 }
