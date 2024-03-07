@@ -54,6 +54,18 @@ class _PatientsInfoScreenState extends State<PatientsInfoScreen> {
               },
               child: PatientInfoChoice(
                   choice: 'Patient\'s Examination',
+                  icon: Icons.local_hospital_rounded),
+            ),
+            verticalSpace(20),
+            InkWell(
+              onTap: () {
+                context
+                    .pushNamed(Routes.fetchPatientExercisesScreen, arguments: {
+                  'patientId': widget.patient.patientId,
+                });
+              },
+              child: PatientInfoChoice(
+                  choice: 'Patient\'s Exercises',
                   icon: Icons.run_circle_rounded),
             ),
           ],

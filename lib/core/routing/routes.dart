@@ -17,4 +17,8 @@ class Routes {
   static const String fetchPatientHistoryScreen = '/fetchPatientHistoryScreen';
   static const String fetchPatientExaminationScreen =
       '/fetchPatientExaminationScreen';
+  static const String fetchPatientExercisesScreen =
+      '/fetchPatientExercisesScreen';
+  static const String fetchPatientExercisesDetailsScreen =
+      '/fetchPatientExercisesDetailsScreen';
 }

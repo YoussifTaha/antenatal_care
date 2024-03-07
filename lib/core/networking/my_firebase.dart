@@ -1,3 +1,4 @@
+import 'package:antenatal_app/core/Helpers/cach_helper.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MyFirebaseFireStoreService {
@@ -15,5 +16,15 @@ class MyFirebaseFireStoreService {
   Future<QuerySnapshot<Map<String, dynamic>>> getMyPatientsCollection(
       {required String uid}) async {
     return await doctorCollection.doc(uid).collection('myPatients').get();
+  }
+
+  Future<QuerySnapshot<Map<String, dynamic>>> getPatientExercisesCollection(
+      {required int patientId}) async {
+    return await doctorCollection
+        .doc(CacheHelper.getData(key: 'uId'))
+        .collection('myPatients')
+        .doc('$patientId')
+        .collection('Exercises')
+        .get();
   }
 }
