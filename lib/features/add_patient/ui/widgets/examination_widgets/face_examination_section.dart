@@ -76,7 +76,7 @@ class FaceExaminationSection extends StatelessWidget {
         ),
         verticalSpace(10),
         InfoInputField(
-            controller: cubit.PreclampsiaController,
+            controller: cubit.preclampsiaController,
             type: TextInputType.text,
             validationMessage: 'This Field Cannot Be Empty'),
         verticalSpace(20),

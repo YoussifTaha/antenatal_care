@@ -21,7 +21,7 @@ class ExaminationCubit extends Cubit<ExaminationState> {
   TextEditingController cheeksController = TextEditingController();
   TextEditingController fascialExpressionController = TextEditingController();
   TextEditingController colorController = TextEditingController();
-  TextEditingController PreclampsiaController = TextEditingController();
+  TextEditingController preclampsiaController = TextEditingController();
   TextEditingController cloasmaController = TextEditingController();
   TextEditingController veinsController = TextEditingController();
   TextEditingController thyroidController = TextEditingController();
@@ -67,6 +67,8 @@ class ExaminationCubit extends Cubit<ExaminationState> {
         'eyeLidsEdema': eyeLidsController.text,
         'lipsEdema': lipsController.text,
         'cheeksEdema': cheeksController.text,
+        'preclampsia': preclampsiaController.text,
+        'cloasma': cloasmaController.text,
       },
       abdomen: {
         'lineaNigra': lineaNigraController.text,

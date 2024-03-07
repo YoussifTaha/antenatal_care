@@ -37,11 +37,12 @@ class HistoryCubit extends Cubit<HistoryState> {
 
   void addDrugHistory(
       {required int patientId, required DrugHistoryModel drugHistoryModel}) {
+    emit(AddPatientHistoryLoadingState());
     try {
       addHistoryRepo.addDrugHistory(
           patientId: patientId, drugHistoryModel: drugHistoryModel);
+      emit(AddPatientHistorySuccsses());
     } on FirebaseException catch (e) {
-      emit(AddPatientHistoryLoadingState());
       catchFireBaseException(e);
     }
     emit(HistoryInitial());
@@ -50,11 +51,12 @@ class HistoryCubit extends Cubit<HistoryState> {
   void addFamilyHistory(
       {required int patientId,
       required FamilyHistoryModel familyHistoryModel}) {
+    emit(AddPatientHistoryLoadingState());
     try {
       addHistoryRepo.addFamilyHistory(
           patientId: patientId, familyHistoryModel: familyHistoryModel);
+      emit(AddPatientHistorySuccsses());
     } on FirebaseException catch (e) {
-      emit(AddPatientHistoryLoadingState());
       catchFireBaseException(e);
     }
     emit(HistoryInitial());
@@ -63,11 +65,12 @@ class HistoryCubit extends Cubit<HistoryState> {
   void addMenstrualHistory(
       {required int patientId,
       required MenstrualHistoryModel menstrualHistoryModel}) {
+    emit(AddPatientHistoryLoadingState());
     try {
       addHistoryRepo.addMenstrualHistory(
           patientId: patientId, menstrualHistoryModel: menstrualHistoryModel);
+      emit(AddPatientHistorySuccsses());
     } on FirebaseException catch (e) {
-      emit(AddPatientHistoryLoadingState());
       catchFireBaseException(e);
     }
     emit(HistoryInitial());
@@ -76,11 +79,12 @@ class HistoryCubit extends Cubit<HistoryState> {
   void addObstetricHistory(
       {required int patientId,
       required ObstetricHistoryModel obstetricHistoryModel}) {
+    emit(AddPatientHistoryLoadingState());
     try {
       addHistoryRepo.addObstetricHistory(
           patientId: patientId, obstetricHistoryModel: obstetricHistoryModel);
+      emit(AddPatientHistorySuccsses());
     } on FirebaseException catch (e) {
-      emit(AddPatientHistoryLoadingState());
       catchFireBaseException(e);
     }
     emit(HistoryInitial());
@@ -88,11 +92,12 @@ class HistoryCubit extends Cubit<HistoryState> {
 
   void addPastHistory(
       {required int patientId, required PastHistoryModel pastHistoryModel}) {
+    emit(AddPatientHistoryLoadingState());
     try {
       addHistoryRepo.addPastHistory(
           patientId: patientId, pastHistoryModel: pastHistoryModel);
+      emit(AddPatientHistorySuccsses());
     } on FirebaseException catch (e) {
-      emit(AddPatientHistoryLoadingState());
       catchFireBaseException(e);
     }
     emit(HistoryInitial());
@@ -101,11 +106,12 @@ class HistoryCubit extends Cubit<HistoryState> {
   void addPresentHistory(
       {required int patientId,
       required PresentHistoryModel presentHistoryModel}) {
+    emit(AddPatientHistoryLoadingState());
     try {
       addHistoryRepo.addPresentHistory(
           patientId: patientId, presentHistoryModel: presentHistoryModel);
+      emit(AddPatientHistorySuccsses());
     } on FirebaseException catch (e) {
-      emit(AddPatientHistoryLoadingState());
       catchFireBaseException(e);
     }
     emit(HistoryInitial());
@@ -114,11 +120,12 @@ class HistoryCubit extends Cubit<HistoryState> {
   void addPsychologicalHistory(
       {required int patientId,
       required PsychologicalHistoryModel psychologicalHistoryModel}) {
+    emit(AddPatientHistoryLoadingState());
     try {
       addHistoryRepo.addPsychologicalHistory(
           patientId: patientId,
           psychologicalHistoryModel: psychologicalHistoryModel);
-      emit(AddPatientHistoryLoadingState());
+      emit(AddPatientHistorySuccsses());
     } on FirebaseException catch (e) {
       catchFireBaseException(e);
     }
@@ -128,11 +135,12 @@ class HistoryCubit extends Cubit<HistoryState> {
   void addUrinarySystemHistory(
       {required int patientId,
       required UrineSystemHistoryModel urineSystemHistoryModel}) {
+    emit(AddPatientHistoryLoadingState());
     try {
       addHistoryRepo.addUrinarySystemHistory(
           patientId: patientId,
           urineSystemHistoryModel: urineSystemHistoryModel);
-      emit(AddPatientHistoryLoadingState());
+      emit(AddPatientHistorySuccsses());
     } on FirebaseException catch (e) {
       catchFireBaseException(e);
     }

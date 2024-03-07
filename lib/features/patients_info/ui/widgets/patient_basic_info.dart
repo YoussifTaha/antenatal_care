@@ -1,11 +1,13 @@
 import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
+import 'package:antenatal_app/features/signup/data/model/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PatientBsicInfo extends StatelessWidget {
-  const PatientBsicInfo({super.key});
+  final UserModel patient;
+  const PatientBsicInfo({super.key, required this.patient});
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +20,10 @@ class PatientBsicInfo extends StatelessWidget {
                 CircleAvatar(
                   backgroundColor: ColorManger.primary,
                   foregroundColor: Colors.white,
-                  radius: 35,
+                  radius: 45,
                   child: Icon(
                     Icons.person,
-                    size: 45,
+                    size: 55,
                   ),
                 ),
               ],
@@ -31,18 +33,18 @@ class PatientBsicInfo extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Menna Ahmed',
+                  patient.fullName,
                   style: getBoldStyle(color: Colors.black, fontSize: 15.sp),
                 ),
-                verticalSpace(8),
+                verticalSpace(10),
                 Text(
-                  'Age : 27 |  Occupation : House wife',
+                  'Age : ${patient.fullName} |  Occupation : ${patient.occupation}',
                   style: getMediumStyle(
                       color: ColorManger.regularGrey, fontSize: 13.sp),
                 ),
-                verticalSpace(5),
+                verticalSpace(8),
                 Text(
-                  'Address : 21 shar3 elma7kma',
+                  'Address : ${patient.address}',
                   style: getRegularStyle(
                       color: ColorManger.regularGrey.withOpacity(0.8),
                       fontSize: 11.sp),
@@ -51,35 +53,35 @@ class PatientBsicInfo extends StatelessWidget {
             ),
           ],
         ),
-        verticalSpace(15),
+        verticalSpace(30),
         Text(
-          'Chief Complain : Low Back Pain',
+          'Chief Complain : ${patient.chiefComplain}',
           style: getBoldStyle(color: Colors.black, fontSize: 16.sp),
         ),
-        verticalSpace(15),
+        verticalSpace(20),
         Text(
-          'EDD: 12/3/2024',
+          'EDD: ${patient.eDD}',
           style: getRegularStyle(color: Colors.black, fontSize: 12.sp),
         ),
-        verticalSpace(10),
+        verticalSpace(20),
         Image.asset(
           'assets/images/baby.png',
-          height: 70.h,
-          width: 70.h,
+          height: 100.h,
+          width: 100.h,
         ),
-        verticalSpace(10),
+        verticalSpace(15),
         Text(
-          'Week 25',
+          'Week ${patient.weekNumber}',
           style:
               getRegularStyle(color: ColorManger.regularGrey, fontSize: 12.sp),
         ),
-        verticalSpace(15),
+        verticalSpace(20),
         Text(
-          'First Session At : 2/14/2024',
+          'First Session At : ${patient.firstSessionDate}',
           style:
               getRegularStyle(color: ColorManger.regularGrey, fontSize: 15.sp),
         ),
-        verticalSpace(10),
+        verticalSpace(30),
       ],
     );
   }
