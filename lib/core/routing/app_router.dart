@@ -27,6 +27,7 @@ import 'package:antenatal_app/features/login/data/repos/login_repo_impl.dart';
 import 'package:antenatal_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:antenatal_app/features/login/ui/screens/login_screen.dart';
 import 'package:antenatal_app/features/onBoarding/ui/screens/onboarding_screen.dart';
+import 'package:antenatal_app/features/patient_view/ui/screens/patient_view.dart';
 import 'package:antenatal_app/features/patients/ui/screens/patients.dart';
 import 'package:antenatal_app/features/patients_info/data/repo/examination_repos/fetch_examination_repo_impl.dart';
 import 'package:antenatal_app/features/patients_info/data/repo/exercises_repo/fetch_exercise_repo_impl.dart';
@@ -238,6 +239,10 @@ class AppRouter {
           builder: (_) => PatientExerciseDetails(
             patientsExercisesModel: args?['patientsExercisesModel'],
           ),
+        );
+      case Routes.patientViewScreen:
+        return MaterialPageRoute(
+          builder: (_) => PatientView(),
         );
       default:
         return MaterialPageRoute(
