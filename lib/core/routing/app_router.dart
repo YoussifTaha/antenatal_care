@@ -41,6 +41,9 @@ import 'package:antenatal_app/features/patients_info/ui/widgets/patient_examinat
 import 'package:antenatal_app/features/patients_info/ui/widgets/patient_exercises_widgets/exercise_details_screen.dart';
 import 'package:antenatal_app/features/patients_info/ui/widgets/patient_exercises_widgets/patient_exercises.dart';
 import 'package:antenatal_app/features/patients_info/ui/widgets/patient_history_widgets/patient_main_history_view.dart';
+import 'package:antenatal_app/features/post_login/data/repo/post_login_repo_impl.dart';
+import 'package:antenatal_app/features/post_login/logic/cubit/post_login_cubit.dart';
+import 'package:antenatal_app/features/post_login/ui/screens/post_login.dart';
 import 'package:antenatal_app/features/signup/data/repos/signup_repo_impl.dart';
 import 'package:antenatal_app/features/signup/logic/cubit/signup_cubit.dart';
 import 'package:antenatal_app/features/signup/ui/screens/signup_screen.dart';
@@ -243,6 +246,14 @@ class AppRouter {
       case Routes.patientViewScreen:
         return MaterialPageRoute(
           builder: (_) => PatientView(),
+        );
+      case Routes.postLoginScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                PostLoginCubit(locator.get<PostLoginRepoImpl>()),
+            child: PostLogiScreen(),
+          ),
         );
       default:
         return MaterialPageRoute(
