@@ -36,7 +36,15 @@ class AddPatientRepoImpl extends AddPatientRepo {
     QuerySnapshot patientQuery = await myFirebaseService.patientCollection
         .where('patientId', isEqualTo: patientId)
         .get();
+    String patientDocID = patientQuery.docs.first.id;
+    await addDoctorUidToPatientDoc(patientDocID);
     return patientQuery;
+  }
+
+  Future<void> addDoctorUidToPatientDoc(String patientDocID) async {
+    await myFirebaseService.patientCollection
+        .doc(patientDocID)
+        .update({'myDoctorUid': CacheHelper.getData(key: 'uId')});
   }
 
   @override
