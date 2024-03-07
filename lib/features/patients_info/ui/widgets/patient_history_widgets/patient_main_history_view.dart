@@ -17,67 +17,99 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PatientMainHistoryView extends StatelessWidget {
-  final PageController pageController;
-  const PatientMainHistoryView({super.key, required this.pageController});
+class PatientMainHistoryView extends StatefulWidget {
+  final patientId;
+  const PatientMainHistoryView({super.key, this.patientId});
+
+  @override
+  State<PatientMainHistoryView> createState() => _PatientMainHistoryViewState();
+}
+
+class _PatientMainHistoryViewState extends State<PatientMainHistoryView> {
+  PageController pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          width: double.infinity,
-          child: Text(
-            'Patient History',
-            style:
-                getMediumStyle(color: ColorManger.darkPrimary, fontSize: 18.sp),
-          ),
-        ),
-        verticalSpace(10),
-        myVerticalDivider(),
-        BlocConsumer<PatientsInfoCubit, PatientsInfoState>(
-          listener: (context, state) {},
-          builder: (context, state) {
-            String patientHistoryTitle =
-                PatientsInfoCubit.get(context).patientHistoryTitle;
-            return Expanded(
-              child: PageView.builder(
-                // physics: NeverScrollableScrollPhysics(),
-                controller: pageController,
-                itemBuilder: (context, index) {
-                  if (index == 0) {
-                    return HistoryInfoCircles(
-                      pageController: pageController,
-                    );
-                  } else {
-                    switch (patientHistoryTitle) {
-                      case 'Personal History':
-                        return PersonalHistoryPage();
-                      case 'Family history':
-                        return FamilyHistoryPage();
-                      case 'Present history':
-                        return PresentHistoryPage();
-                      case 'Past history':
-                        return PastHistoryPage();
-                      case 'Obstetric history':
-                        return ObstetricHistoryPage();
-                      case 'Menstrual history':
-                        return MenstrualHistoryPage();
-                      case 'History for urinary System':
-                        return UrineSystemHistoryPage();
-                      case 'Drug History':
-                        return DrugHistoryPage();
-                      default:
-                        return PsychologicalHistoryPage();
-                    }
-                  }
-                },
-                itemCount: 2,
+    return Scaffold(
+      appBar: AppBar(),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          children: [
+            SizedBox(
+              width: double.infinity,
+              child: Text(
+                'Patient History',
+                style: getMediumStyle(
+                    color: ColorManger.darkPrimary, fontSize: 18.sp),
               ),
-            );
-          },
+            ),
+            verticalSpace(10),
+            myVerticalDivider(),
+            BlocConsumer<PatientsInfoCubit, PatientsInfoState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                String patientHistoryTitle =
+                    PatientsInfoCubit.get(context).patientHistoryTitle;
+                return Expanded(
+                  child: PageView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    controller: pageController,
+                    itemBuilder: (context, index) {
+                      if (index == 0) {
+                        return HistoryInfoCircles(
+                          patientId: widget.patientId,
+                          pageController: pageController,
+                        );
+                      } else {
+                        switch (patientHistoryTitle) {
+                          case 'Personal History':
+                            return PersonalHistoryPage(
+                              pageController: pageController,
+                            );
+                          case 'Family history':
+                            return FamilyHistoryPage(
+                              pageController: pageController,
+                            );
+                          case 'Present history':
+                            return PresentHistoryPage(
+                              pageController: pageController,
+                            );
+                          case 'Past history':
+                            return PastHistoryPage(
+                              pageController: pageController,
+                            );
+                          case 'Obstetric history':
+                            return ObstetricHistoryPage(
+                              pageController: pageController,
+                            );
+                          case 'Menstrual history':
+                            return MenstrualHistoryPage(
+                              pageController: pageController,
+                            );
+                          case 'History for urinary System':
+                            return UrineSystemHistoryPage(
+                              pageController: pageController,
+                            );
+                          case 'Drug History':
+                            return DrugHistoryPage(
+                              pageController: pageController,
+                            );
+                          default:
+                            return PsychologicalHistoryPage(
+                              pageController: pageController,
+                            );
+                        }
+                      }
+                    },
+                    itemCount: 2,
+                  ),
+                );
+              },
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

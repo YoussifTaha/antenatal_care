@@ -12,56 +12,78 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'palpation_page.dart';
 
-class PatientExamination extends StatelessWidget {
-  final PageController pageController;
-  const PatientExamination({super.key, required this.pageController});
+class PatientExamination extends StatefulWidget {
+  final int patientId;
+  const PatientExamination({super.key, required this.patientId});
 
   @override
+  State<PatientExamination> createState() => _PatientExaminationState();
+}
+
+class _PatientExaminationState extends State<PatientExamination> {
+  PageController pageController = PageController();
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          width: double.infinity,
-          child: Text(
-            'Patient Examination',
-            style:
-                getMediumStyle(color: ColorManger.darkPrimary, fontSize: 18.sp),
-          ),
-        ),
-        verticalSpace(10),
-        myVerticalDivider(),
-        BlocConsumer<PatientsInfoCubit, PatientsInfoState>(
-          listener: (context, state) {},
-          builder: (context, state) {
-            String patientExaminationTitle =
-                PatientsInfoCubit.get(context).patientExaminationTitle;
-            return Expanded(
-              child: PageView.builder(
-                controller: pageController,
-                itemBuilder: (context, index) {
-                  if (index == 0) {
-                    return ExaminationInfoCircles(
-                      pageController: pageController,
-                    );
-                  } else {
-                    switch (patientExaminationTitle) {
-                      case 'Inspection':
-                        return InspectionScreen();
-                      case 'Vital Signs':
-                        return VitalSignsPage();
-                      case 'Incontinence Assessment':
-                        return IncontinencePage();
-                      default:
-                        return PalpationScreen();
-                    }
-                  }
-                },
-                itemCount: 2,
+    return Scaffold(
+      appBar: AppBar(),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          children: [
+            SizedBox(
+              width: double.infinity,
+              child: Text(
+                'Patient Examination',
+                style: getMediumStyle(
+                    color: ColorManger.darkPrimary, fontSize: 18.sp),
               ),
-            );
-          },
+            ),
+            verticalSpace(10),
+            myVerticalDivider(),
+            BlocConsumer<PatientsInfoCubit, PatientsInfoState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                String patientExaminationTitle =
+                    PatientsInfoCubit.get(context).patientExaminationTitle;
+                return Expanded(
+                  child: PageView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    controller: pageController,
+                    itemBuilder: (context, index) {
+                      if (index == 0) {
+                        return ExaminationInfoCircles(
+                          patientId: widget.patientId,
+                          pageController: pageController,
+                        );
+                      } else {
+                        switch (patientExaminationTitle) {
+                          case 'Inspection':
+                            return InspectionScreen(
+                              pageController: pageController,
+                            );
+                          case 'Vital Signs':
+                            return VitalSignsPage(
+                              pageController: pageController,
+                            );
+                          case 'Incontinence Assessment':
+                            return IncontinencePage(
+                              pageController: pageController,
+                            );
+                          default:
+                            return PalpationScreen(
+                              pageController: pageController,
+                            );
+                        }
+                      }
+                    },
+                    itemCount: 2,
+                  ),
+                );
+              },
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

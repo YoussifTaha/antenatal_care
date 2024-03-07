@@ -122,7 +122,7 @@ class _AccountTypeState extends State<AccountType> {
                         phone: widget.phone);
                     context.pushNamedAndRemoveUntill(Routes.homeLayout,
                         predicate: (Route<dynamic> route) => false);
-                    CashHelper.saveData(key: 'isAccountCreated', value: true);
+                    CacheHelper.saveData(key: 'isAccountCreated', value: true);
                   },
                   text: 'Create Account')
             ],

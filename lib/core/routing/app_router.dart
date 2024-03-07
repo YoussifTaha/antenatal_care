@@ -23,8 +23,14 @@ import 'package:antenatal_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:antenatal_app/features/login/ui/screens/login_screen.dart';
 import 'package:antenatal_app/features/onBoarding/ui/screens/onboarding_screen.dart';
 import 'package:antenatal_app/features/patients/ui/screens/patients.dart';
+import 'package:antenatal_app/features/patients_info/data/repo/examination_repos/fetch_examination_repo_impl.dart';
+import 'package:antenatal_app/features/patients_info/data/repo/history_repos/fetch_history_repo_impl.dart';
+import 'package:antenatal_app/features/patients_info/logic/cubit/examination_cubit/fetch_examination_cubit.dart';
+import 'package:antenatal_app/features/patients_info/logic/cubit/history_cubit/fetch_history_cubit.dart';
 import 'package:antenatal_app/features/patients_info/logic/cubit/patients_info_cubit.dart';
 import 'package:antenatal_app/features/patients_info/ui/screens/patients_info.dart';
+import 'package:antenatal_app/features/patients_info/ui/widgets/patient_examination_widgets/patient_examination.dart';
+import 'package:antenatal_app/features/patients_info/ui/widgets/patient_history_widgets/patient_main_history_view.dart';
 import 'package:antenatal_app/features/signup/data/repos/signup_repo_impl.dart';
 import 'package:antenatal_app/features/signup/logic/cubit/signup_cubit.dart';
 import 'package:antenatal_app/features/signup/ui/screens/signup_screen.dart';
@@ -94,7 +100,7 @@ class AppRouter {
           builder: (_) => BlocProvider(
             create: (context) => PatientsInfoCubit(),
             child: PatientsInfoScreen(
-              patientId: args?['patientId'],
+              patient: args?['patient'],
             ),
           ),
         );
@@ -134,6 +140,44 @@ class AppRouter {
             create: (context) =>
                 ExaminationCubit(locator.get<AddExaminationRepoImpl>()),
             child: AddPatientExaminationScreen(
+              patientId: args?['patientId'],
+            ),
+          ),
+        );
+      case Routes.fetchPatientHistoryScreen:
+        final Map<String, dynamic>? args =
+            settings.arguments as Map<String, dynamic>?;
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider<FetchHistoryCubit>(
+                create: (context) =>
+                    FetchHistoryCubit(locator.get<FetchHistoryRepoImpl>()),
+              ),
+              BlocProvider<PatientsInfoCubit>(
+                create: (context) => PatientsInfoCubit(),
+              ),
+            ],
+            child: PatientMainHistoryView(
+              patientId: args?['patientId'],
+            ),
+          ),
+        );
+      case Routes.fetchPatientExaminationScreen:
+        final Map<String, dynamic>? args =
+            settings.arguments as Map<String, dynamic>?;
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider<FetchExaminationCubit>(
+                create: (context) => FetchExaminationCubit(
+                    locator.get<FetchExaminationRepoImpl>()),
+              ),
+              BlocProvider<PatientsInfoCubit>(
+                create: (context) => PatientsInfoCubit(),
+              ),
+            ],
+            child: PatientExamination(
               patientId: args?['patientId'],
             ),
           ),

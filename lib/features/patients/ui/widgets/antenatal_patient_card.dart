@@ -96,7 +96,7 @@ class AntenatalPatientCard extends StatelessWidget {
                                 function: () {
                                   context.pushNamed(Routes.patientsInfoScreen,
                                       arguments: {
-                                        'patientId': patient.patientId!,
+                                        'patient': patient,
                                       });
                                 },
                                 text: 'View Info'),

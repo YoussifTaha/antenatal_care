@@ -1,14 +1,17 @@
 import 'package:antenatal_app/core/Helpers/spacing.dart';
+import 'package:antenatal_app/features/patients_info/logic/cubit/examination_cubit/fetch_examination_cubit.dart';
 import 'package:antenatal_app/features/patients_info/logic/cubit/patients_info_cubit.dart';
 import 'package:antenatal_app/features/patients_info/ui/widgets/info_circles.dart';
 import 'package:flutter/material.dart';
 
 class ExaminationInfoCircles extends StatefulWidget {
+  final int patientId;
   final PageController pageController;
 
   const ExaminationInfoCircles({
     super.key,
     required this.pageController,
+    required this.patientId,
   });
 
   @override
@@ -19,6 +22,7 @@ class _ExaminationInfoCirclesState extends State<ExaminationInfoCircles> {
   @override
   Widget build(BuildContext context) {
     var cubit = PatientsInfoCubit.get(context);
+    var fetchExaminationCubit = FetchExaminationCubit.get(context);
     return Column(
       children: [
         verticalSpace(20),
@@ -30,6 +34,8 @@ class _ExaminationInfoCirclesState extends State<ExaminationInfoCircles> {
                   cubit.changePatientExaminationScreenPageView(
                       newExaminationTitle: 'Inspection',
                       pageController: widget.pageController);
+                  fetchExaminationCubit.fetchInspectionExamination(
+                      patientId: widget.patientId);
                 },
                 child: InfoCircles(
                   title: 'Inspection',
@@ -44,6 +50,8 @@ class _ExaminationInfoCirclesState extends State<ExaminationInfoCircles> {
                   cubit.changePatientExaminationScreenPageView(
                       newExaminationTitle: 'Vital Signs',
                       pageController: widget.pageController);
+                  fetchExaminationCubit.fetchVitalSignsExamination(
+                      patientId: widget.patientId);
                 },
                 child: InfoCircles(
                   title: 'Vital Signs',
@@ -63,6 +71,8 @@ class _ExaminationInfoCirclesState extends State<ExaminationInfoCircles> {
                   cubit.changePatientExaminationScreenPageView(
                       newExaminationTitle: 'Incontinence Assessment',
                       pageController: widget.pageController);
+                  fetchExaminationCubit.fetchIncontinenceExamination(
+                      patientId: widget.patientId);
                 },
                 child: InfoCircles(
                   title: 'Incontinence Assessment',
@@ -77,6 +87,8 @@ class _ExaminationInfoCirclesState extends State<ExaminationInfoCircles> {
                   cubit.changePatientExaminationScreenPageView(
                       newExaminationTitle: 'Palpation',
                       pageController: widget.pageController);
+                  fetchExaminationCubit.fetchPalpationExamination(
+                      patientId: widget.patientId);
                 },
                 child: InfoCircles(
                   title: 'Palpation',

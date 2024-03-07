@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
 
 class InspectionModel extends Equatable {
-  final Map<String, String>? face;
-  final Map<String, String>? neck;
-  final Map<String, String>? abdomen;
-  final Map<String, String>? lowerLimbs;
-  final Map<String, String>? breast;
+  final Map<String, dynamic>? face;
+  final Map<String, dynamic>? neck;
+  final Map<String, dynamic>? abdomen;
+  final Map<String, dynamic>? lowerLimbs;
+  final Map<String, dynamic>? breast;
 
   const InspectionModel({
     this.face,
