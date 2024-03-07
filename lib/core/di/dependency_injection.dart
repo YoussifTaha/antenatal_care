@@ -6,6 +6,7 @@ import 'package:antenatal_app/features/add_patient/data/repos/history_repos/add_
 import 'package:antenatal_app/features/home/data/repos/home_repo_impl.dart';
 import 'package:antenatal_app/features/login/data/repos/login_repo_impl.dart';
 import 'package:antenatal_app/features/patients_info/data/repo/examination_repos/fetch_examination_repo_impl.dart';
+import 'package:antenatal_app/features/patients_info/data/repo/exercises_repo/fetch_exercise_repo_impl.dart';
 import 'package:antenatal_app/features/patients_info/data/repo/history_repos/fetch_history_repo_impl.dart';
 import 'package:antenatal_app/features/signup/data/repos/signup_repo_impl.dart';
 import 'package:get_it/get_it.dart';
@@ -24,4 +25,6 @@ void setupLocator() {
   locator
       .registerSingleton<FetchExaminationRepoImpl>(FetchExaminationRepoImpl());
   locator.registerSingleton<FetchHistoryRepoImpl>(FetchHistoryRepoImpl());
+  locator.registerSingleton<FetchPatientExerciseRepoImpl>(
+      FetchPatientExerciseRepoImpl());
 }
