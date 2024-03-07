@@ -1,23 +1,23 @@
 part of 'fetch_exercises_cubit.dart';
 
-sealed class FetchExercisesState extends Equatable {
-  const FetchExercisesState();
+sealed class FetchPatientExercisesState extends Equatable {
+  const FetchPatientExercisesState();
 
   @override
   List<Object> get props => [];
 }
 
-final class FetchExercisesInitial extends FetchExercisesState {}
+final class FetchExercisesInitial extends FetchPatientExercisesState {}
 
-final class FetchExercisesLoadingState extends FetchExercisesState {}
+final class FetchExercisesLoadingState extends FetchPatientExercisesState {}
 
-final class FetchExercisesSuccsses extends FetchExercisesState {
+final class FetchExercisesSuccsses extends FetchPatientExercisesState {
   final List<PatientsExercisesModel> exercises;
 
   FetchExercisesSuccsses({required this.exercises});
 }
 
-final class FetchExercisesError extends FetchExercisesState {
+final class FetchExercisesError extends FetchPatientExercisesState {
   final String error;
 
   FetchExercisesError({required this.error});

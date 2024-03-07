@@ -18,7 +18,7 @@ class _PatientExercisesState extends State<PatientExercises> {
   @override
   void initState() {
     super.initState();
-    FetchExercisesCubit.get(context)
+    FetchPatientExercisesCubit.get(context)
         .fetchExercises(patientId: widget.patientId);
   }
 

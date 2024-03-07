@@ -7,18 +7,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class ExerciseDetails extends StatefulWidget {
+class PatientExerciseDetails extends StatefulWidget {
   final PatientsExercisesModel patientsExercisesModel;
-  const ExerciseDetails({Key? key, required this.patientsExercisesModel})
+  const PatientExerciseDetails({Key? key, required this.patientsExercisesModel})
       : super(key: key);
 
   @override
-  State<ExerciseDetails> createState() => _ExerciseDetailsState();
+  State<PatientExerciseDetails> createState() => _PatientExerciseDetailsState();
 }
 
 late YoutubePlayerController youtubePlayerController;
 
-class _ExerciseDetailsState extends State<ExerciseDetails>
+class _PatientExerciseDetailsState extends State<PatientExerciseDetails>
     with TickerProviderStateMixin {
   @override
   void initState() {

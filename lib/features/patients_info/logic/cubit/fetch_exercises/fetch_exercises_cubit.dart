@@ -5,12 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'fetch_exercises_state.dart';
 
-class FetchExercisesCubit extends Cubit<FetchExercisesState> {
-  FetchExercisesCubit(this.fetchPatientExerciseRepo)
+class FetchPatientExercisesCubit extends Cubit<FetchPatientExercisesState> {
+  FetchPatientExercisesCubit(this.fetchPatientExerciseRepo)
       : super(FetchExercisesInitial());
 
   final FetchPatientExerciseRepo fetchPatientExerciseRepo;
-  static FetchExercisesCubit get(context) => BlocProvider.of(context);
+  static FetchPatientExercisesCubit get(context) => BlocProvider.of(context);
 
   List<PatientsExercisesModel> patientExercises = [];
 

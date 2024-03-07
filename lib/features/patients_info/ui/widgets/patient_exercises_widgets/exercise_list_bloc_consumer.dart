@@ -9,7 +9,7 @@ class ExercisesListBlocConsumer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FetchExercisesCubit, FetchExercisesState>(
+    return BlocBuilder<FetchPatientExercisesCubit, FetchPatientExercisesState>(
       builder: (context, state) {
         if (state is FetchExercisesLoadingState) {
           return Center(child: CircularProgressIndicator());

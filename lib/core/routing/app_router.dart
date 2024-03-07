@@ -224,7 +224,7 @@ class AppRouter {
             settings.arguments as Map<String, dynamic>?;
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => FetchExercisesCubit(
+            create: (context) => FetchPatientExercisesCubit(
                 locator.get<FetchPatientExerciseRepoImpl>()),
             child: PatientExercises(
               patientId: args?['patientId'],
@@ -235,7 +235,7 @@ class AppRouter {
         final Map<String, dynamic>? args =
             settings.arguments as Map<String, dynamic>?;
         return MaterialPageRoute(
-          builder: (_) => ExerciseDetails(
+          builder: (_) => PatientExerciseDetails(
             patientsExercisesModel: args?['patientsExercisesModel'],
           ),
         );
