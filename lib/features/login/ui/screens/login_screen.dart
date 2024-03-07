@@ -66,7 +66,8 @@ class LoginScreen extends StatelessWidget {
                       BlocConsumer<LoginCubit, LoginState>(
                         listener: (context, state) {
                           if (state is LoginSuccessState) {
-                            context.pushNamedAndRemoveUntill(Routes.homeLayout,
+                            context.pushNamedAndRemoveUntill(
+                                Routes.postLoginScreen,
                                 predicate: (Route<dynamic> route) => false);
                             CacheHelper.saveData(key: 'isLogedIn', value: true);
                           }

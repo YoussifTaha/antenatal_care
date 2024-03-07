@@ -26,6 +26,10 @@ class MyFirebaseFireStoreService {
     return await doctorCollection.doc(uid).get();
   }
 
+  Future<DocumentSnapshot> getPatientDoc({required String uid}) async {
+    return await patientCollection.doc(uid).get();
+  }
+
   Future<QuerySnapshot<Map<String, dynamic>>> getPatientExercisesCollection(
       {required int patientId}) async {
     return await doctorCollection
