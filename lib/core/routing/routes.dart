@@ -28,4 +28,6 @@ class Routes {
   static const String postLoginScreen = '/postLoginScreen';
   static const String loadingScreen = '/loadingScreen';
   static const String patientViewAddInfo = '/patientViewAddInfo';
+  static const String nutritionScreen = '/nutritionScreen';
+  static const String recommendationScreen = '/recommendationScreen';
 }

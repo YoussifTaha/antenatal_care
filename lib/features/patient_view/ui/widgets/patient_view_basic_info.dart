@@ -38,23 +38,14 @@ class _PatientViewBasicInfoState extends State<PatientViewBasicInfo> {
             children: [
               Row(
                 children: [
-                  Column(
-                    children: [
-                      CircleAvatar(
-                        backgroundColor: ColorManger.primary,
-                        foregroundColor: Colors.white,
-                        radius: 45,
-                        child: Icon(
-                          Icons.person,
-                          size: 55,
-                        ),
-                      ),
-                    ],
-                  ),
-                  horizontalSpace(18),
                   Expanded(
+                    flex: 1,
+                    child: horizontalSpace(1),
+                  ),
+                  Expanded(
+                    flex: 4,
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           patient.fullName,
@@ -76,6 +67,10 @@ class _PatientViewBasicInfoState extends State<PatientViewBasicInfo> {
                         ),
                       ],
                     ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: horizontalSpace(1),
                   ),
                 ],
               ),

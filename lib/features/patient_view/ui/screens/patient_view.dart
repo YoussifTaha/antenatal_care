@@ -75,10 +75,38 @@ class _PatientViewState extends State<PatientView> {
                           });
                     },
                     child: PatientInfoChoice(
-                        choice: 'Patient\'s Exercises',
-                        icon: Icons.run_circle_rounded),
+                        choice: 'My Exercises', icon: Icons.run_circle_rounded),
                   ),
                 ),
+                verticalSpace(20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: InkWell(
+                    onTap: () {
+                      context.pushNamed(
+                        Routes.nutritionScreen,
+                      );
+                    },
+                    child: PatientInfoChoice(
+                        choice: 'Nutrition Recommedations',
+                        icon: Icons.food_bank_rounded),
+                  ),
+                ),
+                verticalSpace(20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: InkWell(
+                    onTap: () {
+                      context.pushNamed(
+                        Routes.recommendationScreen,
+                      );
+                    },
+                    child: PatientInfoChoice(
+                        choice: 'Positions Recommedations',
+                        icon: Icons.pregnant_woman_rounded),
+                  ),
+                ),
+                verticalSpace(20),
               ],
             ),
           )),
