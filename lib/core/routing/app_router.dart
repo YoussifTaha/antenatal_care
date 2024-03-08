@@ -26,6 +26,7 @@ import 'package:antenatal_app/features/home_layout/ui/screens/home_layout.dart';
 import 'package:antenatal_app/features/login/data/repos/login_repo_impl.dart';
 import 'package:antenatal_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:antenatal_app/features/login/ui/screens/login_screen.dart';
+import 'package:antenatal_app/features/nutrition/ui/screens/nutrition.dart';
 import 'package:antenatal_app/features/onBoarding/ui/screens/onboarding_screen.dart';
 import 'package:antenatal_app/features/patient_view/data/patient_view_repo_impl.dart';
 import 'package:antenatal_app/features/patient_view/logic/cubit/patient_view_cubit.dart';
@@ -282,6 +283,10 @@ class AppRouter {
                 locator.get<PatientViewAddInfoRepoImpl>()),
             child: PatientViewAddInfo(),
           ),
+        );
+      case Routes.nutritionScreen:
+        return MaterialPageRoute(
+          builder: (_) => const NutritionScreen(),
         );
       default:
         return MaterialPageRoute(

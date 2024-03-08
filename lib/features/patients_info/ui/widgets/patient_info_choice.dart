@@ -1,3 +1,4 @@
+import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -21,8 +22,9 @@ class PatientInfoChoice extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              Icon(icon),
+              horizontalSpace(10),
               Text(
                 choice,
                 style: TextStyle(
@@ -30,7 +32,6 @@ class PatientInfoChoice extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Icon(icon),
             ],
           ),
         ),
