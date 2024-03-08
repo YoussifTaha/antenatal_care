@@ -28,6 +28,9 @@ import 'package:antenatal_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:antenatal_app/features/login/ui/screens/login_screen.dart';
 import 'package:antenatal_app/features/onBoarding/ui/screens/onboarding_screen.dart';
 import 'package:antenatal_app/features/patient_view/ui/screens/patient_view.dart';
+import 'package:antenatal_app/features/patient_view_add_info/data/repo/patient_view_add_info_repo_impl.dart';
+import 'package:antenatal_app/features/patient_view_add_info/logic/cubit/patient_view_add_info_cubit.dart';
+import 'package:antenatal_app/features/patient_view_add_info/ui/screens/patient_view_add_info.dart';
 import 'package:antenatal_app/features/patient_view_loading-screen/data/repo/loading_screen_repo_impl.dart';
 import 'package:antenatal_app/features/patient_view_loading-screen/logic/cubit/loading_screen_cubit.dart';
 import 'package:antenatal_app/features/patient_view_loading-screen/ui/screen/loading_screen.dart';
@@ -264,6 +267,14 @@ class AppRouter {
             create: (context) =>
                 LoadingScreenCubit(locator.get<LoadingScreenRepoImpl>()),
             child: LoadingScreen(),
+          ),
+        );
+      case Routes.patientViewAddInfo:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => PatientViewAddInfoCubit(
+                locator.get<PatientViewAddInfoRepoImpl>()),
+            child: PatientViewAddInfo(),
           ),
         );
       default:
