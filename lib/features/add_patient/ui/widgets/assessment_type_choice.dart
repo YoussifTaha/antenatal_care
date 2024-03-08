@@ -1,3 +1,4 @@
+import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:flutter/material.dart';
 
 class AssessmentTypeChoice extends StatelessWidget {
@@ -20,8 +21,9 @@ class AssessmentTypeChoice extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              Icon(icon),
+              horizontalSpace(10),
               Text(
                 choice,
                 style: TextStyle(
@@ -29,7 +31,6 @@ class AssessmentTypeChoice extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Icon(icon),
             ],
           ),
         ),
