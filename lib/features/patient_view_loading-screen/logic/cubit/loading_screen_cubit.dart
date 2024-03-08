@@ -13,6 +13,7 @@ class LoadingScreenCubit extends Cubit<LoadingScreenState> {
 
   Future<void> fetchMyDoctorUidAndCheckPersonalInfo(
       {required String uId}) async {
+    await fetchMyId(uId: uId);
     await fetchIsPersonalInfoAdded(uId: uId);
     fetchMyDoctorUid(uId: uId);
   }
@@ -29,5 +30,9 @@ class LoadingScreenCubit extends Cubit<LoadingScreenState> {
 
   Future<void> fetchIsPersonalInfoAdded({required String uId}) async {
     await loadingScreenRepo.fetchIsPersonalInfoAdded(uId: uId);
+  }
+
+  Future<void> fetchMyId({required String uId}) async {
+    await loadingScreenRepo.fetchMyId(uId: uId);
   }
 }

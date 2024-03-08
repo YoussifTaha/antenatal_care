@@ -8,6 +8,7 @@ import 'package:dartz/dartz.dart';
 class LoadingScreenRepoImpl extends LoadingScreenRepo {
   String myDoctorUid = '';
   bool? isPersonalInfoAdded;
+  int? patientId;
   MyFirebaseFireStoreService myFirebaseFireStoreService =
       MyFirebaseFireStoreService();
 
@@ -35,8 +36,11 @@ class LoadingScreenRepoImpl extends LoadingScreenRepo {
   @override
   Future<Either<Failure, bool>> fetchIsPersonalInfoAdded(
       {required String uId}) async {
-    DocumentSnapshot patientDoc =
-        await myFirebaseFireStoreService.getPatientDoc(uid: uId);
+    await fetchMyId(uId: uId);
+    DocumentSnapshot patientDoc = await myFirebaseFireStoreService
+        .myPatientsCollection(uId: CacheHelper.getData(key: 'myDoctorUid'))
+        .doc('$patientId')
+        .get();
     try {
       isPersonalInfoAdded = patientDoc.get('isPersonalInfoAdded');
       if (isPersonalInfoAdded == null) {
@@ -47,6 +51,26 @@ class LoadingScreenRepoImpl extends LoadingScreenRepo {
         value: isPersonalInfoAdded,
       );
       return right(isPersonalInfoAdded!);
+    } on FirebaseException catch (e) {
+      FirebaseFailure failure =
+          FirebaseFailure.fromFirebaseFirestoreException(e);
+      return left(
+        failure,
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, int>> fetchMyId({required String uId}) async {
+    DocumentSnapshot patientDoc =
+        await myFirebaseFireStoreService.getPatientDoc(uid: uId);
+    try {
+      patientId = patientDoc.get('patientId');
+      CacheHelper.saveData(
+        key: 'patientId',
+        value: patientId,
+      );
+      return right(patientId!);
     } on FirebaseException catch (e) {
       FirebaseFailure failure =
           FirebaseFailure.fromFirebaseFirestoreException(e);
