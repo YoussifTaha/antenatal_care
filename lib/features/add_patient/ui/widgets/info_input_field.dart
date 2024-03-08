@@ -19,9 +19,7 @@ class InfoInputField extends StatelessWidget {
   Widget build(BuildContext context) {
     return defaultForm(
       onSaved: (newValue) {
-        print('Saved: $newValue');
         controller.text = newValue!;
-        print(controller.text);
       },
       hintText: hintText,
       fillColor: ColorManger.lightBackground.withOpacity(0.6),

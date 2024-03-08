@@ -37,7 +37,7 @@ class AddExercisesCubit extends Cubit<AddExercisesState> {
   void addSingleExerciseToExercisesList(
       {required ExercisesModel exercisesModel}) {
     patientExercises.add(exercisesModel);
-    print(patientExercises.length);
+    (patientExercises.length);
     emit(AddExerciseSuccsses(exercise: exercisesModel));
     emit(AddExercisesInitial());
   }
@@ -45,7 +45,6 @@ class AddExercisesCubit extends Cubit<AddExercisesState> {
   void removeSingleExerciseToExercisesList(
       {required ExercisesModel exercisesModel}) {
     patientExercises.remove(exercisesModel);
-    print(patientExercises.length);
     emit(AddExerciseSuccsses(exercise: exercisesModel));
     emit(AddExercisesInitial());
   }

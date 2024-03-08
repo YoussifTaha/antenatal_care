@@ -19,7 +19,6 @@ class ExerciseRepoImpl extends ExerciseRepo {
       for (var element in exerciseSnapshot.docs) {
         exercises.add(ExercisesModel.fromJson(element.data()));
       }
-      print(exercises.first.thumbnail);
       return right(exercises);
     } on FirebaseException catch (e) {
       FirebaseFailure failure =

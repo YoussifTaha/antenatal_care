@@ -23,7 +23,6 @@ class PatientsInfoCubit extends Cubit<PatientsInfoState> {
       {required String newExaminationTitle,
       required PageController pageController}) {
     changePatientExaminationTitle(newExaminationTitle: newExaminationTitle);
-    print(newExaminationTitle);
     animateToPage(pageController);
     emit(PatientsInfoNewScreenState());
   }
