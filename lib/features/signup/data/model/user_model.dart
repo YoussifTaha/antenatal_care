@@ -14,6 +14,7 @@ class UserModel extends Equatable {
   final String? eDD;
   final String? weekNumber;
   final int? patientId;
+  final bool? isPersonalInfoAdded;
 
   const UserModel(
       {required this.fullName,
@@ -28,7 +29,8 @@ class UserModel extends Equatable {
       this.occupation,
       this.eDD,
       this.weekNumber,
-      this.patientId});
+      this.patientId,
+      this.isPersonalInfoAdded});
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         fullName: json['fullName'],
@@ -37,6 +39,7 @@ class UserModel extends Equatable {
         uId: json['uId'],
         userType: json['userType'],
         patientId: json['patientId'],
+        isPersonalInfoAdded: json['isPersonalInfoAdded'] = false,
         chiefComplain: json['chiefComplain'] as String?,
         firstSessionDate: json['firstSessionDate'] as String?,
         age: json['age'] as String?,
@@ -53,6 +56,7 @@ class UserModel extends Equatable {
         'uId': uId,
         'userType': userType,
         'patientId': patientId,
+        'isPersonalInfoAdded': isPersonalInfoAdded,
         'chiefComplain': chiefComplain,
         'firstSessionDate': firstSessionDate,
         'age': age,
@@ -71,6 +75,7 @@ class UserModel extends Equatable {
       uId,
       userType,
       patientId,
+      isPersonalInfoAdded,
       chiefComplain,
       firstSessionDate,
       age,
