@@ -22,7 +22,7 @@ class AntenatalApp extends StatelessWidget {
       if (isDoctor == 'userDoctor') {
         firstScreen = Routes.homeLayout;
       } else
-        firstScreen = Routes.patientViewScreen;
+        firstScreen = Routes.loadingScreen;
     } else if (isSignedUp != null && isAccountCreated == null) {
       firstScreen = Routes.accountTypeScreen;
     } else
