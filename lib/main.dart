@@ -13,8 +13,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  setupLocator();
   await CacheHelper.init();
+  setupLocator();
   Bloc.observer = MyBlocObserver();
   runApp(AntenatalApp(
     appRouter: AppRouter(),
