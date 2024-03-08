@@ -3,7 +3,7 @@ import 'package:antenatal_app/features/patients_info/data/repo/exercises_repo/fe
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-part 'fetch_exercises_state.dart';
+part 'fetch_patient_exercises_state.dart';
 
 class FetchPatientExercisesCubit extends Cubit<FetchPatientExercisesState> {
   FetchPatientExercisesCubit(this.fetchPatientExerciseRepo)

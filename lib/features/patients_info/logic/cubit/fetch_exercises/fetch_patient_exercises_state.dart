@@ -1,4 +1,4 @@
-part of 'fetch_exercises_cubit.dart';
+part of 'fetch_patient_exercises_cubit.dart';
 
 sealed class FetchPatientExercisesState extends Equatable {
   const FetchPatientExercisesState();

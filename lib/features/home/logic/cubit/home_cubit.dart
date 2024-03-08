@@ -33,6 +33,7 @@ class HomeCubit extends Cubit<HomeState> {
     CacheHelper.removeData(key: 'myDoctorUid');
     CacheHelper.removeData(key: 'isPersonalInfoAdded');
     CacheHelper.removeData(key: 'patientId');
+    CacheHelper.removeData(key: 'patientName');
   }
 
   Future<void> fetchDoctorName({required String uId}) async {

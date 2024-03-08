@@ -27,6 +27,8 @@ import 'package:antenatal_app/features/login/data/repos/login_repo_impl.dart';
 import 'package:antenatal_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:antenatal_app/features/login/ui/screens/login_screen.dart';
 import 'package:antenatal_app/features/onBoarding/ui/screens/onboarding_screen.dart';
+import 'package:antenatal_app/features/patient_view/data/patient_view_repo_impl.dart';
+import 'package:antenatal_app/features/patient_view/logic/cubit/patient_view_cubit.dart';
 import 'package:antenatal_app/features/patient_view/ui/screens/patient_view.dart';
 import 'package:antenatal_app/features/patient_view_add_info/data/repo/patient_view_add_info_repo_impl.dart';
 import 'package:antenatal_app/features/patient_view_add_info/logic/cubit/patient_view_add_info_cubit.dart';
@@ -39,7 +41,7 @@ import 'package:antenatal_app/features/patients_info/data/repo/examination_repos
 import 'package:antenatal_app/features/patients_info/data/repo/exercises_repo/fetch_exercise_repo_impl.dart';
 import 'package:antenatal_app/features/patients_info/data/repo/history_repos/fetch_history_repo_impl.dart';
 import 'package:antenatal_app/features/patients_info/logic/cubit/examination_cubit/fetch_examination_cubit.dart';
-import 'package:antenatal_app/features/patients_info/logic/cubit/fetch_exercises/fetch_exercises_cubit.dart';
+import 'package:antenatal_app/features/patients_info/logic/cubit/fetch_exercises/fetch_patient_exercises_cubit.dart';
 import 'package:antenatal_app/features/patients_info/logic/cubit/history_cubit/fetch_history_cubit.dart';
 import 'package:antenatal_app/features/patients_info/logic/cubit/patients_info_cubit.dart';
 import 'package:antenatal_app/features/patients_info/ui/screens/patients_info.dart';
@@ -251,7 +253,11 @@ class AppRouter {
         );
       case Routes.patientViewScreen:
         return MaterialPageRoute(
-          builder: (_) => PatientView(),
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                PatientViewCubit(locator.get<PatientsViewInfoRepoImpl>()),
+            child: PatientView(),
+          ),
         );
       case Routes.postLoginScreen:
         return MaterialPageRoute(

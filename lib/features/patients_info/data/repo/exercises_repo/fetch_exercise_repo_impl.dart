@@ -15,12 +15,12 @@ class FetchPatientExerciseRepoImpl extends FetchPatientExerciseRepo {
       {required int patientId}) async {
     exercises = [];
     QuerySnapshot<Map<String, dynamic>> exerciseSnapshot =
-        await myFirebaseService.getPatientExercisesCollection(
-            patientId: patientId);
+        await getExercisesCollection(patientId: patientId);
     try {
       for (var element in exerciseSnapshot.docs) {
         exercises.add(PatientsExercisesModel.fromJson(element.data()));
       }
+      print(exercises.length);
       return right(exercises);
     } on FirebaseException catch (e) {
       FirebaseFailure failure =
@@ -29,12 +29,20 @@ class FetchPatientExerciseRepoImpl extends FetchPatientExerciseRepo {
     }
   }
 
-  CollectionReference<Object?> getExercisesCollection(int patientId) {
-    CollectionReference exercisesCollection = myFirebaseService.doctorCollection
-        .doc('${CacheHelper.getData(key: 'uId')}')
+  Future<QuerySnapshot<Map<String, dynamic>>> getExercisesCollection(
+      {required int patientId}) async {
+    return await myFirebaseService.doctorCollection
+        .doc(doctorDocUid())
         .collection('myPatients')
         .doc('$patientId')
-        .collection('Exercises');
-    return exercisesCollection;
+        .collection('Exercises')
+        .get();
+  }
+
+  String doctorDocUid() {
+    if (CacheHelper.getData(key: 'userType') == 'userDoctor') {
+      return CacheHelper.getData(key: 'uId');
+    } else
+      return CacheHelper.getData(key: 'myDoctorUid');
   }
 }
