@@ -29,27 +29,29 @@ class PatientBsicInfo extends StatelessWidget {
               ],
             ),
             horizontalSpace(18),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  patient.fullName,
-                  style: getBoldStyle(color: Colors.black, fontSize: 15.sp),
-                ),
-                verticalSpace(10),
-                Text(
-                  'Age : ${patient.fullName} |  Occupation : ${patient.occupation}',
-                  style: getMediumStyle(
-                      color: ColorManger.regularGrey, fontSize: 13.sp),
-                ),
-                verticalSpace(8),
-                Text(
-                  'Address : ${patient.address}',
-                  style: getRegularStyle(
-                      color: ColorManger.regularGrey.withOpacity(0.8),
-                      fontSize: 11.sp),
-                ),
-              ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    patient.fullName,
+                    style: getBoldStyle(color: Colors.black, fontSize: 15.sp),
+                  ),
+                  verticalSpace(10),
+                  Text(
+                    'Age : ${patient.fullName} |  Occupation : ${patient.occupation}',
+                    style: getMediumStyle(
+                        color: ColorManger.regularGrey, fontSize: 13.sp),
+                  ),
+                  verticalSpace(8),
+                  Text(
+                    'Address : ${patient.address}',
+                    style: getRegularStyle(
+                        color: ColorManger.regularGrey.withOpacity(0.8),
+                        fontSize: 11.sp),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

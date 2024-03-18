@@ -12,12 +12,12 @@ class PatientsViewInfoRepoImpl extends PatientsViewInfoRepo {
       MyFirebaseFireStoreService();
   String patientName = '';
 
-  String myDoctorUid = CacheHelper.getData(key: 'myDoctorUid');
-  int patientId = CacheHelper.getData(key: 'patientId');
+  String? myDoctorUid = CacheHelper.getData(key: 'myDoctorUid');
+  int? patientId = CacheHelper.getData(key: 'patientId');
   @override
   Future<Either<Failure, UserModel>> getBasicPatientInfo() async {
     DocumentSnapshot patientDoc = await myFirebaseFireStoreService
-        .myPatientsCollection(uId: myDoctorUid)
+        .myPatientsCollection(uId: myDoctorUid ?? '')
         .doc('$patientId')
         .get();
     try {
