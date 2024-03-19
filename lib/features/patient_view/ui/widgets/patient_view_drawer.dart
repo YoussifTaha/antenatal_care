@@ -3,7 +3,8 @@ import 'package:antenatal_app/core/Helpers/extensions.dart';
 import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/widgets/widgets.dart';
-import 'package:antenatal_app/features/home/logic/cubit/home_cubit.dart';
+import 'package:antenatal_app/features/patient_view/logic/cubit/patient_view_cubit.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class PatientViewDrawer extends StatelessWidget {
@@ -31,7 +32,8 @@ class PatientViewDrawer extends StatelessWidget {
               color: ColorManger.darkPrimary,
               context: context,
               function: () {
-                HomeCubit.get(context).removeUserCache();
+                FirebaseAuth.instance.signOut();
+                PatientViewCubit.get(context).removeUserCache();
                 context.pushNamedAndRemoveUntill(Routes.loginScreen,
                     predicate: (Route<dynamic> route) => false);
               },
