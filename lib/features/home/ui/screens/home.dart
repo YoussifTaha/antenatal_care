@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.0.w),
                   child: Text(
-                    'Hello! Doctor Mohamed',
+                    'Hello! ${CacheHelper.getData(key: 'doctorName') ?? 'Doctor'}',
                     style: getBoldStyle(
                         color: ColorManger.darkPrimary, fontSize: 18.sp),
                   ),
