@@ -30,7 +30,7 @@ class PostLoginCubit extends Cubit<PostLoginState> {
       context.pushNamedAndRemoveUntill(Routes.homeLayout,
           predicate: (Route<dynamic> route) => false);
     } else {
-      context.pushNamedAndRemoveUntill(Routes.patientViewScreen,
+      context.pushNamedAndRemoveUntill(Routes.loadingScreen,
           predicate: (Route<dynamic> route) => false);
     }
   }
