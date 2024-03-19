@@ -4,6 +4,4 @@ import 'package:dartz/dartz.dart';
 
 abstract class PatientsViewInfoRepo {
   Future<Either<Failure, UserModel>> getBasicPatientInfo();
-
-  Future<Either<Failure, String>> fetchPatientName({required String uId});
 }

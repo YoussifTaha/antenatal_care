@@ -23,10 +23,6 @@ class PatientViewCubit extends Cubit<PatientViewState> {
     });
   }
 
-  Future<void> fetchPatientName({required String uId}) async {
-    await patientsViewInfoRepo.fetchPatientName(uId: uId);
-  }
-
   void removeUserCache() {
     CacheHelper.removeData(key: 'uId');
     CacheHelper.removeData(key: 'isSignedUp');

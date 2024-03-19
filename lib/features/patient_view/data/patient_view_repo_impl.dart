@@ -10,7 +10,6 @@ class PatientsViewInfoRepoImpl extends PatientsViewInfoRepo {
   UserModel? patient;
   MyFirebaseFireStoreService myFirebaseFireStoreService =
       MyFirebaseFireStoreService();
-  String patientName = '';
 
   String myDoctorUid = CacheHelper.getData(key: 'myDoctorUid');
   int patientId = CacheHelper.getData(key: 'patientId');
@@ -38,29 +37,12 @@ class PatientsViewInfoRepoImpl extends PatientsViewInfoRepo {
           chiefComplain: patientData['chiefComplain'],
           eDD: patientData['eDD'],
           weekNumber: patientData['weekNumber']);
-
-      return right(patient!);
-    } on FirebaseException catch (e) {
-      FirebaseFailure failure =
-          FirebaseFailure.fromFirebaseFirestoreException(e);
-      return left(
-        failure,
-      );
-    }
-  }
-
-  @override
-  Future<Either<Failure, String>> fetchPatientName(
-      {required String uId}) async {
-    DocumentSnapshot patientDoc =
-        await myFirebaseFireStoreService.patientCollection.doc(uId).get();
-    try {
-      patientName = patientDoc.get('fullName');
       CacheHelper.saveData(
         key: 'patientName',
-        value: patientName,
+        value: patient?.fullName,
       );
-      return right(patientName);
+
+      return right(patient!);
     } on FirebaseException catch (e) {
       FirebaseFailure failure =
           FirebaseFailure.fromFirebaseFirestoreException(e);

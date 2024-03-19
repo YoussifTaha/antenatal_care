@@ -5,27 +5,14 @@ import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
 import 'package:antenatal_app/features/home/ui/widgets/horizontal_calendar.dart';
-import 'package:antenatal_app/features/patient_view/logic/cubit/patient_view_cubit.dart';
 import 'package:antenatal_app/features/patient_view/ui/widgets/patient_view_basic_info.dart';
 import 'package:antenatal_app/features/patient_view/ui/widgets/patient_view_drawer.dart';
 import 'package:antenatal_app/features/patients_info/ui/widgets/patient_info_choice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PatientView extends StatefulWidget {
+class PatientView extends StatelessWidget {
   const PatientView({super.key});
-
-  @override
-  State<PatientView> createState() => _PatientViewState();
-}
-
-class _PatientViewState extends State<PatientView> {
-  @override
-  void initState() {
-    super.initState();
-    PatientViewCubit.get(context)
-        .fetchPatientName(uId: CacheHelper.getData(key: 'uId'));
-  }
 
   @override
   Widget build(BuildContext context) {
