@@ -1,7 +1,6 @@
 import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
 import 'package:antenatal_app/features/chat/ui/widgets/chats_list.dart';
-import 'package:antenatal_app/features/chat/ui/widgets/chats_page_top_bar.dart';
 import 'package:antenatal_app/features/chat/ui/widgets/search_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,56 +26,25 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
         actions: [
           IconButton(
-              iconSize: 30, onPressed: () {}, icon: Icon(Icons.add_box_rounded))
+            iconSize: 30,
+            onPressed: () {},
+            icon: Icon(Icons.add_box_rounded),
+          ),
         ],
       ),
-      body: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          verticalSpace(20),
-          ChatsPageTopBar(
-            pageController: pageController,
-            selectedItemIndex: selectedItemIndex,
-            onItemSelected: (index) {
-              setState(() {
-                selectedItemIndex = index;
-              });
-            },
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Column(
+            children: [
+              verticalSpace(20),
+              ChatScreenSearchBar(),
+              verticalSpace(20),
+              ChatsList(),
+            ],
           ),
-          Expanded(
-            child: PageView.builder(
-              controller: pageController,
-              onPageChanged: (value) {
-                if (value == 0) {
-                  setState(() {
-                    selectedItemIndex = value;
-                  });
-                } else if (value == 1) {
-                  setState(() {
-                    selectedItemIndex = value;
-                  });
-                }
-              },
-              itemCount: 2,
-              itemBuilder: (context, index) {
-                return SingleChildScrollView(
-                  physics: BouncingScrollPhysics(),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Column(
-                      children: [
-                        verticalSpace(20),
-                        ChatScreenSearchBar(),
-                        verticalSpace(20),
-                        ChatsList(),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            ),
-          )
-        ],
+        ),
       ),
     );
   }
