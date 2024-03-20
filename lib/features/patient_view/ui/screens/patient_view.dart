@@ -39,7 +39,7 @@ class PatientView extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.0.w),
                   child: Text(
-                    'Hello! ${CacheHelper.getData(key: 'patientName')}',
+                    'Hello! ${CacheHelper.getData(key: 'patientName') ?? ''}',
                     style: getBoldStyle(
                         color: ColorManger.darkPrimary, fontSize: 18.sp),
                   ),
