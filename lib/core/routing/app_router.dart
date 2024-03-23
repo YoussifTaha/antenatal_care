@@ -34,6 +34,8 @@ import 'package:antenatal_app/features/patient_view/ui/screens/patient_view.dart
 import 'package:antenatal_app/features/patient_view_add_info/data/repo/patient_view_add_info_repo_impl.dart';
 import 'package:antenatal_app/features/patient_view_add_info/logic/cubit/patient_view_add_info_cubit.dart';
 import 'package:antenatal_app/features/patient_view_add_info/ui/screens/patient_view_add_info.dart';
+import 'package:antenatal_app/features/patient_view_add_routines/data/repo/patient_view_add_routines_repo_impl.dart';
+import 'package:antenatal_app/features/patient_view_add_routines/logic/cubit/patient_view_add_routines_cubit.dart';
 import 'package:antenatal_app/features/patient_view_loading-screen/data/repo/loading_screen_repo_impl.dart';
 import 'package:antenatal_app/features/patient_view_loading-screen/logic/cubit/loading_screen_cubit.dart';
 import 'package:antenatal_app/features/patient_view_loading-screen/ui/screen/loading_screen.dart';
@@ -254,9 +256,18 @@ class AppRouter {
         );
       case Routes.patientViewScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) =>
-                PatientViewCubit(locator.get<PatientsViewInfoRepoImpl>()),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider<PatientViewCubit>(
+                create: (context) =>
+                    PatientViewCubit(locator.get<PatientsViewInfoRepoImpl>()),
+                child: PatientView(),
+              ),
+              BlocProvider<PatientViewAddRoutinesCubit>(
+                create: (context) => PatientViewAddRoutinesCubit(
+                    locator.get<PatientViewAddRoutinesRepoImpl>()),
+              ),
+            ],
             child: PatientView(),
           ),
         );
