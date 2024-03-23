@@ -1,6 +1,10 @@
+import 'package:antenatal_app/core/Helpers/cach_helper.dart';
+import 'package:antenatal_app/core/Helpers/extensions.dart';
 import 'package:antenatal_app/core/Helpers/spacing.dart';
+import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
+import 'package:antenatal_app/features/home/logic/cubit/home_cubit.dart';
 import 'package:antenatal_app/features/home/ui/widgets/add_patient_two_buttons_row.dart';
 import 'package:antenatal_app/features/home/ui/widgets/home_drawer.dart';
 import 'package:antenatal_app/features/home/ui/widgets/horizontal_calendar.dart';
@@ -9,8 +13,22 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    HomeCubit.get(context)
+        .fetchMyPatients(uId: '${CacheHelper.getData(key: 'uId')}');
+    HomeCubit.get(context)
+        .fetchDoctorName(uId: '${CacheHelper.getData(key: 'uId')}');
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.0.w),
                   child: Text(
-                    'Hello! Doctor Mohamed',
+                    'Hello! ${CacheHelper.getData(key: 'doctorName') ?? 'Doctor'}',
                     style: getBoldStyle(
                         color: ColorManger.darkPrimary, fontSize: 18.sp),
                   ),
@@ -78,7 +96,7 @@ class HomeScreen extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Text(
-                                    'Add New Patients Either Manually Or By Their Id',
+                                    'Add New Patients And Start The Assessment Now',
                                     style: getBoldStyle(
                                         color: Colors.white,
                                         fontSize: 18.sp,
@@ -93,7 +111,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                verticalSpace(30),
+                verticalSpace(20),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -108,13 +126,19 @@ class HomeScreen extends StatelessWidget {
                                 color: ColorManger.darkPrimary,
                                 fontSize: 18.sp),
                           ),
-                          Text(
-                            'View All',
-                            style: getRegularStyle(
-                                    color: ColorManger.primary,
-                                    fontSize: 12.sp,
-                                    textHeight: 1.2.h)
-                                .copyWith(decoration: TextDecoration.underline),
+                          TextButton(
+                            child: Text(
+                              'View All',
+                              style: getRegularStyle(
+                                      color: ColorManger.primary,
+                                      fontSize: 12.sp,
+                                      textHeight: 1.2.h)
+                                  .copyWith(
+                                      decoration: TextDecoration.underline),
+                            ),
+                            onPressed: () {
+                              context.pushNamed(Routes.patientsScreen);
+                            },
                           ),
                         ],
                       ),

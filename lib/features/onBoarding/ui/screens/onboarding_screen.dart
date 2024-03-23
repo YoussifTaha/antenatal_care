@@ -57,7 +57,7 @@ class OnBoardingScreen extends StatelessWidget {
                       height: 50,
                       context: context,
                       function: () {
-                        context.pushNamed(Routes.accountTypeScreen);
+                        context.pushNamed(Routes.loginScreen);
                       },
                       text: 'Get Started',
                       color: ColorManger.primary)

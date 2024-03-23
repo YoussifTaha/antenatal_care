@@ -1,5 +1,6 @@
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/widgets/widgets.dart';
+import 'package:antenatal_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 
 class EmailField extends StatelessWidget {
@@ -7,8 +8,7 @@ class EmailField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    return defaultform(
+    return defaultForm(
         fillColor: ColorManger.moreLightGray,
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16.0),
@@ -32,7 +32,7 @@ class EmailField extends StatelessWidget {
         textStyle: const TextStyle(
           color: ColorManger.primary,
         ),
-        controller: (emailController),
+        controller: (LoginCubit.get(context).emailController),
         type: TextInputType.emailAddress,
         validate: (value) {
           if (value!.isEmpty) {

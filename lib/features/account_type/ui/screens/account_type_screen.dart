@@ -1,15 +1,26 @@
+import 'package:antenatal_app/core/Helpers/cach_helper.dart';
 import 'package:antenatal_app/core/Helpers/extensions.dart';
 import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
 import 'package:antenatal_app/core/widgets/widgets.dart';
+import 'package:antenatal_app/features/account_type/logic/cubit/account_type_cubit.dart';
 import 'package:antenatal_app/features/account_type/ui/widgets/account_type_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AccountType extends StatefulWidget {
-  const AccountType({Key? key}) : super(key: key);
+  final String email;
+  final String fullName;
+  final String phone;
+  const AccountType(
+      {Key? key,
+      required this.email,
+      required this.fullName,
+      required this.phone})
+      : super(key: key);
 
   @override
   State<AccountType> createState() => _AccountTypeState();
@@ -43,20 +54,40 @@ class _AccountTypeState extends State<AccountType> {
                     textHeight: 1.4.h),
               ),
               verticalSpace(50),
-              const AccountTypeCard(
-                accountType: 'doctor',
-                accountTypeImagePath: 'assets/images/doctorUser.png',
-                accountTypeTitle: 'Physiotherapist',
-                description:
-                    'Help yourself in the evaluation\nprocess with tools that make\nyou get your patients to their\noptimum recovery.',
+              BlocBuilder<AccountTypeCubit, AccountTypeState>(
+                builder: (context, state) {
+                  return InkWell(
+                    onTap: () {
+                      AccountTypeCubit.get(context)
+                          .makeDoctorUserType(accountType: 'userDoctor');
+                    },
+                    child: const AccountTypeCard(
+                      accountType: 'Doctor',
+                      accountTypeImagePath: 'assets/images/doctorUser.png',
+                      accountTypeTitle: 'Physiotherapist',
+                      description:
+                          'Help yourself in the evaluation\nprocess with tools that make\nyou get your patients to their\noptimum recovery.',
+                    ),
+                  );
+                },
               ),
               verticalSpace(25),
-              const AccountTypeCard(
-                accountType: 'patient',
-                accountTypeImagePath: 'assets/images/femaleUser.png',
-                accountTypeTitle: 'Female Patient',
-                description:
-                    'Follow up with your own \nphysiotherapist and take care \nof yourself and the baby.',
+              BlocBuilder<AccountTypeCubit, AccountTypeState>(
+                builder: (context, state) {
+                  return InkWell(
+                    onTap: () {
+                      AccountTypeCubit.get(context)
+                          .makePatientUserType(accountType: 'userPatient');
+                    },
+                    child: const AccountTypeCard(
+                      accountType: 'Patient',
+                      accountTypeImagePath: 'assets/images/femaleUser.png',
+                      accountTypeTitle: 'Female Patient',
+                      description:
+                          'Follow up with your own \nphysiotherapist and take care \nof yourself and the baby.',
+                    ),
+                  );
+                },
               ),
               verticalSpace(50),
               RichText(
@@ -85,9 +116,15 @@ class _AccountTypeState extends State<AccountType> {
               button(
                   context: context,
                   function: () {
-                    context.pushNamed(Routes.loginScreen);
+                    AccountTypeCubit.get(context).userCreate(
+                        email: widget.email,
+                        fullName: widget.fullName,
+                        phone: widget.phone);
+                    context.pushNamedAndRemoveUntill(Routes.homeLayout,
+                        predicate: (Route<dynamic> route) => false);
+                    CacheHelper.saveData(key: 'isAccountCreated', value: true);
                   },
-                  text: 'Next')
+                  text: 'Create Account')
             ],
           ),
         ),

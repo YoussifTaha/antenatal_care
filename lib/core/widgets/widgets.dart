@@ -1,6 +1,7 @@
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 Widget button({
   required BuildContext context,
@@ -71,7 +72,7 @@ Widget outlinedButton({
       ),
     );
 
-Widget defaultform({
+Widget defaultForm({
   required TextEditingController controller,
   required TextInputType type,
   Function(String)? onSubmit,
@@ -98,11 +99,13 @@ Widget defaultform({
   Color? focusColor,
   Color? fillColor,
   Icon? icon,
+  Function(String?)? onSaved,
 }) =>
     Container(
       padding: padding,
       decoration: const BoxDecoration(),
       child: TextFormField(
+        onSaved: onSaved,
         style: textStyle,
         controller: controller,
         validator: validate,
@@ -145,8 +148,46 @@ Widget defaultform({
       ),
     );
 
-Widget Mydivider() => Container(
+Widget myVerticalDivider() => Container(
       width: double.infinity,
       height: 1.0.h,
       color: ColorManger.lighterGray,
     );
+
+Widget MyHorizontalDivider({required double height}) => Container(
+      width: 1.0.w,
+      height: height,
+      color: ColorManger.lighterGray,
+    );
+
+void showToast({
+  required String text,
+  required ToastStates state,
+}) =>
+    Fluttertoast.showToast(
+        msg: text,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: chooseToastColor(state),
+        textColor: Colors.white,
+        fontSize: 16.0);
+
+enum ToastStates { success, error, warning }
+
+Color chooseToastColor(ToastStates state) {
+  Color color;
+
+  switch (state) {
+    case ToastStates.success:
+      color = ColorManger.darkPrimary;
+      break;
+    case ToastStates.error:
+      color = Colors.red;
+      break;
+    case ToastStates.warning:
+      color = Colors.amber;
+      break;
+  }
+  return color;
+}

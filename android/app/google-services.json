@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "64743673510",
+    "project_id": "antenatal-care-41925",
+    "storage_bucket": "antenatal-care-41925.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:64743673510:android:328ffe9eababaacc7d2e67",
+        "android_client_info": {
+          "package_name": "com.example.antenatal_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBDed-A85psHMgJCde2ErF9dkFAUzk5aE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
