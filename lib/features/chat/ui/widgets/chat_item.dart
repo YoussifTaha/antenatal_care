@@ -1,11 +1,13 @@
 import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
+import 'package:antenatal_app/features/signup/data/model/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ChatItem extends StatelessWidget {
-  const ChatItem({super.key});
+  final UserModel patient;
+  const ChatItem({super.key, required this.patient});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,7 @@ class ChatItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Menna Ahmed',
+                patient.fullName,
                 style: getBoldStyle(color: Colors.black, fontSize: 16),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
