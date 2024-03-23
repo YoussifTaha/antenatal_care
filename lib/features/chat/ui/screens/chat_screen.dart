@@ -1,5 +1,6 @@
 import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
+import 'package:antenatal_app/features/chat/logic/cubit/chat_cubit.dart';
 import 'package:antenatal_app/features/chat/ui/widgets/chats_list.dart';
 import 'package:antenatal_app/features/chat/ui/widgets/search_bar_widget.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,12 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  @override
+  void initState() {
+    super.initState();
+    ChatCubit.get(context).fetchPatientUser();
+  }
+
   int selectedItemIndex = 0;
   PageController pageController = PageController();
   @override
