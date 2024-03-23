@@ -59,6 +59,19 @@ class PatientView extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: InkWell(
                     onTap: () {
+                      context.pushNamed(
+                        Routes.chatDetails,
+                      );
+                    },
+                    child: PatientInfoChoice(
+                        choice: 'Chat With Doctor', icon: Icons.chat),
+                  ),
+                ),
+                verticalSpace(20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: InkWell(
+                    onTap: () {
                       context.pushNamed(Routes.fetchPatientExercisesScreen,
                           arguments: {
                             'patientId': CacheHelper.getData(key: 'patientId'),
