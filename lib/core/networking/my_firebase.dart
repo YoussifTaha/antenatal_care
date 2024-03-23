@@ -39,4 +39,12 @@ class MyFirebaseFireStoreService {
         .collection('Exercises')
         .get();
   }
+
+  Future<QuerySnapshot<Map<String, dynamic>>> getDoctorChatsCollection(
+      {required String uId}) async {
+    return await doctorCollection
+        .doc(CacheHelper.getData(key: 'uId'))
+        .collection('myChats')
+        .get();
+  }
 }

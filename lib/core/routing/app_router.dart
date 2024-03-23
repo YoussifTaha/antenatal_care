@@ -18,6 +18,8 @@ import 'package:antenatal_app/features/add_patient/ui/screens/exercises/exercise
 import 'package:antenatal_app/features/add_patient/ui/screens/exercises/exercises_screen.dart';
 import 'package:antenatal_app/features/add_patient/ui/screens/history/add_history.dart';
 import 'package:antenatal_app/features/add_patient/ui/screens/history_or_examination.dart';
+import 'package:antenatal_app/features/chat/data/repos/chat_repo_impl.dart';
+import 'package:antenatal_app/features/chat/logic/cubit/chat_cubit.dart';
 import 'package:antenatal_app/features/chat/ui/screens/chat_screen.dart';
 import 'package:antenatal_app/features/chat_details/ui/screens/chat_details.dart';
 import 'package:antenatal_app/features/home/data/repos/home_repo_impl.dart';
@@ -113,11 +115,15 @@ class AppRouter {
         );
       case Routes.homeLayout:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => HomeCubit(locator.get<HomeRepoImpl>()),
-            child: HomeLayout(),
-          ),
-        );
+            builder: (_) => MultiBlocProvider(providers: [
+                  BlocProvider<HomeCubit>(
+                    create: (context) => HomeCubit(locator.get<HomeRepoImpl>()),
+                    child: HomeLayout(),
+                  ),
+                  BlocProvider<ChatCubit>(
+                    create: (context) => ChatCubit(locator.get<ChatRepoImpl>()),
+                  ),
+                ], child: HomeLayout()));
       case Routes.patientsInfoScreen:
         final Map<String, dynamic>? args =
             settings.arguments as Map<String, dynamic>?;
