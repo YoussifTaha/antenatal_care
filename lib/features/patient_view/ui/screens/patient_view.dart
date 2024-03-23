@@ -7,6 +7,7 @@ import 'package:antenatal_app/core/theming/styles_manager.dart';
 import 'package:antenatal_app/features/home/ui/widgets/horizontal_calendar.dart';
 import 'package:antenatal_app/features/patient_view/ui/widgets/patient_view_basic_info.dart';
 import 'package:antenatal_app/features/patient_view/ui/widgets/patient_view_drawer.dart';
+import 'package:antenatal_app/features/patient_view_add_routines/ui/widgets/routines_section.dart';
 import 'package:antenatal_app/features/patients_info/ui/widgets/patient_info_choice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -50,6 +51,8 @@ class PatientView extends StatelessWidget {
                   child: const HorizontalCalendar(),
                 ),
                 verticalSpace(30),
+                RoutinesSection(),
+                verticalSpace(20),
                 PatientViewBasicInfo(),
                 verticalSpace(20),
                 Padding(
