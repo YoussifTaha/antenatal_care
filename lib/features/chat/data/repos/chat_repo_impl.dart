@@ -31,10 +31,10 @@ class ChatRepoImpl extends ChatRepo {
   }
 
   @override
-  void addNewChat({required String uId, required UserModel patient}) {
+  void addNewChat({required UserModel patient}) {
     CollectionReference myChatsCollection = myFirebaseFireStoreService
         .doctorCollection
-        .doc(uId)
+        .doc('${CacheHelper.getData(key: 'uId')}')
         .collection('myChats');
     myChatsCollection.doc('${patient.patientId}').set(patient.toJson());
   }

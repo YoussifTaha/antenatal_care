@@ -7,7 +7,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ChatItem extends StatelessWidget {
   final UserModel patient;
-  const ChatItem({super.key, required this.patient});
+  final String text;
+  final String time;
+
+  const ChatItem(
+      {super.key,
+      required this.patient,
+      required this.text,
+      required this.time});
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +62,7 @@ class ChatItem extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      'hello doctor, I think I had some cramps yesterday',
+                      text,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -74,7 +81,7 @@ class ChatItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '02:00 pm',
+                    _formatTime(time),
                   ),
                 ],
               ),
@@ -83,5 +90,11 @@ class ChatItem extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  String _formatTime(String dateTimeString) {
+    DateTime messageDateTime = DateTime.parse(dateTimeString);
+
+    return '${messageDateTime.hour.toString().padLeft(2, '0')}:${messageDateTime.minute.toString().padLeft(2, '0')}';
   }
 }

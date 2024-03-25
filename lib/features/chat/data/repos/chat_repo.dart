@@ -5,5 +5,5 @@ import 'package:dartz/dartz.dart';
 abstract class ChatRepo {
   Future<Either<Failure, List<UserModel>>> fetchMyChats();
 
-  void addNewChat({required String uId, required UserModel patient});
+  void addNewChat({required UserModel patient});
 }

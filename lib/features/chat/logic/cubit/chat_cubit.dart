@@ -22,7 +22,7 @@ class ChatCubit extends Cubit<ChatState> {
     });
   }
 
-  void addNewChat({required String uId, required UserModel patient}) {
-    chatRepo.addNewChat(uId: uId, patient: patient);
+  void addNewChat({required UserModel patient}) {
+    chatRepo.addNewChat(patient: patient);
   }
 }

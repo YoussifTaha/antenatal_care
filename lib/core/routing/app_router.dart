@@ -21,6 +21,9 @@ import 'package:antenatal_app/features/add_patient/ui/screens/history_or_examina
 import 'package:antenatal_app/features/chat/data/repos/chat_repo_impl.dart';
 import 'package:antenatal_app/features/chat/logic/cubit/chat_cubit.dart';
 import 'package:antenatal_app/features/chat/ui/screens/chat_screen.dart';
+import 'package:antenatal_app/features/chat_details/data/repos/chat_details_repo_impl.dart';
+import 'package:antenatal_app/features/chat_details/logic/cubit/chats_details_cubit.dart';
+import 'package:antenatal_app/features/chat_details/ui/screens/chat_details.dart';
 import 'package:antenatal_app/features/home/data/repos/home_repo_impl.dart';
 import 'package:antenatal_app/features/home/logic/cubit/home_cubit.dart';
 import 'package:antenatal_app/features/home/ui/screens/home.dart';
@@ -304,6 +307,25 @@ class AppRouter {
       case Routes.nutritionScreen:
         return MaterialPageRoute(
           builder: (_) => const NutritionScreen(),
+        );
+      case Routes.chatDetails:
+        final Map<String, dynamic>? args =
+            settings.arguments as Map<String, dynamic>?;
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider<ChatCubit>(
+                create: (context) => ChatCubit(locator.get<ChatRepoImpl>()),
+              ),
+              BlocProvider<ChatsDetailsCubit>(
+                create: (context) =>
+                    ChatsDetailsCubit(locator.get<ChatDetailsRepoImpl>()),
+              ),
+            ],
+            child: ChatDetailsScreen(
+              patient: args?['patient'],
+            ),
+          ),
         );
       default:
         return MaterialPageRoute(
