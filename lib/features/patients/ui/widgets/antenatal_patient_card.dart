@@ -66,17 +66,24 @@ class AntenatalPatientCard extends StatelessWidget {
                           ],
                         ),
                       ),
-                      horizontalSpace(25),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 30.0),
-                        child: Column(
-                          children: [
-                            Icon(
-                              Icons.chat_rounded,
-                              color: ColorManger.primary,
-                              size: 30,
-                            ),
-                          ],
+                      Expanded(child: horizontalSpace(25)),
+                      InkWell(
+                        onTap: () {
+                          context.pushNamed(Routes.chatDetails, arguments: {
+                            'patient': patient,
+                          });
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 30.0),
+                          child: Column(
+                            children: [
+                              Icon(
+                                Icons.chat_rounded,
+                                color: ColorManger.primary,
+                                size: 30,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],

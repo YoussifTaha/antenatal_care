@@ -5,6 +5,7 @@ import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
 import 'package:antenatal_app/features/home/ui/widgets/horizontal_calendar.dart';
+import 'package:antenatal_app/features/patient_view/ui/widgets/chat_with_doctor_section.dart';
 import 'package:antenatal_app/features/patient_view/ui/widgets/patient_view_basic_info.dart';
 import 'package:antenatal_app/features/patient_view/ui/widgets/patient_view_drawer.dart';
 import 'package:antenatal_app/features/patient_view_add_routines/ui/widgets/routines_section.dart';
@@ -55,18 +56,7 @@ class PatientView extends StatelessWidget {
                 verticalSpace(20),
                 PatientViewBasicInfo(),
                 verticalSpace(20),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: InkWell(
-                    onTap: () {
-                      context.pushNamed(
-                        Routes.chatDetails,
-                      );
-                    },
-                    child: PatientInfoChoice(
-                        choice: 'Chat With Doctor', icon: Icons.chat),
-                  ),
-                ),
+                ChatWithDoctorSection(),
                 verticalSpace(20),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),

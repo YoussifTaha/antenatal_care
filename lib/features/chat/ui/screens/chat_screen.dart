@@ -31,13 +31,6 @@ class _ChatScreenState extends State<ChatScreen> {
           'Chats',
           style: getBoldStyle(color: Colors.black, fontSize: 20.sp),
         ),
-        actions: [
-          IconButton(
-            iconSize: 30,
-            onPressed: () {},
-            icon: Icon(Icons.add_box_rounded),
-          ),
-        ],
       ),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),

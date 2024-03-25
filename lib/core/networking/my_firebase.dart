@@ -47,4 +47,29 @@ class MyFirebaseFireStoreService {
         .collection('myChats')
         .get();
   }
+
+  Stream<QuerySnapshot<Map<String, dynamic>>> getMessagesCollection(
+      {required String patientId}) {
+    print(patientId);
+    return doctorCollection
+        .doc(doctorUid())
+        .collection('myChats')
+        .doc(patientId)
+        .collection('messages')
+        .orderBy('dateTime')
+        .snapshots();
+  }
+
+  String doctorUid() {
+    if (CacheHelper.getData(key: 'userType') == 'doctorUser') {
+      return CacheHelper.getData(key: 'uId');
+    } else
+      return CacheHelper.getData(key: 'myDoctorUid');
+  }
+
+  DocumentReference<Object?> myChatsDoc(String patientId) {
+    DocumentReference documentReference =
+        doctorCollection.doc(doctorUid()).collection('myChats').doc(patientId);
+    return documentReference;
+  }
 }

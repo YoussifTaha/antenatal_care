@@ -1,28 +1,62 @@
+import 'package:antenatal_app/core/Helpers/cach_helper.dart';
+import 'package:antenatal_app/core/Helpers/spacing.dart';
+import 'package:antenatal_app/core/networking/my_firebase.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/features/chat_details/data/models/message_model.dart';
 import 'package:antenatal_app/features/chat_details/ui/widgets/my_message.dart';
+import 'package:antenatal_app/features/chat_details/ui/widgets/other_person_message.dart';
+import 'package:antenatal_app/features/chat_details/ui/widgets/send_message_bar.dart';
+import 'package:antenatal_app/features/signup/data/model/user_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class ChatDetailsScreen extends StatelessWidget {
+class ChatDetailsScreen extends StatefulWidget {
+  final UserModel patient;
   ChatDetailsScreen({
-    super.key,
+    Key? key,
+    required this.patient,
   });
 
   @override
-  Widget build(BuildContext context) {
-    final TextEditingController messageController = TextEditingController();
+  State<ChatDetailsScreen> createState() => _ChatDetailsScreenState();
+}
 
+class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
+  final TextEditingController messageController = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _scrollToBottom();
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    messageController.dispose();
+    super.dispose();
+  }
+
+  void _scrollToBottom() {
+    if (_scrollController.hasClients) {
+      _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    MyFirebaseFireStoreService myFirebaseFireStoreService =
+        MyFirebaseFireStoreService();
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 0.0,
         title: Row(
           children: [
-            SizedBox(
-              width: 15.0,
-            ),
-            Text(
-              'Doctor Mohamed',
-            ),
+            SizedBox(width: 15.0),
+            Text(widget.patient.fullName),
           ],
         ),
       ),
@@ -31,72 +65,48 @@ class ChatDetailsScreen extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: ListView.separated(
-                physics: BouncingScrollPhysics(),
-                itemBuilder: (context, index) {
-                  MessageModel messageModel = MessageModel(
-                      senderId: '',
-                      receiverId: '',
-                      dateTime: 'Now',
-                      text: 'Hello World');
-                  return MyMessage(
-                    model: messageModel,
+              child: StreamBuilder<QuerySnapshot>(
+                stream: myFirebaseFireStoreService.getMessagesCollection(
+                    patientId: '${widget.patient.patientId}'),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(
+                      child:
+                          CircularProgressIndicator(color: ColorManger.primary),
+                    );
+                  }
+                  if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  }
+                  if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                    return Text('No Messages Found');
+                  }
+                  var messages = snapshot.data!.docs
+                      .map((doc) => MessageModel.fromJson(
+                          doc.data() as Map<String, dynamic>))
+                      .toList();
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    _scrollToBottom();
+                  });
+                  return ListView.builder(
+                    controller: _scrollController,
+                    physics: BouncingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      if (messages[index].senderId ==
+                          CacheHelper.getData(key: 'uId')) {
+                        return MyMessage(model: messages[index]);
+                      }
+                      return OtherPersonMessage(model: messages[index]);
+                    },
+                    itemCount: messages.length,
                   );
                 },
-                separatorBuilder: (context, index) => SizedBox(
-                  height: 15.0,
-                ),
-                itemCount: 5,
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.grey[300]!,
-                  width: 1.0,
-                ),
-                borderRadius: BorderRadius.circular(
-                  15.0,
-                ),
-              ),
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 15.0,
-                      ),
-                      child: TextFormField(
-                        controller: messageController,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'type your message here ...',
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 50.0,
-                    color: ColorManger.primary,
-                    child: MaterialButton(
-                      onPressed: () {
-                        // SocialCubit.get(context).sendMessage(
-                        //   receiverId: userModel.uId,
-                        //   dateTime: DateTime.now().toString(),
-                        //   text: messageController.text,
-                        // );
-                      },
-                      minWidth: 1.0,
-                      child: Icon(
-                        Icons.send,
-                        size: 16.0,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+            verticalSpace(10),
+            SendMessageBar(
+              patient: widget.patient,
+              messageController: messageController,
             ),
           ],
         ),
