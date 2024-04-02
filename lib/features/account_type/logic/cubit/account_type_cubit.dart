@@ -1,7 +1,10 @@
+import 'package:antenatal_app/core/Helpers/extensions.dart';
 import 'package:antenatal_app/core/errors/faliure.dart';
+import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/features/account_type/data/repos/account_type_repo.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
@@ -56,5 +59,15 @@ class AccountTypeCubit extends Cubit<AccountTypeState> {
   void makePatientUserType({required String accountType}) {
     emit(PatientUserAccountTypeState());
     userType = accountType;
+  }
+
+  void navigateBasedOnUserType({required BuildContext context}) {
+    if (userType == 'userDoctor') {
+      context.pushNamedAndRemoveUntill(Routes.homeLayout,
+          predicate: (Route<dynamic> route) => false);
+    } else {
+      context.pushNamedAndRemoveUntill(Routes.patientViewAddInfo,
+          predicate: (Route<dynamic> route) => false);
+    }
   }
 }

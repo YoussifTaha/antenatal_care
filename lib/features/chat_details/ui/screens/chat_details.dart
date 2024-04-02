@@ -56,7 +56,9 @@ class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
         title: Row(
           children: [
             SizedBox(width: 15.0),
-            Text(widget.patient.fullName),
+            CacheHelper.getData(key: 'userType') == 'userPatient'
+                ? Text('')
+                : Text(widget.patient.fullName),
           ],
         ),
       ),

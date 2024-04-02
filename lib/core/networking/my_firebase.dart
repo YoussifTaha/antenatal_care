@@ -61,10 +61,11 @@ class MyFirebaseFireStoreService {
   }
 
   String doctorUid() {
-    if (CacheHelper.getData(key: 'userType') == 'doctorUser') {
+    if (CacheHelper.getData(key: 'userType') == 'userDoctor') {
       return CacheHelper.getData(key: 'uId');
-    } else
+    } else {
       return CacheHelper.getData(key: 'myDoctorUid');
+    }
   }
 
   DocumentReference<Object?> myChatsDoc(String patientId) {

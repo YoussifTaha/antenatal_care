@@ -116,7 +116,13 @@ class AntenatalPatientCard extends StatelessWidget {
                           children: [
                             outlinedButton(
                                 height: 50.h,
-                                function: () {},
+                                function: () {
+                                  context.pushNamed(
+                                      Routes.addPatientExercisesScreen,
+                                      arguments: {
+                                        'patientId': patient.patientId,
+                                      });
+                                },
                                 text: 'Add Exercises'),
                           ],
                         ),

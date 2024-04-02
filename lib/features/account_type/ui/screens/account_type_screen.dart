@@ -120,8 +120,8 @@ class _AccountTypeState extends State<AccountType> {
                         email: widget.email,
                         fullName: widget.fullName,
                         phone: widget.phone);
-                    context.pushNamedAndRemoveUntill(Routes.homeLayout,
-                        predicate: (Route<dynamic> route) => false);
+                    AccountTypeCubit.get(context)
+                        .navigateBasedOnUserType(context: context);
                     CacheHelper.saveData(key: 'isAccountCreated', value: true);
                   },
                   text: 'Create Account')
