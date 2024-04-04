@@ -58,6 +58,7 @@ import 'package:antenatal_app/features/patients_info/ui/widgets/patient_examinat
 import 'package:antenatal_app/features/patients_info/ui/widgets/patient_exercises_widgets/exercise_details_screen.dart';
 import 'package:antenatal_app/features/patients_info/ui/widgets/patient_exercises_widgets/patient_exercises.dart';
 import 'package:antenatal_app/features/patients_info/ui/widgets/patient_history_widgets/patient_main_history_view.dart';
+import 'package:antenatal_app/features/positions/ui/screens/positions.dart';
 import 'package:antenatal_app/features/post_login/data/repo/post_login_repo_impl.dart';
 import 'package:antenatal_app/features/post_login/logic/cubit/post_login_cubit.dart';
 import 'package:antenatal_app/features/post_login/ui/screens/post_login.dart';
@@ -335,6 +336,10 @@ class AppRouter {
                 LoadingScreenCubit(locator.get<LoadingScreenRepoImpl>()),
             child: PatientIdScreen(),
           ),
+        );
+      case Routes.recommendationScreen:
+        return MaterialPageRoute(
+          builder: (_) => const PositionsScreen(),
         );
       default:
         return MaterialPageRoute(
