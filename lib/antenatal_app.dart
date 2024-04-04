@@ -15,14 +15,19 @@ class AntenatalApp extends StatelessWidget {
     bool? isLogedIn = CacheHelper.getData(key: 'isLogedIn');
     bool? isAccountCreated = CacheHelper.getData(key: 'isAccountCreated');
     String? isDoctor = CacheHelper.getData(key: 'userType');
+    String? isDoctorAdded = CacheHelper.getData(key: 'myDoctorUid');
 
     String firstScreen = Routes.onBoardingScreen;
 
     if ((isSignedUp != null && isAccountCreated != null) || isLogedIn != null) {
       if (isDoctor == 'userDoctor') {
         firstScreen = Routes.homeLayout;
-      } else
-        firstScreen = Routes.loadingScreen;
+      } else {
+        if (isDoctorAdded == null) {
+          firstScreen = Routes.patientIdScreen;
+        } else
+          firstScreen = Routes.loadingScreen;
+      }
     } else if (isSignedUp != null && isAccountCreated == null) {
       firstScreen = Routes.accountTypeScreen;
     } else

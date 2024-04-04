@@ -33,6 +33,12 @@ class LoadingScreenCubit extends Cubit<LoadingScreenState> {
   }
 
   Future<void> fetchMyId({required String uId}) async {
-    await loadingScreenRepo.fetchMyId(uId: uId);
+    emit(FetchPatientIdLoadingState());
+    var result = await loadingScreenRepo.fetchMyId(uId: uId);
+    result.fold((faliure) {
+      emit(FetchPatientIdErrorState(error: faliure.message));
+    }, (patientId) {
+      emit(FetchPatientIdSuccssesState(patientId: patientId));
+    });
   }
 }

@@ -31,4 +31,5 @@ class Routes {
   static const String nutritionScreen = '/nutritionScreen';
   static const String recommendationScreen = '/recommendationScreen';
   static const String chatDetails = '/chatDetails';
+  static const String patientIdScreen = '/patientIdScreen';
 }
