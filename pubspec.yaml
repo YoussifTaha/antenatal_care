@@ -50,6 +50,7 @@ dependencies:
   shared_preferences: ^2.2.2
   youtube_player_flutter: ^8.1.2
   expansion_widget: ^0.0.3
+  flutter_local_notifications: ^17.0.0
   
 
 dev_dependencies:
