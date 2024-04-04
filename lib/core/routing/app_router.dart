@@ -33,6 +33,7 @@ import 'package:antenatal_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:antenatal_app/features/login/ui/screens/login_screen.dart';
 import 'package:antenatal_app/features/nutrition/ui/screens/nutrition.dart';
 import 'package:antenatal_app/features/onBoarding/ui/screens/onboarding_screen.dart';
+import 'package:antenatal_app/features/patient_Id/ui/screens/patient_Id_screen.dart';
 import 'package:antenatal_app/features/patient_view/data/patient_view_repo_impl.dart';
 import 'package:antenatal_app/features/patient_view/logic/cubit/patient_view_cubit.dart';
 import 'package:antenatal_app/features/patient_view/ui/screens/patient_view.dart';
@@ -325,6 +326,14 @@ class AppRouter {
             child: ChatDetailsScreen(
               patient: args?['patient'],
             ),
+          ),
+        );
+      case Routes.patientIdScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                LoadingScreenCubit(locator.get<LoadingScreenRepoImpl>()),
+            child: PatientIdScreen(),
           ),
         );
       default:

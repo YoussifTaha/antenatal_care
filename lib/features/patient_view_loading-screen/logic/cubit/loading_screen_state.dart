@@ -22,3 +22,17 @@ final class GetMyDoctorUidError extends LoadingScreenState {
 
   GetMyDoctorUidError({required this.error});
 }
+
+final class FetchPatientIdLoadingState extends LoadingScreenState {}
+
+final class FetchPatientIdSuccssesState extends LoadingScreenState {
+  final int? patientId;
+
+  FetchPatientIdSuccssesState({required this.patientId});
+}
+
+final class FetchPatientIdErrorState extends LoadingScreenState {
+  final String error;
+
+  FetchPatientIdErrorState({required this.error});
+}

@@ -13,6 +13,7 @@ class UserModel extends Equatable {
   final String? occupation;
   final String? eDD;
   final String? weekNumber;
+  final String? myDoctorUid;
   final int? patientId;
   final bool? isPersonalInfoAdded;
 
@@ -29,6 +30,7 @@ class UserModel extends Equatable {
       this.occupation,
       this.eDD,
       this.weekNumber,
+      this.myDoctorUid,
       this.patientId,
       this.isPersonalInfoAdded});
 
@@ -47,6 +49,7 @@ class UserModel extends Equatable {
         occupation: json['occupation'] as String?,
         eDD: json['eDD'] as String?,
         weekNumber: json['weekNumber'] as String?,
+        myDoctorUid: json['myDoctorUid'] as String?,
       );
 
   Map<String, dynamic> toJson() => {
@@ -64,6 +67,7 @@ class UserModel extends Equatable {
         'occupation': occupation,
         'eDD': eDD,
         'weekNumber': weekNumber,
+        'myDoctorUid': myDoctorUid,
       };
 
   @override
@@ -83,6 +87,7 @@ class UserModel extends Equatable {
       occupation,
       eDD,
       weekNumber,
+      myDoctorUid,
     ];
   }
 }

@@ -66,6 +66,7 @@ class LoadingScreenRepoImpl extends LoadingScreenRepo {
         await myFirebaseFireStoreService.getPatientDoc(uid: uId);
     try {
       patientId = patientDoc.get('patientId');
+
       CacheHelper.saveData(
         key: 'patientId',
         value: patientId,

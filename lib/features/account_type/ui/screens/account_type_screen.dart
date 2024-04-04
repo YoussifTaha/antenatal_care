@@ -1,7 +1,5 @@
 import 'package:antenatal_app/core/Helpers/cach_helper.dart';
-import 'package:antenatal_app/core/Helpers/extensions.dart';
 import 'package:antenatal_app/core/Helpers/spacing.dart';
-import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
 import 'package:antenatal_app/core/widgets/widgets.dart';
@@ -54,7 +52,13 @@ class _AccountTypeState extends State<AccountType> {
                     textHeight: 1.4.h),
               ),
               verticalSpace(50),
-              BlocBuilder<AccountTypeCubit, AccountTypeState>(
+              BlocConsumer<AccountTypeCubit, AccountTypeState>(
+                listener: (context, state) {
+                  if (state is CreateUserSuccessState) {
+                    AccountTypeCubit.get(context)
+                        .navigateBasedOnUserType(context: context);
+                  }
+                },
                 builder: (context, state) {
                   return InkWell(
                     onTap: () {
@@ -113,18 +117,25 @@ class _AccountTypeState extends State<AccountType> {
                 ),
               ),
               verticalSpace(20),
-              button(
-                  context: context,
-                  function: () {
-                    AccountTypeCubit.get(context).userCreate(
-                        email: widget.email,
-                        fullName: widget.fullName,
-                        phone: widget.phone);
-                    AccountTypeCubit.get(context)
-                        .navigateBasedOnUserType(context: context);
-                    CacheHelper.saveData(key: 'isAccountCreated', value: true);
-                  },
-                  text: 'Create Account')
+              BlocBuilder<AccountTypeCubit, AccountTypeState>(
+                builder: (context, state) {
+                  if (state is CreateUserLoadingState) {
+                    return CircularProgressIndicator();
+                  }
+                  return button(
+                      context: context,
+                      function: () {
+                        AccountTypeCubit.get(context).userCreate(
+                            email: widget.email,
+                            fullName: widget.fullName,
+                            phone: widget.phone);
+
+                        CacheHelper.saveData(
+                            key: 'isAccountCreated', value: true);
+                      },
+                      text: 'Create Account');
+                },
+              )
             ],
           ),
         ),

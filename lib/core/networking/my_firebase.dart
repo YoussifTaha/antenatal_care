@@ -17,6 +17,10 @@ class MyFirebaseFireStoreService {
     return await FirebaseFirestore.instance.collection('exercises').get();
   }
 
+  Stream<QuerySnapshot<Map<String, dynamic>>> getPatientsCollection() {
+    return FirebaseFirestore.instance.collection('userPatient').snapshots();
+  }
+
   Future<QuerySnapshot<Map<String, dynamic>>> getMyPatientsCollection(
       {required String uid}) async {
     return await doctorCollection.doc(uid).collection('myPatients').get();
@@ -50,7 +54,6 @@ class MyFirebaseFireStoreService {
 
   Stream<QuerySnapshot<Map<String, dynamic>>> getMessagesCollection(
       {required String patientId}) {
-    print(patientId);
     return doctorCollection
         .doc(doctorUid())
         .collection('myChats')
