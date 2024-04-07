@@ -51,6 +51,7 @@ dependencies:
   youtube_player_flutter: ^8.1.2
   expansion_widget: ^0.0.3
   flutter_local_notifications: ^17.0.0
+  firebase_messaging: ^14.7.19
   
 
 dev_dependencies:

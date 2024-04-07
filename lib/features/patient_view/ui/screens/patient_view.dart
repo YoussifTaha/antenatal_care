@@ -1,5 +1,6 @@
 import 'package:antenatal_app/core/Helpers/cach_helper.dart';
 import 'package:antenatal_app/core/Helpers/extensions.dart';
+import 'package:antenatal_app/core/Helpers/notification_service.dart';
 import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
@@ -13,8 +14,20 @@ import 'package:antenatal_app/features/patients_info/ui/widgets/patient_info_cho
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PatientView extends StatelessWidget {
+class PatientView extends StatefulWidget {
   const PatientView({super.key});
+
+  @override
+  State<PatientView> createState() => _PatientViewState();
+}
+
+class _PatientViewState extends State<PatientView> {
+  @override
+  void initState() {
+    super.initState();
+    NotificationService().requestNotificationsPermission();
+    NotificationService().requestExactAlarmsPermission();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -1,3 +1,4 @@
+import 'package:antenatal_app/core/Helpers/notification_service.dart';
 import 'package:antenatal_app/core/errors/faliure.dart';
 import 'package:antenatal_app/features/patient_view_add_routines/data/repo/patient_view_add_routines_repo.dart';
 import 'package:equatable/equatable.dart';
@@ -38,6 +39,12 @@ class PatientViewAddRoutinesCubit extends Cubit<PatientViewAddRoutinesState> {
       standingTime = pickedTime;
       standingDate = DateTime(DateTime.now().year, DateTime.now().month,
           DateTime.now().day, pickedTime.hour, pickedTime.minute);
+      NotificationService().scheduleNotification(
+        scheduledNotificationDateTime: standingDate,
+        title: 'Standing Reminder',
+        body: 'We are giving you a reminder To stand Correctly',
+        id: 1,
+      );
       emit(PatientViewNewTimeAdded());
     }
     emit(PatientViewAddRoutinesInitial());
@@ -54,6 +61,12 @@ class PatientViewAddRoutinesCubit extends Cubit<PatientViewAddRoutinesState> {
       sittingTime = pickedTime;
       sittingDate = DateTime(DateTime.now().year, DateTime.now().month,
           DateTime.now().day, pickedTime.hour, pickedTime.minute);
+      NotificationService().scheduleNotification(
+        scheduledNotificationDateTime: sittingDate,
+        title: 'Standing Reminder',
+        body: 'We are giving you a reminder To stand Correctly',
+        id: 1,
+      );
       emit(PatientViewNewTimeAdded());
     }
     emit(PatientViewAddRoutinesInitial());
@@ -70,6 +83,12 @@ class PatientViewAddRoutinesCubit extends Cubit<PatientViewAddRoutinesState> {
       houseWorkTime = pickedTime;
       houseWorkDate = DateTime(DateTime.now().year, DateTime.now().month,
           DateTime.now().day, pickedTime.hour, pickedTime.minute);
+      NotificationService().scheduleNotification(
+        scheduledNotificationDateTime: houseWorkDate,
+        title: 'Standing Reminder',
+        body: 'We are giving you a reminder To stand Correctly',
+        id: 1,
+      );
       emit(PatientViewNewTimeAdded());
     }
     emit(PatientViewAddRoutinesInitial());
@@ -86,6 +105,12 @@ class PatientViewAddRoutinesCubit extends Cubit<PatientViewAddRoutinesState> {
       drivingTime = pickedTime;
       drivingDate = DateTime(DateTime.now().year, DateTime.now().month,
           DateTime.now().day, pickedTime.hour, pickedTime.minute);
+      NotificationService().scheduleNotification(
+        scheduledNotificationDateTime: drivingDate,
+        title: 'Standing Reminder',
+        body: 'We are giving you a reminder To stand Correctly',
+        id: 1,
+      );
       emit(PatientViewNewTimeAdded());
     }
     emit(PatientViewAddRoutinesInitial());
@@ -103,6 +128,12 @@ class PatientViewAddRoutinesCubit extends Cubit<PatientViewAddRoutinesState> {
       exercisesDate = DateTime(DateTime.now().year, DateTime.now().month,
           DateTime.now().day, pickedTime.hour, pickedTime.minute);
       emit(PatientViewNewTimeAdded());
+      NotificationService().scheduleNotification(
+        scheduledNotificationDateTime: exercisesDate,
+        title: 'Standing Reminder',
+        body: 'We are giving you a reminder To stand Correctly',
+        id: 1,
+      );
     }
     emit(PatientViewAddRoutinesInitial());
   }
@@ -118,6 +149,12 @@ class PatientViewAddRoutinesCubit extends Cubit<PatientViewAddRoutinesState> {
       bedTime = pickedTime;
       bedDate = DateTime(DateTime.now().year, DateTime.now().month,
           DateTime.now().day, pickedTime.hour, pickedTime.minute);
+      NotificationService().scheduleNotification(
+        scheduledNotificationDateTime: bedDate,
+        title: 'Standing Reminder',
+        body: 'We are giving you a reminder To stand Correctly',
+        id: 1,
+      );
       emit(PatientViewNewTimeAdded());
     }
     emit(PatientViewAddRoutinesInitial());
