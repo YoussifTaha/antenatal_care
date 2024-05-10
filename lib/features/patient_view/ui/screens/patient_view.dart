@@ -24,9 +24,18 @@ class PatientView extends StatefulWidget {
 class _PatientViewState extends State<PatientView> {
   @override
   void initState() {
+    listenToNotifications();
     super.initState();
     NotificationService().requestNotificationsPermission();
     NotificationService().requestExactAlarmsPermission();
+  }
+
+  listenToNotifications() {
+    print("Listening to notification");
+    NotificationService.onClickNotification.stream.listen((event) {
+      print(event);
+      Navigator.pushNamed(context, '/another', arguments: event);
+    });
   }
 
   @override

@@ -1,7 +1,9 @@
 import 'package:antenatal_app/core/Helpers/cach_helper.dart';
+import 'package:antenatal_app/core/Helpers/notification_service.dart';
 import 'package:antenatal_app/core/routing/app_router.dart';
 import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/core/theming/themes.dart';
+import 'package:antenatal_app/features/positions/ui/screens/positions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -37,6 +39,15 @@ class AntenatalApp extends StatelessWidget {
       designSize: const Size(390, 844),
       minTextAdapt: true,
       child: MaterialApp(
+        routes: {
+          // '/': (context) => BlocProvider(
+          //       create: (context) =>
+          //           LoadingScreenCubit(locator.get<LoadingScreenRepoImpl>()),
+          //       child: LoadingScreen(),
+          //     ),
+          '/another': (context) => const PositionsScreen(),
+        },
+        navigatorKey: NotificationService().navigatorKey,
         theme: lightTheme,
         debugShowCheckedModeBanner: false,
         title: 'Antenatal App',

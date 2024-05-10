@@ -126,10 +126,10 @@ class AntenatalPatientCard extends StatelessWidget {
                                 text: 'Add Exercises'),
                           ],
                         ),
-                      )
+                      ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),

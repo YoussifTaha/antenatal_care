@@ -44,6 +44,7 @@ class PatientViewAddRoutinesCubit extends Cubit<PatientViewAddRoutinesState> {
         title: 'Standing Reminder',
         body: 'We are giving you a reminder To stand Correctly',
         id: 1,
+        payload: 'recommendationScreen',
       );
       emit(PatientViewNewTimeAdded());
     }
@@ -63,8 +64,8 @@ class PatientViewAddRoutinesCubit extends Cubit<PatientViewAddRoutinesState> {
           DateTime.now().day, pickedTime.hour, pickedTime.minute);
       NotificationService().scheduleNotification(
         scheduledNotificationDateTime: sittingDate,
-        title: 'Standing Reminder',
-        body: 'We are giving you a reminder To stand Correctly',
+        title: 'Sitting Reminder',
+        body: 'We are giving you a reminder To sit Correctly',
         id: 1,
       );
       emit(PatientViewNewTimeAdded());
@@ -85,8 +86,8 @@ class PatientViewAddRoutinesCubit extends Cubit<PatientViewAddRoutinesState> {
           DateTime.now().day, pickedTime.hour, pickedTime.minute);
       NotificationService().scheduleNotification(
         scheduledNotificationDateTime: houseWorkDate,
-        title: 'Standing Reminder',
-        body: 'We are giving you a reminder To stand Correctly',
+        title: 'House Work Reminder',
+        body: 'We are giving you a reminder To do House Work Correctly',
         id: 1,
       );
       emit(PatientViewNewTimeAdded());
@@ -107,8 +108,8 @@ class PatientViewAddRoutinesCubit extends Cubit<PatientViewAddRoutinesState> {
           DateTime.now().day, pickedTime.hour, pickedTime.minute);
       NotificationService().scheduleNotification(
         scheduledNotificationDateTime: drivingDate,
-        title: 'Standing Reminder',
-        body: 'We are giving you a reminder To stand Correctly',
+        title: 'Driving Reminder',
+        body: 'We are giving you a reminder To Drive Correctly',
         id: 1,
       );
       emit(PatientViewNewTimeAdded());
@@ -130,8 +131,8 @@ class PatientViewAddRoutinesCubit extends Cubit<PatientViewAddRoutinesState> {
       emit(PatientViewNewTimeAdded());
       NotificationService().scheduleNotification(
         scheduledNotificationDateTime: exercisesDate,
-        title: 'Standing Reminder',
-        body: 'We are giving you a reminder To stand Correctly',
+        title: 'Exercises Reminder',
+        body: 'We are giving you a reminder To do Exercises Correctly',
         id: 1,
       );
     }
@@ -151,8 +152,8 @@ class PatientViewAddRoutinesCubit extends Cubit<PatientViewAddRoutinesState> {
           DateTime.now().day, pickedTime.hour, pickedTime.minute);
       NotificationService().scheduleNotification(
         scheduledNotificationDateTime: bedDate,
-        title: 'Standing Reminder',
-        body: 'We are giving you a reminder To stand Correctly',
+        title: 'Bed Time Reminder',
+        body: 'We are giving you a reminder To sleep Correctly',
         id: 1,
       );
       emit(PatientViewNewTimeAdded());

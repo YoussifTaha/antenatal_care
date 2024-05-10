@@ -37,6 +37,7 @@ class AddPatientRepoImpl extends AddPatientRepo {
         .where('patientId', isEqualTo: patientId)
         .get();
     String patientDocID = patientQuery.docs.first.id;
+    print('patientDocID: $patientDocID');
     await addDoctorUidToPatientDoc(patientDocID);
     return patientQuery;
   }
@@ -45,6 +46,7 @@ class AddPatientRepoImpl extends AddPatientRepo {
     await myFirebaseService.patientCollection
         .doc(patientDocID)
         .update({'myDoctorUid': CacheHelper.getData(key: 'uId')});
+    print('myDoctorUid: ${CacheHelper.getData(key: 'uId')}');
   }
 
   @override
@@ -55,6 +57,7 @@ class AddPatientRepoImpl extends AddPatientRepo {
         patientQuery.docs.first.data() as Map<String, dynamic>;
 
     patient = UserModel(
+        myDoctorUid: patientData['myDoctorUid'],
         patientId: patientData['patientId'],
         fullName: patientData['fullName'],
         email: patientData['email'],

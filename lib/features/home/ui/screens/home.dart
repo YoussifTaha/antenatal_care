@@ -144,7 +144,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     verticalSpace(20),
-                    SizedBox(height: 260.h, child: const PatientsList()),
+                    SizedBox(height: 320.h, child: const PatientsList()),
                     verticalSpace(20),
                   ],
                 )

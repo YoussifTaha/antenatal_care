@@ -3,6 +3,7 @@ import 'package:antenatal_app/core/Helpers/spacing.dart';
 import 'package:antenatal_app/core/routing/routes.dart';
 import 'package:antenatal_app/core/theming/colors.dart';
 import 'package:antenatal_app/core/theming/styles_manager.dart';
+import 'package:antenatal_app/core/widgets/widgets.dart';
 import 'package:antenatal_app/features/signup/data/model/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -70,6 +71,19 @@ class PatientCard extends StatelessWidget {
               style: getRegularStyle(
                   color: ColorManger.darkPrimary, fontSize: 10.sp),
             ),
+            verticalSpace(20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: button(
+                  height: 40,
+                  context: context,
+                  function: () {
+                    context.pushNamed(Routes.assessment, arguments: {
+                      'patientId': patient.patientId,
+                    });
+                  },
+                  text: 'Re Asses'),
+            )
           ],
         ),
       ),

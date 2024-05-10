@@ -18,6 +18,7 @@ import 'package:antenatal_app/features/add_patient/ui/screens/exercises/exercise
 import 'package:antenatal_app/features/add_patient/ui/screens/exercises/exercises_screen.dart';
 import 'package:antenatal_app/features/add_patient/ui/screens/history/add_history.dart';
 import 'package:antenatal_app/features/add_patient/ui/screens/history_or_examination.dart';
+import 'package:antenatal_app/features/add_patient/ui/screens/reassesment.dart';
 import 'package:antenatal_app/features/chat/data/repos/chat_repo_impl.dart';
 import 'package:antenatal_app/features/chat/logic/cubit/chat_cubit.dart';
 import 'package:antenatal_app/features/chat/ui/screens/chat_screen.dart';
@@ -145,6 +146,18 @@ class AppRouter {
             create: (context) =>
                 AddPatientCubit(locator.get<AddPatientRepoImpl>()),
             child: AddNewPatient(),
+          ),
+        );
+      case Routes.assessment:
+        final Map<String, dynamic>? args =
+            settings.arguments as Map<String, dynamic>?;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                AddPatientCubit(locator.get<AddPatientRepoImpl>()),
+            child: Reassessment(
+              patientId: args?['patientId'],
+            ),
           ),
         );
       case Routes.historyOrExaminationScreen:

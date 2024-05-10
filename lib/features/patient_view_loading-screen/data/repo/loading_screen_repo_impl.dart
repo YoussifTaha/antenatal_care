@@ -64,13 +64,15 @@ class LoadingScreenRepoImpl extends LoadingScreenRepo {
   Future<Either<Failure, int>> fetchMyId({required String uId}) async {
     DocumentSnapshot patientDoc =
         await myFirebaseFireStoreService.getPatientDoc(uid: uId);
+
     try {
       patientId = patientDoc.get('patientId');
-
+      print('patientId $patientId');
       CacheHelper.saveData(
         key: 'patientId',
         value: patientId,
       );
+      print('patientpatientId ${CacheHelper.getData(key: 'patientId')}');
       return right(patientId!);
     } on FirebaseException catch (e) {
       FirebaseFailure failure =

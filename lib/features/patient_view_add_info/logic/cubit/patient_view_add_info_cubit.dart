@@ -28,6 +28,7 @@ class PatientViewAddInfoCubit extends Cubit<PatientViewAddInfoState> {
         'occupation': occupationController.text,
         'isPersonalInfoAdded': true,
       });
+      emit(AddPatientInfoFromPatientViewSuccsses());
     } on FirebaseException catch (e) {
       catchFireBaseException(e);
     }

@@ -1,4 +1,3 @@
-import 'package:antenatal_app/core/Helpers/cach_helper.dart';
 import 'package:antenatal_app/features/patient_view/data/patient_view_repo.dart';
 import 'package:antenatal_app/features/signup/data/model/user_model.dart';
 import 'package:equatable/equatable.dart';
@@ -21,13 +20,5 @@ class PatientViewCubit extends Cubit<PatientViewState> {
     }, (patient) {
       emit(GetPatientBasicInfoSuccsses(patient: patient));
     });
-  }
-
-  void removeUserCache() {
-    CacheHelper.removeData(key: 'uId');
-    CacheHelper.removeData(key: 'isSignedUp');
-    CacheHelper.removeData(key: 'isLogedIn');
-    CacheHelper.removeData(key: 'isAccountCreated');
-    CacheHelper.removeData(key: 'patientName');
   }
 }
