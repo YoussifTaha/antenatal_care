@@ -2,8 +2,11 @@
 
 <img src="icon.png" alt="Logo" width="100" align="center"/>
 
-## Introduction
+## Description
 Antenatal Care app is an app made for every mom to take care of herself and her baby by following up with her physiotherapist.
+
+## Purpose
+Many pregnant women don't know how to take care of themselves and their babies, so this app is made with love towards our moms to make them in the safe area untill the labour.  
 
 ## Features
 - Doctor View : The doctor's view offers a streamlined experience for managing appointments and patient records. Doctors can view appointments, add new patients via their ID, and access a list of existing patients. With a bottom bar for easy navigation, they can switch between screens for patient lists and chats, ensuring efficient communication and organization within the app.
