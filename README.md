@@ -15,7 +15,7 @@ and prescribed exercises, aiding therapists in delivering personalized and effec
 
 - Patient View : The Patient View Screen offers a comprehensive view of the patient's healthcare journey. It includes a calendar for appointments, add their routines so the app will send them a reminder to do them correctly, their basic information and 4 sections chat with their doctor, the patient's history , the patient's examination and the patient's exercises.
 
-- Chat : The Patient View Screen offers a comprehensive view of the patient's healthcare journey. It includes a calendar for appointments, add their routines so the app will send them a reminder to do them correctly, their basic information and 4 sections chat with their doctor, the patient's history , the patient's examination and the patient's exercises.
+- Chat : The Chat Screen provides a direct and convenient platform for patients and doctors to communicate effectively. Patients can easily discuss concerns, receive guidance, or ask questions about their treatment plan. This interactive feature fosters a supportive environment, ensuring seamless communication and enhancing the overall patient experience. 
 
 - Add Exersices : The Exercise Screen enables physiotherapists to create and send customized exercise routines directly to patients. With an intuitive interface, therapists can efficiently add exercises tailored to each patient's needs, ensuring precise rehabilitation plans. This feature empowers therapists to remotely manage and monitor patients' progress, facilitating effective treatment delivery and optimizing rehabilitation outcomes.
 
