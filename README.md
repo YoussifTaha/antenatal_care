@@ -44,5 +44,8 @@ and prescribed exercises, aiding therapists in delivering personalized and effec
 <img src="Screenshot_20240511_025049.jpg" alt="alt text" width="200"/>
 
 
+## Installation
+- The Next is a link for apk file if you wish to run the app.
 
+https://drive.google.com/file/d/1L0pLe2YN0LxaWfRH9xzmCcKTlK00rtrm/view?usp=sharing
 
